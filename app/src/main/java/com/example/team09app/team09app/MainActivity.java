@@ -12,7 +12,7 @@ public class MainActivity extends AppCompatActivity {
 
         // This is Chris Carrick
 
-        // This is Amy
+        // This is Amy Cook
 
         // This is Ian Stubbs
     }
