@@ -10,7 +10,7 @@ public class MainActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
-        // This is Chris Carrick
+        // This is Chris Carrick 7/6
 
         // This is Amy
 
