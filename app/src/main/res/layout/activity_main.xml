@@ -4,6 +4,17 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:background="@color/Blue"
     tools:context=".MainActivity">
 
+    <ImageButton
+        android:id="@+id/imageButton"
+        android:layout_width="300dp"
+        android:layout_height="101dp"
+        android:adjustViewBounds="true"
+        android:background="@color/Blue"
+        android:scaleType="fitCenter"
+        app:srcCompat="@mipmap/continue_btnhdpi"
+        tools:layout_editor_absoluteX="42dp"
+        tools:layout_editor_absoluteY="394dp" />
 </android.support.constraint.ConstraintLayout>
