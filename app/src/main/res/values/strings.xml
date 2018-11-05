@@ -1,3 +1,4 @@
 <resources>
     <string name="app_name">DOMUM</string>
+    <string name="continue_button_description">Continue Button</string>
 </resources>

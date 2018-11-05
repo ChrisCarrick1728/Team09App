@@ -11,10 +11,15 @@
         android:id="@+id/imageButton"
         android:layout_width="300dp"
         android:layout_height="101dp"
+        android:layout_marginStart="42dp"
+        android:layout_marginEnd="42dp"
+        android:layout_marginBottom="16dp"
         android:adjustViewBounds="true"
         android:background="@color/Blue"
+        android:contentDescription="@string/continue_button_description"
         android:scaleType="fitCenter"
-        app:srcCompat="@mipmap/continue_btnhdpi"
-        tools:layout_editor_absoluteX="42dp"
-        tools:layout_editor_absoluteY="394dp" />
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:srcCompat="@mipmap/continue_btnhdpi" />
 </android.support.constraint.ConstraintLayout>
