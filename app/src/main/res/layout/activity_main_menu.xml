@@ -7,4 +7,94 @@
     android:background="@color/Blue"
     tools:context=".MainMenu">
 
+    <ImageView
+        android:id="@+id/imageView"
+        android:layout_width="0dp"
+        android:layout_height="63dp"
+        android:layout_marginStart="200dp"
+        android:layout_marginTop="8dp"
+        android:contentDescription="@string/house_logo"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:srcCompat="@drawable/house_logoxhdpi" />
+
+    <ScrollView
+        android:id="@+id/main_menu_scrollview_id"
+        android:layout_width="400dp"
+        android:layout_height="610dp"
+        android:layout_marginTop="32dp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/imageView">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical">
+
+            <ImageButton
+                android:id="@+id/add_new_item_btn_id"
+                android:layout_width="match_parent"
+                android:layout_height="70dp"
+                android:layout_marginBottom="20dp"
+                android:adjustViewBounds="true"
+                android:background="@color/Blue"
+                android:contentDescription="@string/add_new_button_description"
+                android:onClick="addNewItem"
+                android:scaleType="fitCenter"
+                app:srcCompat="@drawable/add_new_item_btnxhdpi"
+                tools:layout_editor_absoluteX="42dp"
+                tools:layout_editor_absoluteY="719dp" />
+
+            <ImageButton
+                android:id="@+id/browse_by_room_btn_id"
+                android:layout_width="match_parent"
+                android:layout_height="70dp"
+                android:layout_marginBottom="20dp"
+                android:adjustViewBounds="true"
+                android:background="@color/Blue"
+                android:contentDescription="@string/browse_by_room_button_description"
+                android:onClick="browseByRoom"
+                android:scaleType="fitCenter"
+                app:srcCompat="@drawable/browse_by_room_btnxhdpi" />
+
+            <ImageButton
+                android:id="@+id/browse_by_category_id"
+                android:layout_width="match_parent"
+                android:layout_height="70dp"
+                android:layout_marginBottom="20dp"
+                android:adjustViewBounds="true"
+                android:background="@color/Blue"
+                android:contentDescription="@string/browse_by_category_button_description"
+                android:onClick="browseByCategory"
+                android:scaleType="fitCenter"
+                app:srcCompat="@drawable/browse_by_category_btnxhdpi" />
+
+            <ImageButton
+                android:id="@+id/view_all_items_btn_id"
+                android:layout_width="match_parent"
+                android:layout_height="70dp"
+                android:layout_marginBottom="20dp"
+                android:adjustViewBounds="true"
+                android:background="@color/Blue"
+                android:contentDescription="@string/view_all_items_button_description"
+                android:onClick="viewAllItems"
+                android:scaleType="fitCenter"
+                app:srcCompat="@drawable/view_all_items_btnxhdpi" />
+
+            <ImageButton
+                android:id="@+id/export_btn_id"
+                android:layout_width="match_parent"
+                android:layout_height="70dp"
+                android:layout_marginBottom="20dp"
+                android:adjustViewBounds="true"
+                android:background="@color/Blue"
+                android:contentDescription="@string/export_button_description"
+                android:onClick="export"
+                android:scaleType="fitCenter"
+                app:srcCompat="@drawable/export_btnxhdpi" />
+        </LinearLayout>
+    </ScrollView>
+
 </android.support.constraint.ConstraintLayout>

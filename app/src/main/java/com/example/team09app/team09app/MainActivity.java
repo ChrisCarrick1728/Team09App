@@ -1,5 +1,7 @@
 package com.example.team09app.team09app;
 
+import android.app.Activity;
+import android.content.Intent;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.util.Log;
@@ -23,6 +25,9 @@ public class MainActivity extends AppCompatActivity {
     }
 
     public void clickContinueButton(View view) {
+
         Log.d("Main_Activity", "Button Clicked");
+        Intent mainMenuIntent = new Intent(this, MainMenu.class);
+        startActivity(mainMenuIntent);
     }
 }
