@@ -7,7 +7,7 @@
     android:background="@color/Blue"
     tools:context=".MainActivity">
 
-    
+
 
 
 </android.support.constraint.ConstraintLayout>
