@@ -9,13 +9,29 @@
 
 
     <ImageView
-        android:id="@+id/imageView"
+        android:id="@+id/imageView2"
+        android:layout_width="wrap_content"
+        android:layout_height="94dp"
+        android:layout_marginTop="16dp"
+        android:contentDescription="@string/house_logo"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:srcCompat="@drawable/house_logoxhdpi" />
+
+    <ImageButton
+        android:id="@+id/continue_btn_id"
         android:layout_width="300dp"
         android:layout_height="100dp"
         android:layout_marginBottom="16dp"
+        android:background="@color/Blue"
         android:contentDescription="@string/continue_button_description"
+        android:cropToPadding="false"
+        android:onClick="clickContinueButton"
+        android:scaleType="fitCenter"
+        android:visibility="visible"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:srcCompat="@mipmap/continue_btnmdpi" />
+        app:srcCompat="@drawable/continue_btnxhdpi" />
 </android.support.constraint.ConstraintLayout>

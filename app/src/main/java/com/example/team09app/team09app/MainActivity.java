@@ -2,6 +2,8 @@ package com.example.team09app.team09app;
 
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.util.Log;
+import android.view.View;
 
 public class MainActivity extends AppCompatActivity {
 
@@ -18,5 +20,9 @@ public class MainActivity extends AppCompatActivity {
         // This is Ian Stubbs 01/16
 
         //This is Austin 
+    }
+
+    public void clickContinueButton(View view) {
+        Log.d("Main_Activity", "Button Clicked");
     }
 }
