@@ -8,4 +8,6 @@
     <string name="browse_by_category_button_description">Browse By Category Button</string>
     <string name="view_all_items_button_description">View All Items Button</string>
     <string name="export_button_description">Export Button</string>
+    <string name="add_new_category_button_descritpion">Add New Category Button</string>
+    <string name="add_new_room_button_descritpion">Add New Room Button</string>
 </resources>
