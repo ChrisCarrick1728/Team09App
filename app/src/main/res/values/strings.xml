@@ -15,4 +15,5 @@
     <string name="num_items_text">Number of Items Text</string>
     <string name="room">ROOM:</string>
     <string name="category">CATEGORY:</string>
+    <string name="export">Export Options</string>
 </resources>
