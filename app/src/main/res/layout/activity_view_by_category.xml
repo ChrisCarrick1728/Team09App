@@ -1,0 +1,93 @@
+<?xml version="1.0" encoding="utf-8"?>
+<android.support.constraint.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/Blue">
+
+    <EditText
+        android:id="@+id/categoryPage_text"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="16dp"
+        android:layout_marginTop="8dp"
+        android:contentDescription="@string/room_page_text"
+        android:ems="10"
+        android:inputType="none"
+        android:singleLine="false"
+        android:text="@string/category"
+        android:textAllCaps="false"
+        android:textColor="@color/White"
+        android:textIsSelectable="false"
+        android:textStyle="bold"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/house_img"
+        tools:textIsSelectable="false" />
+
+    <ImageView
+        android:id="@+id/imageView"
+        android:layout_width="50dp"
+        android:layout_height="50dp"
+        android:layout_marginStart="16dp"
+        android:layout_marginTop="8dp"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:srcCompat="@drawable/hamburger_btnxhdpi" />
+
+    <ImageView
+        android:id="@+id/house_img"
+        android:layout_width="150dp"
+        android:layout_height="100dp"
+        android:layout_marginTop="8dp"
+        android:layout_marginEnd="16dp"
+        android:contentDescription="@string/house_logo"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:srcCompat="@drawable/house_logoxhdpi" />
+
+    <EditText
+        android:id="@+id/numItems_text"
+        android:layout_width="115dp"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="16dp"
+        android:layout_marginEnd="24dp"
+        android:contentDescription="@string/num_items_text"
+        android:ems="10"
+        android:importantForAutofill="no"
+        android:inputType="none"
+        android:text="# OF ITEMS:"
+        android:textAlignment="textEnd"
+        android:textColor="@color/White"
+        android:textStyle="bold"
+        app:layout_constraintBaseline_toBaselineOf="@+id/categoryPage_text"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toEndOf="@+id/categoryPage_text" />
+
+    <ListView
+        android:layout_width="368dp"
+        android:layout_height="256dp"
+        android:layout_marginStart="16dp"
+        android:layout_marginTop="8dp"
+        android:layout_marginEnd="16dp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/numItems_text" />
+
+    <ImageButton
+        android:id="@+id/addNewCategory_btn_id"
+        android:layout_width="300dp"
+        android:layout_height="100dp"
+        android:layout_marginBottom="16dp"
+        android:background="@color/Blue"
+        android:contentDescription="@string/add_new_category_button_description"
+        android:cropToPadding="false"
+        android:onClick="addNewCategory"
+        android:scaleType="fitCenter"
+        android:visibility="visible"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:srcCompat="@drawable/add_new_category_btnxhdpi" />
+
+</android.support.constraint.ConstraintLayout>
