@@ -17,7 +17,7 @@
             </intent-filter>
         </activity>
         <activity android:name=".MainMenu" />
-        <activity android:name=".export"></activity>
+        <activity android:name=".ViewAllItems"></activity>
     </application>
 
 </manifest>

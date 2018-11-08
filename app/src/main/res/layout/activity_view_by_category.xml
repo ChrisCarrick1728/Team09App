@@ -6,7 +6,7 @@
     android:layout_height="match_parent"
     android:background="@color/Blue">
 
-    <EditText
+    <TextView
         android:id="@+id/categoryPage_text"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
@@ -31,6 +31,7 @@
         android:layout_height="50dp"
         android:layout_marginStart="16dp"
         android:layout_marginTop="8dp"
+        android:contentDescription="@string/hamburger_button_description"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
         app:srcCompat="@drawable/hamburger_btnxhdpi" />
@@ -46,7 +47,7 @@
         app:layout_constraintTop_toTopOf="parent"
         app:srcCompat="@drawable/house_logoxhdpi" />
 
-    <EditText
+    <TextView
         android:id="@+id/numItems_text"
         android:layout_width="115dp"
         android:layout_height="wrap_content"
@@ -54,9 +55,8 @@
         android:layout_marginEnd="24dp"
         android:contentDescription="@string/num_items_text"
         android:ems="10"
-        android:importantForAutofill="no"
         android:inputType="none"
-        android:text="# OF ITEMS:"
+        android:text="@string/str_num_of_items"
         android:textAlignment="textEnd"
         android:textColor="@color/White"
         android:textStyle="bold"
