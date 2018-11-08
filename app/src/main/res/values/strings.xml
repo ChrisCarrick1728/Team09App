@@ -2,12 +2,15 @@
     <string name="app_name">DOMUM</string>
     <string name="continue_button_description">Continue Button</string>
     <string name="house_logo">House Logo</string>
-    <string name="welcome_text">Welcom Text</string>
+    <string name="welcome_text">Welcome Text</string>
     <string name="add_new_button_description">Add New Item Button</string>
     <string name="browse_by_room_button_description">Browse By Room Button</string>
     <string name="browse_by_category_button_description">Browse By Category Button</string>
     <string name="view_all_items_button_description">View All Items Button</string>
     <string name="export_button_description">Export Button</string>
-    <string name="add_new_category_button_descritpion">Add New Category Button</string>
-    <string name="add_new_room_button_descritpion">Add New Room Button</string>
+    <string name="add_new_category_button_description">Add New Category Button</string>
+    <string name="add_new_room_button_description">Add New Room Button</string>
+    <string name="room_page_text">Room Page Text</string>
+    <string name="category_page_text">Category Page Text</string>
+    <string name="num_items_text">Number of Items Text</string>
 </resources>
