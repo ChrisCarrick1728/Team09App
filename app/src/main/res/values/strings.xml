@@ -13,4 +13,6 @@
     <string name="room_page_text">Room Page Text</string>
     <string name="category_page_text">Category Page Text</string>
     <string name="num_items_text">Number of Items Text</string>
+    <string name="room">ROOM:</string>
+    <string name="category">CATEGORY:</string>
 </resources>
