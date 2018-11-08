@@ -15,4 +15,6 @@
     <string name="num_items_text">Number of Items Text</string>
     <string name="room">ROOM:</string>
     <string name="category">CATEGORY:</string>
+    <string name="str_num_of_items"># OF ITEMS</string>
+    <string name="hamburger_button_description">Hamburger Button</string>
 </resources>
