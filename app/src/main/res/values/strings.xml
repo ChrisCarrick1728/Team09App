@@ -2,7 +2,7 @@
     <string name="app_name">DOMUM</string>
     <string name="continue_button_description">Continue Button</string>
     <string name="house_logo">House Logo</string>
-    <string name="welcome_text">Welcom Text</string>
+    <string name="welcome_text">Welcome Text</string>
     <string name="add_new_button_description">Add New Item Button</string>
     <string name="browse_by_room_button_description">Browse By Room Button</string>
     <string name="browse_by_category_button_description">Browse By Category Button</string>
