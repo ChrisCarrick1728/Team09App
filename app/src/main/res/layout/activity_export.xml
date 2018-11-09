@@ -18,7 +18,7 @@
         android:ems="10"
         android:inputType="none"
         android:singleLine="false"
-        android:text="@string/export"
+        android:text="Export Options"
         android:textAlignment="center"
         android:textAllCaps="false"
         android:textColor="@color/White"

@@ -17,7 +17,8 @@
             </intent-filter>
         </activity>
         <activity android:name=".MainMenu" />
-        <activity android:name=".ViewAllItems"></activity>
+        <activity android:name=".ViewAllItems" />
+        <activity android:name=".add_new_item" />
     </application>
 
 </manifest>
