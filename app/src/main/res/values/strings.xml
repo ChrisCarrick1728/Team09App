@@ -18,4 +18,5 @@
     <string name="str_num_of_items"># OF ITEMS</string>
     <string name="hamburger_button_description">Hamburger Button</string>
     <string name="all_items">All Items</string>
+    <string name="export">export</string>
 </resources>
