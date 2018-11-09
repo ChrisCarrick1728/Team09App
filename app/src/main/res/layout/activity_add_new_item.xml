@@ -7,6 +7,36 @@
     android:background="@color/Blue"
     tools:context=".AddNewItem">
 
+    <EditText
+        android:id="@+id/nameText3"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="16dp"
+        android:layout_marginTop="8dp"
+        android:ems="10"
+        android:hint="@string/category_text"
+        android:inputType="textPersonName"
+        android:selectAllOnFocus="false"
+        android:textColor="@color/White"
+        android:textColorHint="@color/White"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/nameText2" />
+
+    <EditText
+        android:id="@+id/nameText2"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="16dp"
+        android:layout_marginTop="8dp"
+        android:ems="10"
+        android:hint="@string/room_text"
+        android:inputType="textPersonName"
+        android:selectAllOnFocus="false"
+        android:textColor="@color/White"
+        android:textColorHint="@color/White"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/nameText" />
+
     <ImageView
         android:id="@+id/imageView"
         android:layout_width="50dp"
@@ -29,16 +59,17 @@
         app:srcCompat="@drawable/house_logoxhdpi" />
 
     <TextView
-        android:id="@+id/categoryPage_text"
+        android:id="@+id/addNewItem"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
-        android:layout_marginStart="16dp"
+        android:layout_marginStart="108dp"
         android:layout_marginTop="8dp"
         android:contentDescription="@string/room_page_text"
         android:ems="10"
         android:inputType="none"
         android:singleLine="false"
-        android:text="@string/category"
+        android:text="@string/add_new_item"
+        android:textAlignment="center"
         android:textAllCaps="false"
         android:textColor="@color/White"
         android:textIsSelectable="false"
@@ -46,6 +77,40 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/house_img"
         tools:textIsSelectable="false" />
+
+    <ImageButton
+        android:id="@+id/camera_btn_id"
+        android:layout_width="251dp"
+        android:layout_height="65dp"
+        android:layout_marginTop="8dp"
+        android:layout_marginBottom="328dp"
+        android:background="@color/Blue"
+        android:contentDescription="@string/export_button_description"
+        android:cropToPadding="false"
+        android:scaleType="fitCenter"
+        android:visibility="visible"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.503"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/addNewItem"
+        app:srcCompat="@drawable/take_picture_btnxhdpi" />
+
+    <EditText
+        android:id="@+id/nameText"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="16dp"
+        android:layout_marginTop="24dp"
+        android:ems="10"
+        android:textColor="@color/White"
+        android:textColorHint="@color/White"
+        android:hint="@string/name_text"
+        android:inputType="textPersonName"
+        android:selectAllOnFocus="false"
+        app:layout_constraintHorizontal_chainStyle="spread_inside"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/camera_btn_id" />
 
 
 </android.support.constraint.ConstraintLayout>

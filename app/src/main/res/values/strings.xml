@@ -19,4 +19,8 @@
     <string name="hamburger_button_description">Hamburger Button</string>
     <string name="all_items">All Items</string>
     <string name="export">export</string>
+    <string name="add_new_item">Add New Item</string>
+    <string name="name_text">Name</string>
+    <string name="room_text">Room</string>
+    <string name="category_text">Category</string>
 </resources>
