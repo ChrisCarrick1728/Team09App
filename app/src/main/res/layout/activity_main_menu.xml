@@ -9,13 +9,11 @@
 
     <ImageView
         android:id="@+id/imageView"
-        android:layout_width="0dp"
-        android:layout_height="63dp"
-        android:layout_marginStart="200dp"
+        android:layout_width="150dp"
+        android:layout_height="@dimen/logo_height"
         android:layout_marginTop="8dp"
         android:contentDescription="@string/house_logo"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
         app:srcCompat="@drawable/house_logoxhdpi" />
 
@@ -36,7 +34,7 @@
             <ImageButton
                 android:id="@+id/add_new_item_btn_id"
                 android:layout_width="match_parent"
-                android:layout_height="70dp"
+                android:layout_height="@dimen/button_height"
                 android:layout_marginBottom="20dp"
                 android:adjustViewBounds="true"
                 android:background="@color/Blue"
@@ -50,7 +48,7 @@
             <ImageButton
                 android:id="@+id/browse_by_room_btn_id"
                 android:layout_width="match_parent"
-                android:layout_height="70dp"
+                android:layout_height="@dimen/button_height"
                 android:layout_marginBottom="20dp"
                 android:adjustViewBounds="true"
                 android:background="@color/Blue"
@@ -62,7 +60,7 @@
             <ImageButton
                 android:id="@+id/browse_by_category_id"
                 android:layout_width="match_parent"
-                android:layout_height="70dp"
+                android:layout_height="@dimen/button_height"
                 android:layout_marginBottom="20dp"
                 android:adjustViewBounds="true"
                 android:background="@color/Blue"
@@ -74,7 +72,7 @@
             <ImageButton
                 android:id="@+id/view_all_items_btn_id"
                 android:layout_width="match_parent"
-                android:layout_height="70dp"
+                android:layout_height="@dimen/button_height"
                 android:layout_marginBottom="20dp"
                 android:adjustViewBounds="true"
                 android:background="@color/Blue"
@@ -86,7 +84,7 @@
             <ImageButton
                 android:id="@+id/export_btn_id"
                 android:layout_width="match_parent"
-                android:layout_height="70dp"
+                android:layout_height="@dimen/button_height"
                 android:layout_marginBottom="20dp"
                 android:adjustViewBounds="true"
                 android:background="@color/Blue"

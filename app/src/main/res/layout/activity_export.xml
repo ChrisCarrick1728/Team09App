@@ -7,13 +7,11 @@
     android:background="@color/Blue"
     tools:context=".export">
 
-    <EditText
+    <TextView
         android:id="@+id/exportPage_text"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
-        android:layout_marginStart="32dp"
-        android:layout_marginTop="8dp"
-        android:layout_marginEnd="32dp"
+        android:layout_marginTop="16dp"
         android:contentDescription="@string/room_page_text"
         android:ems="10"
         android:inputType="none"
@@ -23,6 +21,7 @@
         android:textAllCaps="false"
         android:textColor="@color/White"
         android:textIsSelectable="false"
+        android:textSize="@dimen/column_header_font_size"
         android:textStyle="bold"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
@@ -42,9 +41,8 @@
     <ImageView
         android:id="@+id/house_img"
         android:layout_width="150dp"
-        android:layout_height="100dp"
+        android:layout_height="@dimen/logo_height"
         android:layout_marginTop="8dp"
-        android:layout_marginEnd="16dp"
         android:contentDescription="@string/house_logo"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintTop_toTopOf="parent"
@@ -52,28 +50,25 @@
 
     <ImageButton
         android:id="@+id/pdf_btn_id"
-        android:layout_width="251dp"
+        android:layout_width="0dp"
         android:layout_height="65dp"
-        android:layout_marginTop="16dp"
-        android:layout_marginBottom="281dp"
+        android:layout_marginTop="32dp"
         android:background="@color/Blue"
         android:contentDescription="@string/export_button_description"
         android:cropToPadding="false"
         android:scaleType="fitCenter"
         android:visibility="visible"
-        app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.503"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/exportPage_text"
-        app:layout_constraintVertical_bias="0.0"
         app:srcCompat="@drawable/export_pdf_btnxhdpi" />
 
     <ImageButton
         android:id="@+id/export_btn_id"
-        android:layout_width="251dp"
+        android:layout_width="0dp"
         android:layout_height="65dp"
-        android:layout_marginTop="24dp"
+        android:layout_marginTop="32dp"
         android:background="@color/Blue"
         android:contentDescription="@string/export_button_description"
         android:cropToPadding="false"
