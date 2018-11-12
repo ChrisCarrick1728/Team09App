@@ -18,8 +18,8 @@
         </activity>
         <activity android:name=".MainMenu" />
         <activity android:name=".ViewAllItems" />
-        <activity android:name=".add_new_item" />
-        <activity android:name=".AddNewItem"></activity>
+        <activity android:name=".AddNewItem" />
+        <activity android:name=".Export"></activity>
     </application>
 
 </manifest>

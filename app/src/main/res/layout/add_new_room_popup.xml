@@ -9,27 +9,33 @@
 
     <TextView
         android:id="@+id/textView"
-        android:layout_width="wrap_content"
+        android:layout_width="0dp"
         android:layout_height="wrap_content"
-        android:layout_marginStart="136dp"
+        android:layout_marginStart="16dp"
         android:layout_marginTop="200dp"
-        android:text="Enter Room Name"
+        android:layout_marginEnd="16dp"
+        android:text="@string/pop_up_add_new_room"
+        android:textAlignment="center"
         android:textColor="@color/White"
+        android:textSize="@dimen/column_header_font_size"
         android:textStyle="bold"
+        app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
 
     <EditText
         android:id="@+id/editText2"
-        android:layout_width="wrap_content"
+        android:layout_width="0dp"
         android:layout_height="wrap_content"
-        android:layout_marginStart="84dp"
+        android:layout_marginStart="32dp"
         android:layout_marginTop="20dp"
+        android:layout_marginEnd="32dp"
         android:ems="10"
         android:inputType="text|textPersonName"
         android:text=""
         android:textColor="@color/White"
         android:textStyle="bold"
+        app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/textView" />
 </android.support.constraint.ConstraintLayout>
