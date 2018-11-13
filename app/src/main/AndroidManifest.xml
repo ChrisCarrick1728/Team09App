@@ -20,6 +20,8 @@
         <activity android:name=".ViewAllItems" />
         <activity android:name=".AddNewItem" />
         <activity android:name=".Export"></activity>
+        <activity android:name=".BrowseByCategory"></activity>
+        <activity android:name=".BrowseByRoom"></activity>
     </application>
 
 </manifest>

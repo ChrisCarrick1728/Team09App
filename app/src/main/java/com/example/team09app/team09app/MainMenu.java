@@ -28,13 +28,15 @@ public class MainMenu extends AppCompatActivity {
     public void browseByRoom(View view) {
 
         Log.d(TAG, "browseByRoom: button clicked");
-        // Need BrowseByRoom class
+        Intent mainMenuIntent = new Intent(this, BrowseByRoom.class);
+        startActivity(mainMenuIntent);
     }
     
     public void browseByCategory(View view) {
 
         Log.d(TAG, "browseByCategory: button clicked");
-        // Need BrowseByCategory class
+        Intent mainMenuIntent = new Intent(this, BrowseByCategory.class);
+        startActivity(mainMenuIntent);
     }
     
     public void viewAllItems(View view) {
