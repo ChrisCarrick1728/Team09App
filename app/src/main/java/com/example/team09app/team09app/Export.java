@@ -19,10 +19,10 @@ public class Export extends AppCompatActivity implements saveCurrentActivity {
 
     @Override
     public void saveCurrent(String currentActivity) {
-        Context context = getApplicationContext();
+        /* Context context = getApplicationContext();
         SharedPreferences sp = context.getSharedPreferences(getString(R.string.PREFERENCE_FILE_KEY), Context.MODE_PRIVATE);
         SharedPreferences.Editor editor = sp.edit();
         editor.putString(getString(R.string.CURRENT_STATE), currentActivity);
-        editor.commit();
+        editor.commit(); */
     }
 }

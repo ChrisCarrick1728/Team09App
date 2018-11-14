@@ -14,7 +14,7 @@
         android:layout_marginStart="16dp"
         android:layout_marginTop="200dp"
         android:layout_marginEnd="16dp"
-        android:text="@string/pop_up_add_new_room"
+        android:text="@string/add_new_category_pop_up"
         android:textAlignment="center"
         android:textColor="@color/White"
         android:textSize="@dimen/column_header_font_size"

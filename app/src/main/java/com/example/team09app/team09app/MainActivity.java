@@ -30,10 +30,10 @@ public class MainActivity extends AppCompatActivity {
     }
 
     public void checkCurrentActivity() {
-        Context context = getApplicationContext();
+        /* Context context = getApplicationContext();
         SharedPreferences sp = context.getSharedPreferences(getString(R.string.PREFERENCE_FILE_KEY), Context.MODE_PRIVATE);
         String saveState = sp.getString(getString(R.string.CURRENT_STATE), "");
-        Log.d(TAG, "checkCurrentActivity: " + saveState);
+        Log.d(TAG, "checkCurrentActivity: " + saveState); */
     }
 
 }
