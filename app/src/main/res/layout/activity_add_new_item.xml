@@ -8,9 +8,60 @@
     tools:context=".AddNewItem">
 
     <EditText
+        android:id="@+id/purchaseDate"
+        android:layout_width="210dp"
+        android:layout_height="42dp"
+        android:layout_marginStart="4dp"
+        android:layout_marginTop="8dp"
+        android:ems="10"
+        android:hint="@string/purchase_date"
+        android:inputType="textPersonName"
+        android:selectAllOnFocus="false"
+        android:textColor="@color/White"
+        android:textColorHint="@color/White"
+        app:layout_constraintStart_toEndOf="@+id/priceText"
+        app:layout_constraintTop_toBottomOf="@+id/imageButton6" />
+
+    <EditText
+        android:id="@+id/priceText"
+        android:layout_width="141dp"
+        android:layout_height="42dp"
+        android:layout_marginStart="16dp"
+        android:layout_marginTop="8dp"
+        android:ems="10"
+        android:hint="@string/price_text"
+        android:inputType="textPersonName"
+        android:selectAllOnFocus="false"
+        android:textColor="@color/White"
+        android:textColorHint="@color/White"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/nameText3" />
+
+    <ImageButton
+        android:id="@+id/imageButton7"
+        android:layout_width="47dp"
+        android:layout_height="47dp"
+        android:layout_marginStart="8dp"
+        android:scaleType="fitCenter"
+        android:visibility="visible"
+        app:layout_constraintStart_toEndOf="@+id/imageButton6"
+        app:layout_constraintTop_toBottomOf="@+id/imageButton4"
+        app:srcCompat="@drawable/add_btnxhdpi" />
+
+    <ImageButton
+        android:id="@+id/imageButton6"
+        android:layout_width="45dp"
+        android:layout_height="48dp"
+        android:layout_marginStart="8dp"
+        android:scaleType="fitCenter"
+        app:layout_constraintStart_toEndOf="@+id/nameText3"
+        app:layout_constraintTop_toBottomOf="@+id/imageButton5"
+        app:srcCompat="@drawable/drop_down_btnxhdpi" />
+
+    <EditText
         android:id="@+id/nameText3"
-        android:layout_width="0dp"
-        android:layout_height="wrap_content"
+        android:layout_width="210dp"
+        android:layout_height="42dp"
         android:layout_marginStart="16dp"
         android:layout_marginTop="8dp"
         android:ems="10"
@@ -24,8 +75,8 @@
 
     <EditText
         android:id="@+id/nameText2"
-        android:layout_width="0dp"
-        android:layout_height="wrap_content"
+        android:layout_width="210dp"
+        android:layout_height="40dp"
         android:layout_marginStart="16dp"
         android:layout_marginTop="8dp"
         android:ems="10"
@@ -96,8 +147,8 @@
 
     <EditText
         android:id="@+id/nameText"
-        android:layout_width="0dp"
-        android:layout_height="wrap_content"
+        android:layout_width="210dp"
+        android:layout_height="40dp"
         android:layout_marginStart="16dp"
         android:layout_marginTop="48dp"
         android:ems="10"
@@ -109,6 +160,27 @@
         app:layout_constraintHorizontal_chainStyle="spread_inside"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/camera_btn_id" />
+
+    <ImageButton
+        android:id="@+id/imageButton4"
+        android:layout_width="47dp"
+        android:layout_height="48dp"
+        android:layout_marginStart="8dp"
+        android:scaleType="fitCenter"
+        android:visibility="visible"
+        app:layout_constraintStart_toEndOf="@+id/imageButton5"
+        app:layout_constraintTop_toBottomOf="@+id/nameText"
+        app:srcCompat="@drawable/add_btnxhdpi" />
+
+    <ImageButton
+        android:id="@+id/imageButton5"
+        android:layout_width="45dp"
+        android:layout_height="48dp"
+        android:layout_marginStart="8dp"
+        android:scaleType="fitCenter"
+        app:layout_constraintStart_toEndOf="@+id/nameText2"
+        app:layout_constraintTop_toBottomOf="@+id/nameText"
+        app:srcCompat="@drawable/drop_down_btnxhdpi" />
 
 
 </android.support.constraint.ConstraintLayout>

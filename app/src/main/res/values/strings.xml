@@ -27,5 +27,7 @@
     <string name="pop_up_add_new_room">ENTER ROOM NAME</string>
     <string name="PREFERENCE_FILE_KEY">com.example.team09app.PREFERENCE_FILE_KEY</string>
     <string name="CURRENT_STATE">currentState</string>
+    <string name="price_text">$ 0.00</string>
+    <string name="purchase_date">Purchase Date</string>
 
 </resources>
