@@ -1,53 +1,36 @@
 package com.example.team09app.team09app;
 
 import android.content.Intent;
+import android.support.constraint.ConstraintLayout;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
+import android.widget.ImageView;
 
 import java.util.ArrayList;
 import java.util.List;
 
-public class MainMenu extends AppCompatActivity {
+public class MainMenu extends AppCompatActivity implements MainMenuButtonFunction {
     private static final String TAG = "Main_Menu";
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main_menu);
+        Log.d(TAG, "Main Menu");
     }
-    
-    public void addNewItem(View view) {
 
-        Log.d(TAG, "addNewItem: button clicked");
-        Intent mainMenuIntent = new Intent(this, AddNewItem.class);
-        startActivity(mainMenuIntent);
-    }
-    
-    public void browseByRoom(View view) {
 
-        Log.d(TAG, "browseByRoom: button clicked");
-        // Need BrowseByRoom class
-    }
-    
-    public void browseByCategory(View view) {
+    // Main Menu Button Functions interface methods
+    @Override //MainMenuButtonFunction
+    public void hamburgerMenu(View view) { } // Not used
 
-        Log.d(TAG, "browseByCategory: button clicked");
-        // Need BrowseByCategory class
-    }
-    
-    public void viewAllItems(View view) {
+    @Override
+    public void closeMenu() { } // not used
 
-        Log.d(TAG, "viewAllItems: button clicked");
-        Intent mainMenuIntent = new Intent(this, ViewAllItems.class);
-        startActivity(mainMenuIntent);
-    }
-    
-    public void export(View view) {
 
-        Log.d(TAG, "export: button clicked");
-        Intent mainMenuIntent = new Intent(this, Export.class);
-        startActivity(mainMenuIntent);
-    }
+
+
+
 }

@@ -7,27 +7,6 @@
     android:background="@color/Blue"
     tools:context=".Export">
 
-    <TextView
-        android:id="@+id/exportPage_text"
-        android:layout_width="0dp"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="16dp"
-        android:contentDescription="@string/room_page_text"
-        android:ems="10"
-        android:inputType="none"
-        android:singleLine="false"
-        android:text="Export Options"
-        android:textAlignment="center"
-        android:textAllCaps="false"
-        android:textColor="@color/White"
-        android:textIsSelectable="false"
-        android:textSize="@dimen/column_header_font_size"
-        android:textStyle="bold"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/house_img"
-        tools:textIsSelectable="false" />
-
     <ImageView
         android:id="@+id/imageView"
         android:layout_width="50dp"
@@ -52,14 +31,14 @@
         android:id="@+id/pdf_btn_id"
         android:layout_width="0dp"
         android:layout_height="65dp"
-        android:layout_marginTop="32dp"
+        android:layout_marginTop="36dp"
         android:background="@color/Blue"
         android:contentDescription="@string/export_button_description"
         android:cropToPadding="false"
         android:scaleType="fitCenter"
         android:visibility="visible"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.503"
+        app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/exportPage_text"
         app:srcCompat="@drawable/export_pdf_btnxhdpi" />
@@ -68,16 +47,56 @@
         android:id="@+id/export_btn_id"
         android:layout_width="0dp"
         android:layout_height="65dp"
-        android:layout_marginTop="32dp"
+        android:layout_marginTop="28dp"
         android:background="@color/Blue"
         android:contentDescription="@string/export_button_description"
         android:cropToPadding="false"
         android:scaleType="fitCenter"
         android:visibility="visible"
         app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/pdf_btn_id"
         app:srcCompat="@drawable/export_excel_btnxhdpi" />
+
+    <include
+        android:id="@+id/menu_overlay_id"
+        layout="@layout/main_menu_overlay"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:visibility="gone"
+        app:layout_constraintBottom_toTopOf="@id/title"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <TextView
+        android:id="@+id/exportPage_text"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="16dp"
+        android:contentDescription="@string/room_page_text"
+        android:ems="10"
+        android:inputType="none"
+        android:singleLine="false"
+        android:text="Export Options"
+        android:textAlignment="center"
+        android:textAllCaps="false"
+        android:textColor="@color/White"
+        android:textIsSelectable="false"
+        android:textSize="@dimen/column_header_font_size"
+        android:textStyle="bold"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/title"
+        tools:textIsSelectable="false" />
+
+    <include
+        android:id="@+id/title"
+        layout="@layout/title_bar"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:visibility="visible"
+        app:layout_constraintTop_toTopOf="parent" />
 
 
 </android.support.constraint.ConstraintLayout>
