@@ -9,6 +9,18 @@
 
 
     <ImageView
+        android:id="@+id/imageView5"
+        android:layout_width="wrap_content"
+        android:layout_height="0dp"
+        android:scaleType="centerCrop"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:srcCompat="@drawable/familyroompic" />
+
+    <ImageView
         android:id="@+id/house_img"
         android:layout_width="wrap_content"
         android:layout_height="94dp"
@@ -19,12 +31,23 @@
         app:layout_constraintTop_toTopOf="parent"
         app:srcCompat="@drawable/house_logoxhdpi" />
 
+    <ImageView
+        android:id="@+id/imageView3"
+        android:layout_width="wrap_content"
+        android:layout_height="52dp"
+        android:layout_marginTop="16dp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/house_img"
+        app:srcCompat="@drawable/logo_namexhdpi" />
+
     <ImageButton
         android:id="@+id/continue_btn_id"
-        android:layout_width="300dp"
-        android:layout_height="100dp"
+        android:layout_width="wrap_content"
+        android:layout_height="@dimen/button_height"
         android:layout_marginBottom="16dp"
-        android:background="@color/Blue"
+        android:background="@color/clear"
         android:contentDescription="@string/continue_button_description"
         android:cropToPadding="false"
         android:onClick="clickContinueButton"
@@ -34,4 +57,5 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:srcCompat="@drawable/continue_btnxhdpi" />
+
 </android.support.constraint.ConstraintLayout>

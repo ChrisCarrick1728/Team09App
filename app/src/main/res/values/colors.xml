@@ -2,6 +2,7 @@
 <resources>
     <color name="Blue">#00a9ff</color>
     <color name="DarkBlue">#007fbf</color>
+    <color name="DarkBlue_opaque">#c2000000</color>
     <color name="White">#FFFFFF</color>
     <color name="clear">#00000000</color>
 </resources>

@@ -40,4 +40,7 @@ public class AddNewItem extends AppCompatActivity implements MainMenuButtonFunct
         mainMenuOverlay.setVisibility(View.GONE);
         hamburgerButton.setImageResource(R.drawable.hamburger_btnxhdpi);
     }
+
+    //Todo: Add Dropdown menu for Room/Category
+    //Todo: Add Popup to add new Room/Category
 }
