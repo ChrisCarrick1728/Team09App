@@ -5,15 +5,17 @@ import android.content.Context;
 import android.content.DialogInterface;
 import android.content.SharedPreferences;
 import android.os.Bundle;
+import android.support.constraint.ConstraintLayout;
 import android.support.v7.app.AppCompatActivity;
 import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.widget.EditText;
 import android.widget.ImageButton;
+import android.widget.ImageView;
 import android.widget.ListView;
 
-public class BrowseByRoom extends AppCompatActivity implements saveCurrentActivity {
+public class BrowseByRoom extends AppCompatActivity implements saveCurrentActivity, MainMenuButtonFunction {
 
     ListView roomList;
     private static final String CURRENT_ACTIVITY = "BrowseByRoom";
@@ -78,6 +80,30 @@ public class BrowseByRoom extends AppCompatActivity implements saveCurrentActivi
 
             }
         });
+    }
+
+    @Override // MainMenuButtonFunction
+    public void hamburgerMenu(View view) {
+
+        ConstraintLayout mainMenuOverlay = (ConstraintLayout) findViewById(R.id.menu_overlay_id);
+        ImageView hamburgerButton = (ImageView) findViewById(R.id.hamburger_menu_id);
+
+        if (mainMenuOverlay.getVisibility() == view.GONE) {
+            mainMenuOverlay.setVisibility(view.VISIBLE);
+            hamburgerButton.setImageResource(R.drawable.hamburger_close_btnxhdpi);
+        } else {
+            mainMenuOverlay.setVisibility(view.GONE);
+            hamburgerButton.setImageResource(R.drawable.hamburger_btnxhdpi);
+        }
+    }
+
+    @Override // MainMenuButtonFunction
+    public void closeMenu() {
+        ConstraintLayout mainMenuOverlay = (ConstraintLayout) findViewById(R.id.menu_overlay_id);
+        ImageView hamburgerButton = (ImageView) findViewById(R.id.hamburger_menu_id);
+
+        mainMenuOverlay.setVisibility(View.GONE);
+        hamburgerButton.setImageResource(R.drawable.hamburger_btnxhdpi);
     }
 
     @Override
