@@ -2,10 +2,12 @@
 <android.support.constraint.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/activity_add_new_item_id"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:background="@color/Blue"
     tools:context=".AddNewItem">
+
 
     <EditText
         android:id="@+id/purchaseDate"
@@ -88,54 +90,13 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/nameText" />
 
-    <ImageView
-        android:id="@+id/imageView"
-        android:layout_width="50dp"
-        android:layout_height="50dp"
-        android:layout_marginStart="16dp"
-        android:layout_marginTop="8dp"
-        android:contentDescription="@string/hamburger_button_description"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:srcCompat="@drawable/hamburger_btnxhdpi" />
-
-    <ImageView
-        android:id="@+id/house_img"
-        android:layout_width="150dp"
-        android:layout_height="@dimen/logo_height"
-        android:layout_marginTop="8dp"
-        android:contentDescription="@string/house_logo"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:srcCompat="@drawable/house_logoxhdpi" />
-
-    <TextView
-        android:id="@+id/addNewItem"
-        android:layout_width="0dp"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="16dp"
-        android:contentDescription="@string/room_page_text"
-        android:ems="10"
-        android:inputType="none"
-        android:singleLine="false"
-        android:text="@string/add_new_item"
-        android:textAlignment="center"
-        android:textAllCaps="false"
-        android:textColor="@color/White"
-        android:textIsSelectable="false"
-        android:textSize="@dimen/column_header_font_size"
-        android:textStyle="bold"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/house_img"
-        tools:textIsSelectable="false" />
-
     <ImageButton
-        android:id="@+id/camera_btn_id"
+        android:id="@+id/camera_btn_id_add"
         android:layout_width="249dp"
         android:layout_height="64dp"
         android:layout_marginTop="48dp"
         android:background="@color/Blue"
+        android:clickable="true"
         android:contentDescription="@string/export_button_description"
         android:cropToPadding="false"
         android:scaleType="fitCenter"
@@ -159,7 +120,45 @@
         android:textColorHint="@color/White"
         app:layout_constraintHorizontal_chainStyle="spread_inside"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/camera_btn_id" />
+        app:layout_constraintTop_toBottomOf="@+id/camera_btn_id_add" />
+
+    <include
+        android:id="@+id/menu_overlay_id"
+        layout="@layout/main_menu_overlay"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:visibility="gone"
+        app:layout_constraintBottom_toTopOf="@id/title"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <TextView
+        android:id="@+id/addNewItem"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="16dp"
+        android:contentDescription="@string/room_page_text"
+        android:ems="10"
+        android:inputType="none"
+        android:singleLine="false"
+        android:text="@string/add_new_item"
+        android:textAlignment="center"
+        android:textAllCaps="false"
+        android:textColor="@color/White"
+        android:textIsSelectable="false"
+        android:textSize="@dimen/column_header_font_size"
+        android:textStyle="bold"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/title"
+        tools:textIsSelectable="false" />
+
+    <include
+        android:id="@+id/title"
+        layout="@layout/title_bar"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:visibility="visible"
+        app:layout_constraintTop_toTopOf="parent" />
 
     <ImageButton
         android:id="@+id/imageButton4"
