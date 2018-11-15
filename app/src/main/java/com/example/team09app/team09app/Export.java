@@ -1,28 +1,39 @@
 package com.example.team09app.team09app;
 
-import android.content.Context;
-import android.content.SharedPreferences;
+import android.support.constraint.ConstraintLayout;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.view.View;
+import android.widget.ImageView;
 
-public class Export extends AppCompatActivity implements saveCurrentActivity {
-
-    private static final String CURRENT_ACTIVITY = "Export";
+public class Export extends AppCompatActivity implements MainMenuButtonFunction {
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_export);
-        saveCurrent(CURRENT_ACTIVITY);
-
     }
 
     @Override
-    public void saveCurrent(String currentActivity) {
-        /* Context context = getApplicationContext();
-        SharedPreferences sp = context.getSharedPreferences(getString(R.string.PREFERENCE_FILE_KEY), Context.MODE_PRIVATE);
-        SharedPreferences.Editor editor = sp.edit();
-        editor.putString(getString(R.string.CURRENT_STATE), currentActivity);
-        editor.commit(); */
+    public void hamburgerMenu(View view) {
+        ConstraintLayout mainMenuOverlay = (ConstraintLayout) findViewById(R.id.menu_overlay_id);
+        ImageView hamburgerButton = (ImageView) findViewById(R.id.hamburger_menu_id);
+
+        if (mainMenuOverlay.getVisibility() == view.GONE) {
+            mainMenuOverlay.setVisibility(view.VISIBLE);
+            hamburgerButton.setImageResource(R.drawable.hamburger_close_btnxhdpi);
+        } else {
+            mainMenuOverlay.setVisibility(view.GONE);
+            hamburgerButton.setImageResource(R.drawable.hamburger_btnxhdpi);
+        }
+    }
+
+    @Override
+    public void closeMenu() {
+        ConstraintLayout mainMenuOverlay = (ConstraintLayout) findViewById(R.id.menu_overlay_id);
+        ImageView hamburgerButton = (ImageView) findViewById(R.id.hamburger_menu_id);
+
+        mainMenuOverlay.setVisibility(View.GONE);
+        hamburgerButton.setImageResource(R.drawable.hamburger_btnxhdpi);
     }
 }
