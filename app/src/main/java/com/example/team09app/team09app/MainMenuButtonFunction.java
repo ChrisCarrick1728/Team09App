@@ -25,14 +25,22 @@ public interface MainMenuButtonFunction {
 
     default void browseByRoom(View view) {
         closeMenu();
-        //Log.d(TAG, "browseByRoom: button clicked");
-        // Need BrowseByRoom class
+        Context context = view.getContext();
+
+        Log.d("test", "browseByRoom: button clicked");
+        Log.d("test", context.toString());
+        Intent mainMenuIntent = new Intent(context, BrowseByRoom.class);
+        context.startActivity(mainMenuIntent);
     }
 
     default void browseByCategory(View view) {
         closeMenu();
-        //Log.d(TAG, "browseByCategory: button clicked");
-        // Need BrowseByCategory class
+        Context context = view.getContext();
+
+        Log.d("test", "browseByCategory: button clicked");
+        Log.d("test", context.toString());
+        Intent mainMenuIntent = new Intent(context, BrowseByCategory.class);
+        context.startActivity(mainMenuIntent);
     }
 
     default void viewAllItems(View view) {
@@ -40,7 +48,7 @@ public interface MainMenuButtonFunction {
 
         Context context = view.getContext();
 
-        //Log.d(TAG, "viewAllItems: button clicked");
+        Log.d("test", "viewAllItems: button clicked");
         Intent mainMenuIntent = new Intent(context, ViewAllItems.class);
         context.startActivity(mainMenuIntent);
     }

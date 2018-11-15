@@ -103,7 +103,7 @@
         android:visibility="visible"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/addNewItem"
+        app:layout_constraintTop_toBottomOf="@+id/category_text_id"
         app:srcCompat="@drawable/take_picture_btnxhdpi" />
 
     <EditText
@@ -122,6 +122,27 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/camera_btn_id_add" />
 
+    <ImageButton
+        android:id="@+id/imageButton4"
+        android:layout_width="47dp"
+        android:layout_height="48dp"
+        android:layout_marginStart="8dp"
+        android:scaleType="fitCenter"
+        android:visibility="visible"
+        app:layout_constraintStart_toEndOf="@+id/imageButton5"
+        app:layout_constraintTop_toBottomOf="@+id/nameText"
+        app:srcCompat="@drawable/add_btnxhdpi" />
+
+    <ImageButton
+        android:id="@+id/imageButton5"
+        android:layout_width="45dp"
+        android:layout_height="48dp"
+        android:layout_marginStart="8dp"
+        android:scaleType="fitCenter"
+        app:layout_constraintStart_toEndOf="@+id/nameText2"
+        app:layout_constraintTop_toBottomOf="@+id/nameText"
+        app:srcCompat="@drawable/drop_down_btnxhdpi" />
+
     <include
         android:id="@+id/menu_overlay_id"
         layout="@layout/main_menu_overlay"
@@ -132,7 +153,7 @@
         app:layout_constraintTop_toTopOf="parent" />
 
     <TextView
-        android:id="@+id/addNewItem"
+        android:id="@+id/category_text_id"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
         android:layout_marginTop="16dp"
@@ -160,26 +181,7 @@
         android:visibility="visible"
         app:layout_constraintTop_toTopOf="parent" />
 
-    <ImageButton
-        android:id="@+id/imageButton4"
-        android:layout_width="47dp"
-        android:layout_height="48dp"
-        android:layout_marginStart="8dp"
-        android:scaleType="fitCenter"
-        android:visibility="visible"
-        app:layout_constraintStart_toEndOf="@+id/imageButton5"
-        app:layout_constraintTop_toBottomOf="@+id/nameText"
-        app:srcCompat="@drawable/add_btnxhdpi" />
 
-    <ImageButton
-        android:id="@+id/imageButton5"
-        android:layout_width="45dp"
-        android:layout_height="48dp"
-        android:layout_marginStart="8dp"
-        android:scaleType="fitCenter"
-        app:layout_constraintStart_toEndOf="@+id/nameText2"
-        app:layout_constraintTop_toBottomOf="@+id/nameText"
-        app:srcCompat="@drawable/drop_down_btnxhdpi" />
 
 
 </android.support.constraint.ConstraintLayout>

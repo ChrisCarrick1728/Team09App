@@ -7,11 +7,10 @@
     android:background="@color/Blue">
 
     <TextView
-        android:id="@+id/addNewItem"
+        android:id="@+id/category_text_id"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
         android:layout_marginStart="16dp"
-        android:layout_marginTop="16dp"
         android:contentDescription="@string/room_page_text"
         android:ems="10"
         android:inputType="none"
@@ -23,35 +22,14 @@
         android:textSize="@dimen/column_header_font_size"
         android:textStyle="bold"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/house_img"
+        app:layout_constraintTop_toBottomOf="@+id/browse_by_category_title_id"
         tools:textIsSelectable="false" />
 
-    <ImageView
-        android:layout_width="50dp"
-        android:layout_height="50dp"
-        android:layout_marginStart="16dp"
-        android:layout_marginTop="8dp"
-        android:contentDescription="@string/hamburger_button_description"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:srcCompat="@drawable/hamburger_btnxhdpi" />
-
-    <ImageView
-        android:id="@+id/house_img"
-        android:layout_width="150dp"
-        android:layout_height="@dimen/logo_height"
-        android:layout_marginTop="8dp"
-        android:contentDescription="@string/house_logo"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:srcCompat="@drawable/house_logoxhdpi" />
-
     <TextView
-        android:id="@+id/numItems_text"
+        android:id="@+id/numItems_text_id"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
         android:layout_marginStart="16dp"
-        android:layout_marginTop="16dp"
         android:layout_marginEnd="16dp"
         android:contentDescription="@string/num_items_text"
         android:ems="10"
@@ -62,21 +40,20 @@
         android:textSize="@dimen/column_header_font_size"
         android:textStyle="bold"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toEndOf="@+id/addNewItem"
-        app:layout_constraintTop_toBottomOf="@+id/house_img" />
+        app:layout_constraintStart_toEndOf="@+id/category_text_id"
+        app:layout_constraintTop_toBottomOf="@+id/browse_by_category_title_id" />
 
     <ListView
         android:id="@+id/categoryList"
         android:layout_width="0dp"
-        android:layout_height="0dp"
+        android:layout_height="484dp"
         android:layout_marginStart="16dp"
         android:layout_marginTop="16dp"
         android:layout_marginEnd="16dp"
-        android:layout_marginBottom="8dp"
-        app:layout_constraintBottom_toTopOf="@+id/addNewCategory_btn_id"
+        app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/numItems_text" />
+        app:layout_constraintTop_toBottomOf="@+id/category_text_id" />
 
     <ImageButton
         android:id="@+id/addNewCategory_btn_id"
@@ -89,9 +66,45 @@
         android:onClick="addNewCategory"
         android:scaleType="fitCenter"
         android:src="@drawable/add_new_category_btnxhdpi"
-        android:visibility="visible"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent" />
+
+    <include
+        android:id="@+id/menu_overlay_id"
+        layout="@layout/main_menu_overlay"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:visibility="gone"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <TextView
+        android:id="@+id/browse_by_category_title_id"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="16dp"
+        android:contentDescription="@string/room_page_text"
+        android:ems="10"
+        android:inputType="none"
+        android:singleLine="false"
+        android:text="@string/browse_by_category"
+        android:textAlignment="center"
+        android:textAllCaps="false"
+        android:textColor="@color/White"
+        android:textIsSelectable="false"
+        android:textSize="@dimen/column_header_font_size"
+        android:textStyle="bold"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/title"
+        tools:textIsSelectable="false" />
+
+    <include
+        android:id="@+id/title"
+        layout="@layout/title_bar"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:visibility="visible"
+        app:layout_constraintTop_toTopOf="parent" />
 
 </android.support.constraint.ConstraintLayout>
