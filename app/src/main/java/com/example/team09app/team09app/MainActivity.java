@@ -19,7 +19,7 @@ public class MainActivity extends AppCompatActivity {
 
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
-
+        //push test
     }
 
     public void clickContinueButton(View view) {
