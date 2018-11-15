@@ -3,9 +3,7 @@ package com.example.team09app.team09app;
 import android.app.AlertDialog;
 import android.content.Context;
 import android.content.DialogInterface;
-import android.content.SharedPreferences;
 import android.os.Bundle;
-import android.support.annotation.Nullable;
 import android.support.constraint.ConstraintLayout;
 import android.support.v7.app.AppCompatActivity;
 import android.view.LayoutInflater;
@@ -15,7 +13,7 @@ import android.widget.ImageButton;
 import android.widget.ImageView;
 import android.widget.ListView;
 
-public class BrowseByCategory extends AppCompatActivity implements saveCurrentActivity, MainMenuButtonFunction {
+public class BrowseByCategory extends AppCompatActivity implements SaveCurrentActivity, MainMenuButtonFunction {
 
     ListView categoryList;
     private static final String CURRENT_ACTIVITY = "BrowseByCategory";
