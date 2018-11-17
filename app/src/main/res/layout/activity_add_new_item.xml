@@ -40,7 +40,7 @@
         app:layout_constraintTop_toBottomOf="@+id/nameText3" />
 
     <ImageButton
-        android:id="@+id/imageButton7"
+        android:id="@+id/addNewCategoryPlus_btn_id"
         android:layout_width="47dp"
         android:layout_height="47dp"
         android:layout_marginStart="8dp"
@@ -49,7 +49,7 @@
         android:scaleType="fitCenter"
         android:visibility="visible"
         app:layout_constraintStart_toEndOf="@+id/imageButton6"
-        app:layout_constraintTop_toBottomOf="@+id/imageButton4"
+        app:layout_constraintTop_toBottomOf="@+id/addNewRoomPlus_btn_id"
         app:srcCompat="@drawable/add_btnxhdpi" />
 
     <ImageButton
@@ -127,7 +127,7 @@
         app:layout_constraintTop_toBottomOf="@+id/camera_btn_id_add" />
 
     <ImageButton
-        android:id="@+id/imageButton4"
+        android:id="@+id/addNewRoomPlus_btn_id"
         android:layout_width="47dp"
         android:layout_height="48dp"
         android:layout_marginStart="8dp"
