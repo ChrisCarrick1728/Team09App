@@ -12,7 +12,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class MainMenu extends AppCompatActivity implements MainMenuButtonFunction {
-    private static final String TAG = "Main_Menu";
+    private static final String TAG = "MainMenu";
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {

@@ -7,6 +7,7 @@ import android.view.View;
 
 public interface MainMenuButtonFunction {
 
+    static final String TAG = "MainMenuButtonFunction";
 
     public void hamburgerMenu(View view);
 
@@ -17,8 +18,8 @@ public interface MainMenuButtonFunction {
 
         Context context = view.getContext();
 
-        Log.d("test", "addNewItem: button clicked");
-        Log.d("test", context.toString());
+        Log.d(TAG, "addNewItem: button clicked");
+        Log.d(TAG, context.toString());
         Intent mainMenuIntent = new Intent(context, AddNewItem.class);
         context.startActivity(mainMenuIntent);
     }
@@ -27,8 +28,8 @@ public interface MainMenuButtonFunction {
         closeMenu();
         Context context = view.getContext();
 
-        Log.d("test", "browseByRoom: button clicked");
-        Log.d("test", context.toString());
+        Log.d(TAG, "browseByRoom: button clicked");
+        Log.d(TAG, context.toString());
         Intent mainMenuIntent = new Intent(context, BrowseByRoom.class);
         context.startActivity(mainMenuIntent);
     }
@@ -37,8 +38,8 @@ public interface MainMenuButtonFunction {
         closeMenu();
         Context context = view.getContext();
 
-        Log.d("test", "browseByCategory: button clicked");
-        Log.d("test", context.toString());
+        Log.d(TAG, "browseByCategory: button clicked");
+        Log.d(TAG, context.toString());
         Intent mainMenuIntent = new Intent(context, BrowseByCategory.class);
         context.startActivity(mainMenuIntent);
     }
@@ -48,7 +49,7 @@ public interface MainMenuButtonFunction {
 
         Context context = view.getContext();
 
-        Log.d("test", "viewAllItems: button clicked");
+        Log.d(TAG, "viewAllItems: button clicked");
         Intent mainMenuIntent = new Intent(context, ViewAllItems.class);
         context.startActivity(mainMenuIntent);
     }
@@ -57,8 +58,8 @@ public interface MainMenuButtonFunction {
         closeMenu();
         Context context = view.getContext();
 
-        Log.d("test", "export: button clicked");
-        Log.d("test", context.toString());
+        Log.d(TAG, "export: button clicked");
+        Log.d(TAG, context.toString());
         Intent mainMenuIntent = new Intent(context, Export.class);
         context.startActivity(mainMenuIntent);
     }
