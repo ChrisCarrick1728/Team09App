@@ -32,9 +32,5 @@ dependencies {
     androidTestImplementation 'com.android.support.test.espresso:espresso-core:3.0.2'
     implementation 'com.android.support:recyclerview-v7:28.0.0'
     implementation 'com.android.support:support-v13:28.0.0'
-    def room_version = "2.1.0-alpha01"
-    // optional - RxJava support for Room
-    implementation "androidx.room:room-rxjava2:$room_version"
-    // Test helpers
-    testImplementation "androidx.room:room-testing:$room_version"
+
 }
