@@ -3,6 +3,10 @@ package com.example.team09app.team09app;
 import android.app.AlertDialog;
 import android.content.Context;
 import android.content.DialogInterface;
+import android.content.Intent;
+import android.content.pm.ActivityInfo;
+import android.graphics.Bitmap;
+import android.provider.MediaStore;
 import android.support.constraint.ConstraintLayout;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
@@ -17,6 +21,7 @@ import android.widget.ListView;
 public class AddNewItem extends AppCompatActivity implements MainMenuButtonFunction {
 
     private static final String TAG = "Add_New_Item";
+    static final int REQUEST_IMAGE_CAPTURE = 1;
     final Context context = this;
     private EditText result;
 
@@ -134,6 +139,31 @@ public class AddNewItem extends AppCompatActivity implements MainMenuButtonFunct
         });
 
         //End of code for add new room pop-up
+    }
+
+
+    private void dispatchTakePictureIntent() {
+        Intent takePictureIntent = new Intent(MediaStore.ACTION_IMAGE_CAPTURE);
+        if (takePictureIntent.resolveActivity(getPackageManager()) != null) {
+            startActivityForResult(takePictureIntent, REQUEST_IMAGE_CAPTURE);
+        }
+    }
+
+    @Override
+    protected void onActivityResult(int requestCode, int resultCode, Intent data) {
+        ImageView mImageView = (ImageView) findViewById(R.id.item_image_id);
+        ImageButton mImageButton = (ImageButton) findViewById(R.id.camera_btn_id_add);
+        if (requestCode == REQUEST_IMAGE_CAPTURE && resultCode == RESULT_OK) {
+            Bundle extras = data.getExtras();
+            Bitmap imageBitmap = (Bitmap) extras.get("data");
+            mImageButton.setVisibility(View.INVISIBLE);
+            mImageView.setImageBitmap(imageBitmap);
+        }
+    }
+
+    public void takePicture(View view) {
+        dispatchTakePictureIntent();
+        Log.d(TAG, "takePicture: " + getExternalFilesDir(null));
     }
 
     @Override // MainMenuButtonFunction
