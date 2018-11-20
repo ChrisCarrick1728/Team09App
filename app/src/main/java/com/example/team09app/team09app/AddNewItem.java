@@ -9,12 +9,18 @@ import android.os.Bundle;
 import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
+import android.widget.AdapterView;
+import android.widget.ArrayAdapter;
 import android.widget.EditText;
 import android.widget.ImageButton;
 import android.widget.ImageView;
 import android.widget.ListView;
+import android.widget.Spinner;
+import android.widget.TextView;
 
-public class AddNewItem extends AppCompatActivity implements MainMenuButtonFunction {
+import java.util.ArrayList;
+
+public class AddNewItem extends AppCompatActivity implements MainMenuButtonFunction, AdapterView.OnItemSelectedListener {
 
     private static final String TAG = "Add_New_Item";
     final Context context = this;
@@ -24,6 +30,16 @@ public class AddNewItem extends AppCompatActivity implements MainMenuButtonFunct
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_add_new_item);
+
+
+        //For the dropdown selection for Room
+        Spinner spinner = findViewById(R.id.roomSpinner);
+        ArrayAdapter<CharSequence> adapter = ArrayAdapter.createFromResource(this, R.array.RoomList, android.R.layout.simple_spinner_item);
+        adapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
+        // Apply the adapter to the spinner
+        spinner.setAdapter(adapter);
+        spinner.setOnItemSelectedListener(this);
+
 
         //Start of the code for the add new category pop-up to open up
 
@@ -158,6 +174,26 @@ public class AddNewItem extends AppCompatActivity implements MainMenuButtonFunct
 
         mainMenuOverlay.setVisibility(View.GONE);
         hamburgerButton.setImageResource(R.drawable.hamburger_btnxhdpi);
+    }
+
+    @Override
+    public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
+        //So that the room can be prefilled once selected from drop down
+        TextView input;
+        input = (TextView)findViewById(R.id.nameText2);
+
+        parent.getItemAtPosition(position).toString();
+
+        Spinner spinner = (Spinner) findViewById(R.id.roomSpinner);
+        spinner.setOnItemSelectedListener(this);
+
+        String str = spinner.getSelectedItem().toString();
+        input.setText(str);
+    }
+
+    @Override
+    public void onNothingSelected(AdapterView<?> parent) {
+        //This can stay empty for spinner dropdown
     }
 
     //Todo: Add Dropdown menu for Room/Category
