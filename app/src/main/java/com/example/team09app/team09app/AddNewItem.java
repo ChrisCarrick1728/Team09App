@@ -16,7 +16,10 @@ import android.widget.ListView;
 
 public class AddNewItem extends AppCompatActivity implements MainMenuButtonFunction {
 
+    public static final String EXTRA_REPLY = "com.example.android.wordlistsql.REPLY";
+
     private static final String TAG = "Add_New_Item";
+    private EditText mEditItemView;
     final Context context = this;
     private EditText result;
 
