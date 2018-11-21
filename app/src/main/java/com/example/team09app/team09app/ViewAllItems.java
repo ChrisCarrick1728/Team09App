@@ -11,6 +11,8 @@ import android.widget.ImageView;
 public class ViewAllItems extends AppCompatActivity implements MainMenuButtonFunction {
 
     private RecyclerView mRecyclerView;
+    private ItemViewModel mItemViewModel;
+    public static final int NEW_ITEM_ACTIVITY_REQUEST_CODE = 1;
     private RecyclerView.Adapter mAdapter;
     private RecyclerView.LayoutManager mLayoutManager;
 
@@ -19,6 +21,9 @@ public class ViewAllItems extends AppCompatActivity implements MainMenuButtonFun
         super.onCreate(savedInstanceState);
         setContentView(R.layout.view_all_items);
         mRecyclerView = (RecyclerView) findViewById(R.id.Item_Viewer);
+        final ItemListAdapter adapter = new ItemListAdapter(this);
+        mRecyclerView.setAdapter(adapter);
+        mRecyclerView.setLayoutManager(new LinearLayoutManager(this));
 
         // use this setting to improve performance if you know that changes
         // in content do not change the layout size of the RecyclerView
