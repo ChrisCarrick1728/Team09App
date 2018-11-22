@@ -56,8 +56,8 @@ public class BrowseByRoom extends AppCompatActivity implements SaveCurrentActivi
                                     public void onClick(DialogInterface dialog,int id) {
                                         // get user input and set it to result
                                         // edit text
-                                        Room newRoom = new Room();
-                                        newRoom.setName(String.valueOf(userInput.getText()));
+                                        //Room newRoom = new Room();
+                                        //newRoom.setName(String.valueOf(userInput.getText()));
                                         //roomList.add(newRoom);
                                     }
                                 })
