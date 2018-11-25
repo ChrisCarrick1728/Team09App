@@ -34,4 +34,11 @@
     <string name="browse_by_room">Browse By Room</string>
     <string name="hint_word">Name...</string>
     <string name="empty_not_saved">Item not saved because it is empty.</string>
+
+    <string-array name="RoomList">
+        <item>Living Room</item>
+        <item>Kitchen</item>
+        <item>Bedroom</item>
+    </string-array>
+
 </resources>
