@@ -33,6 +33,8 @@ public class Item implements Serializable {
     private String mPicture;
 
     // Getters and Setters
+    // Room DB will only recognize a getter with the exact variable name except starting with a capital letter
+
     public Long getMId() { return mId; }
     public void setMId(Long id) {
         this.mId = id;
