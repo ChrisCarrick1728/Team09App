@@ -3,14 +3,17 @@ package com.example.team09app.team09app;
 import android.arch.persistence.room.ColumnInfo;
 import android.arch.persistence.room.Entity;
 import android.arch.persistence.room.PrimaryKey;
-import android.support.annotation.NonNull;
+
+import java.io.Serializable;
 
 
 @Entity(tableName = "items_table")
-public class Item {
+public class Item implements Serializable {
 
-    @PrimaryKey
-    @NonNull
+    @PrimaryKey(autoGenerate = true)
+    @ColumnInfo(name = "ID")
+    private Long mId;
+
     @ColumnInfo(name = "name")
     private String mName;
 
@@ -24,27 +27,54 @@ public class Item {
     private String mDate;
 
     @ColumnInfo(name = "price")
-    private Double mPrice;
+    private String mPrice;
 
-    // @ColumnInfo(name = "picture")
-    // variable with picture info
+    @ColumnInfo(name = "picture")
+    private String mPicture;
 
-    // contructor
-    public Item(String name) {this.mName = name;}
+    // Getters and Setters
+    public Long getMId() { return mId; }
+    public void setMId(Long id) {
+        this.mId = id;
+    }
 
-    // getters & setters
-    public String getName(){return this.mName;}
-    public void setName(String name) {this.mName = name;}
+    public String getMName() {
+        return mName;
+    }
+    public void setMName(String name) { this.mName = name; }
 
-    public String getRoom () {return this.mRoom;}
-    public void setRoom(String room) {this.mRoom = room;}
+    public String getMRoom() {
+        return mRoom;
+    }
+    public void setMRoom(String room) {
+        this.mRoom = room;
+    }
 
-    public String getCategory () {return this.mCategory;}
-    public void setCategory (String category) {this.mCategory = category;}
+    public String getMCategory() {
+        return mCategory;
+    }
+    public void setMCategory(String category) {
+        this.mCategory = category;
+    }
 
-    public String getDate () {return this.mDate;}
-    public void setDate(String date) {this.mDate = date;}
+    public String getMDate() {
+        return mDate;
+    }
+    public void setMDate(String date) {
+        this.mDate = date;
+    }
 
-    public Double getPrice () {return this.mPrice;}
-    public void setPrice(Double price) {this.mPrice = price;}
+    public String getMPrice() {
+        return mPrice;
+    }
+    public void setMPrice(String price) {
+        this.mPrice = price;
+    }
+
+    public String getMPicture() {
+        return mPicture;
+    }
+    public void setMPicture(String picture) {
+        this.mPicture = picture;
+    }
 }

@@ -20,6 +20,7 @@
     <string name="all_items">All Items</string>
     <string name="export">export</string>
     <string name="add_new_item">Add New Item</string>
+    <string name="update_item">Update Item</string>
     <string name="name_text">Name</string>
     <string name="room_text">Room</string>
     <string name="category_text">Category</string>
@@ -34,6 +35,8 @@
     <string name="browse_by_room">Browse By Room</string>
     <string name="hint_word">Name...</string>
     <string name="empty_not_saved">Item not saved because it is empty.</string>
+    <string name="button_save">Save</string>
+    <string name="button_delete">Delete</string>
 
     <string-array name="RoomList">
         <item>Living Room</item>

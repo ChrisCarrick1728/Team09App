@@ -19,9 +19,10 @@
         <activity android:name=".MainMenu" />
         <activity android:name=".ViewAllItems" />
         <activity android:name=".AddNewItem" />
-        <activity android:name=".Export"></activity>
-        <activity android:name=".BrowseByCategory"></activity>
-        <activity android:name=".BrowseByRoom"></activity>
+        <activity android:name=".Export" />
+        <activity android:name=".BrowseByCategory" />
+        <activity android:name=".BrowseByRoom" />
+        <activity android:name=".UpdateItemActivity"></activity>
     </application>
 
 </manifest>

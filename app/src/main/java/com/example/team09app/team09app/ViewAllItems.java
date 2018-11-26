@@ -3,6 +3,7 @@ package com.example.team09app.team09app;
 import android.arch.lifecycle.Observer;
 import android.arch.lifecycle.ViewModelProviders;
 import android.content.Intent;
+import android.os.AsyncTask;
 import android.support.annotation.Nullable;
 import android.support.constraint.ConstraintLayout;
 import android.support.v7.app.AppCompatActivity;
@@ -18,53 +19,51 @@ import java.util.List;
 
 public class ViewAllItems extends AppCompatActivity implements MainMenuButtonFunction {
 
-    private RecyclerView mRecyclerView;
-    private ItemViewModel mItemViewModel;
-    public static final int NEW_ITEM_ACTIVITY_REQUEST_CODE = 1;
-    private RecyclerView.Adapter mAdapter;
-    private RecyclerView.LayoutManager mLayoutManager;
+    private ImageButton addItemButton;
+    private RecyclerView recyclerView;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.view_all_items);
-        mRecyclerView = (RecyclerView) findViewById(R.id.Item_Viewer);
-        final ItemListAdapter adapter = new ItemListAdapter(this);
-        mRecyclerView.setAdapter(adapter);
-        mRecyclerView.setLayoutManager(new LinearLayoutManager(this));
-        mItemViewModel = ViewModelProviders.of(this).get(ItemViewModel.class);
-        mItemViewModel.getAllItems().observe(this, new Observer<List<Item>>() {
+
+        recyclerView = findViewById(R.id.Item_Viewer);
+        recyclerView.setLayoutManager(new LinearLayoutManager(this));
+
+        addItemButton = findViewById(R.id.add_new_item_btn_id);
+        addItemButton.setOnClickListener(new View.OnClickListener() {
             @Override
-            public void onChanged(@Nullable final List<Item> items) {
-                // Update the cached copy of the words in the adapter.
-                adapter.setItems(items);
+            public void onClick(View view) {
+                Intent intent = new Intent(ViewAllItems.this, AddNewItem.class);
+                startActivity(intent);
             }
         });
 
+        getTasks();
+    }
 
-        // Todo: Add a button to view_all_items.xml to add a new item
-//        ImageButton addNewItem = (ImageButton)findViewById(R.id.addNewItem_btn_id);
-//        addNewItem.setOnClickListener(new View.OnClickListener() {
-//            @Override
-//            public void onClick(View v) {
-//                Intent intent = new Intent(ViewAllItems.this, AddNewItem.class);
-//                startActivityForResult(intent, NEW_ITEM_ACTIVITY_REQUEST_CODE);
-//            }
-//        });
+    // call getAll() from ItemDao to get all items stored in database
+    private void getTasks() {
+        class GetTasks extends AsyncTask<Void, Void, List<Item>> {
+            @Override
+            protected List<Item> doInBackground(Void... voids) {
+                List<Item> itemList = DatabaseClient
+                        .getInstance(getApplicationContext())
+                        .getItemRoomDatabase()
+                        .itemDao()
+                        .getAll();
+                return itemList;
+            }
 
-
-
-        // use this setting to improve performance if you know that changes
-        // in content do not change the layout size of the RecyclerView
-        mRecyclerView.setHasFixedSize(true);
-
-        // use a linear layout manager
-        mLayoutManager = new LinearLayoutManager(this);
-        mRecyclerView.setLayoutManager(mLayoutManager);
-
-        // specify an adapter (see also next example)
-        //mAdapter = new MyAdapter(myDataset);
-        //mRecyclerView.setAdapter(mAdapter);
+            @Override
+            protected void onPostExecute(List<Item> items) {
+                super.onPostExecute(items);
+                ItemsListAdapter adapter = new ItemsListAdapter(ViewAllItems.this, items);
+                recyclerView.setAdapter(adapter);
+            }
+        }
+        GetTasks gt = new GetTasks();
+        gt.execute();
     }
 
     @Override // MainMenuButtonFunction
@@ -89,19 +88,5 @@ public class ViewAllItems extends AppCompatActivity implements MainMenuButtonFun
 
         mainMenuOverlay.setVisibility(View.GONE);
         hamburgerButton.setImageResource(R.drawable.hamburger_btnxhdpi);
-    }
-
-    public void onActivityResult(int requestCode, int resultCode, Intent data) {
-        super.onActivityResult(requestCode, resultCode, data);
-
-        if (requestCode == NEW_ITEM_ACTIVITY_REQUEST_CODE && resultCode == RESULT_OK) {
-            Item item = new Item(data.getStringExtra(AddNewItem.EXTRA_REPLY));
-            mItemViewModel.insert(item);
-        } else {
-            Toast.makeText(
-                    getApplicationContext(),
-                    R.string.empty_not_saved,
-                    Toast.LENGTH_LONG).show();
-        }
     }
 }

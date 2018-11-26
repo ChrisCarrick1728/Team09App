@@ -8,6 +8,26 @@
     android:background="@color/Blue"
     tools:context=".AddNewItem">
 
+    <TextView
+        android:id="@+id/category_text_id"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="@dimen/title_text_to_header_dim"
+        android:contentDescription="@string/room_page_text"
+        android:ems="10"
+        android:inputType="none"
+        android:singleLine="false"
+        android:text="@string/update_item"
+        android:textAlignment="center"
+        android:textAllCaps="false"
+        android:textColor="@color/White"
+        android:textIsSelectable="false"
+        android:textSize="@dimen/column_header_font_size"
+        android:textStyle="bold"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/title"
+        tools:textIsSelectable="false" />
 
     <EditText
         android:id="@+id/editPurchaseDate"
@@ -22,7 +42,7 @@
         android:textColor="@color/White"
         android:textColorHint="@color/White"
         app:layout_constraintStart_toEndOf="@+id/editPriceText"
-        app:layout_constraintTop_toBottomOf="@+id/imageButton6" />
+        app:layout_constraintTop_toBottomOf="@+id/editCategory" />
 
     <EditText
         android:id="@+id/editPriceText"
@@ -32,7 +52,7 @@
         android:layout_marginTop="8dp"
         android:ems="10"
         android:hint="@string/price_text"
-        android:inputType="text"
+        android:inputType="textPersonName"
         android:selectAllOnFocus="false"
         android:textColor="@color/White"
         android:textColorHint="@color/White"
@@ -61,7 +81,7 @@
         android:padding="2dp"
         android:scaleType="fitCenter"
         app:layout_constraintStart_toEndOf="@+id/editCategory"
-        app:layout_constraintTop_toBottomOf="@+id/addNewRoomDrop_btn"
+        app:layout_constraintTop_toBottomOf="@+id/roomSpinner"
         app:srcCompat="@drawable/drop_down_btnxhdpi" />
 
     <EditText
@@ -70,12 +90,14 @@
         android:layout_height="42dp"
         android:layout_marginStart="16dp"
         android:layout_marginTop="8dp"
+        android:layout_marginEnd="158dp"
         android:ems="10"
         android:hint="@string/category_text"
         android:inputType="textPersonName"
         android:selectAllOnFocus="false"
         android:textColor="@color/White"
         android:textColorHint="@color/White"
+        app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/editRoom" />
 
@@ -135,7 +157,7 @@
         android:padding="2dp"
         android:scaleType="fitCenter"
         android:visibility="visible"
-        app:layout_constraintStart_toEndOf="@+id/addNewRoomDrop_btn"
+        app:layout_constraintStart_toEndOf="@+id/roomSpinner"
         app:layout_constraintTop_toBottomOf="@+id/editNameText"
         app:srcCompat="@drawable/add_btnxhdpi" />
 
@@ -160,26 +182,6 @@
         app:layout_constraintBottom_toTopOf="@id/title"
         app:layout_constraintTop_toTopOf="parent" />
 
-    <TextView
-        android:id="@+id/category_text_id"
-        android:layout_width="0dp"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="@dimen/title_text_to_header_dim"
-        android:contentDescription="@string/room_page_text"
-        android:ems="10"
-        android:inputType="none"
-        android:singleLine="false"
-        android:text="@string/add_new_item"
-        android:textAlignment="center"
-        android:textAllCaps="false"
-        android:textColor="@color/White"
-        android:textIsSelectable="false"
-        android:textSize="@dimen/column_header_font_size"
-        android:textStyle="bold"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/title"
-        tools:textIsSelectable="false" />
 
     <include
         android:id="@+id/title"
@@ -187,6 +189,8 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:visibility="visible"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
 
     <Spinner
@@ -194,23 +198,18 @@
         android:layout_width="46dp"
         android:layout_height="46dp"
         android:layout_marginStart="8dp"
-        android:layout_marginTop="8dp"
         android:backgroundTint="@color/DarkBlue"
         android:visibility="visible"
-        app:layout_constraintBottom_toBottomOf="@+id/addNewRoomDrop_btn"
-        app:layout_constraintEnd_toEndOf="@+id/addNewRoomDrop_btn"
-        app:layout_constraintHorizontal_bias="1.0"
         app:layout_constraintStart_toEndOf="@+id/editRoom"
-        app:layout_constraintTop_toBottomOf="@+id/editNameText"
-        app:layout_constraintVertical_bias="1.0" />
+        app:layout_constraintTop_toBottomOf="@+id/editNameText" />
 
     <Button
         android:id="@+id/button_save"
-        android:layout_width="200dp"
+        android:layout_width="100dp"
         android:layout_height="wrap_content"
         android:layout_gravity="center_horizontal"
-        android:layout_marginStart="8dp"
-        android:layout_marginTop="24dp"
+        android:layout_marginStart="32dp"
+        android:layout_marginTop="8dp"
         android:layout_marginEnd="8dp"
         android:layout_marginBottom="8dp"
         android:background="@color/DarkBlue"
@@ -218,10 +217,29 @@
         android:textAllCaps="false"
         android:textColor="@color/White"
         app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintEnd_toStartOf="@+id/button_delete"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/editPriceText"
         tools:text="@string/button_save" />
+
+    <Button
+        android:id="@+id/button_delete"
+        android:layout_width="100dp"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center_horizontal"
+        android:layout_marginStart="8dp"
+        android:layout_marginTop="8dp"
+        android:layout_marginEnd="32dp"
+        android:layout_marginBottom="8dp"
+        android:background="@color/DarkBlue"
+        android:text="@string/button_delete"
+        android:textAllCaps="false"
+        android:textColor="@color/White"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toEndOf="@+id/button_save"
+        app:layout_constraintTop_toBottomOf="@+id/editPurchaseDate"
+        tools:text="@string/button_delete" />
 
 
 </android.support.constraint.ConstraintLayout>
