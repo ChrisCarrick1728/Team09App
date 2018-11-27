@@ -1,6 +1,7 @@
 package com.example.team09app.team09app;
 
 import android.app.AlertDialog;
+import android.content.ContentResolver;
 import android.content.Context;
 import android.content.DialogInterface;
 import android.content.Intent;
@@ -27,6 +28,7 @@ import android.os.Environment;
 
 import java.io.File;
 import java.io.IOException;
+import java.net.URI;
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.Date;
@@ -37,6 +39,7 @@ public class AddNewItem extends AppCompatActivity implements MainMenuButtonFunct
     static final int REQUEST_IMAGE_CAPTURE = 1;
     final Context context = this;
     private EditText result;
+    Uri mainURI;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -196,8 +199,10 @@ public class AddNewItem extends AppCompatActivity implements MainMenuButtonFunct
 
             if (photoFile != null) {
                 Uri photoURI = FileProvider.getUriForFile(this, "com.example.android.fileprovider", photoFile);
+                mainURI = photoURI;
                 Log.d(TAG, "FileName: " + photoFile);
                 Log.d(TAG, "FileURI:  " + photoURI);
+                takePictureIntent.putExtra("PHOTOURI", photoURI);
                 takePictureIntent.putExtra(MediaStore.EXTRA_OUTPUT, photoURI);
                 startActivityForResult(takePictureIntent, REQUEST_IMAGE_CAPTURE);
             }
@@ -208,11 +213,22 @@ public class AddNewItem extends AppCompatActivity implements MainMenuButtonFunct
     protected void onActivityResult(int requestCode, int resultCode, Intent data) {
         ImageView mImageView = (ImageView) findViewById(R.id.item_image_id);
         ImageButton mImageButton = (ImageButton) findViewById(R.id.camera_btn_id_add);
+        Log.d(TAG, "I'm here");
         if (requestCode == REQUEST_IMAGE_CAPTURE && resultCode == RESULT_OK) {
             Bundle extras = data.getExtras();
-            //Bitmap imageBitmap = (Bitmap) extras.get("data");
-            //mImageButton.setVisibility(View.INVISIBLE);
-            //mImageView.setImageBitmap(imageBitmap);
+            this.getContentResolver().notifyChange(mainURI, null);
+            ContentResolver cr = this.getContentResolver();
+
+            Log.d(TAG, "LoadURI: " + mainURI);
+            Bitmap imageBitmap;
+            try {
+                imageBitmap = MediaStore.Images.Media.getBitmap(cr, mainURI);
+                mImageButton.setVisibility(View.INVISIBLE);
+                mImageView.setImageBitmap(imageBitmap);
+            } catch (IOException e) {
+                Log.d(TAG, "ERROR: " + e);
+            }
+
         }
     }
 
