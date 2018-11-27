@@ -34,7 +34,6 @@ public class UpdateItemActivity extends AppCompatActivity {
         findViewById(R.id.button_save).setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                Toast.makeText(getApplicationContext(), "Clicked", Toast.LENGTH_LONG).show();
                 updateItem(item);
             }
         });

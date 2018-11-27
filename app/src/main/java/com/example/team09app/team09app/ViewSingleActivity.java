@@ -33,6 +33,7 @@ public class ViewSingleActivity extends AppCompatActivity implements MainMenuBut
         recylcerView = findViewById(R.id.singleItemViewer);
         recylcerView.setLayoutManager(new LinearLayoutManager(this));
 
+        // ToDo: App crashes when this button is clicked
         editButton = findViewById(R.id.button_edit);
         editButton.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -43,6 +44,7 @@ public class ViewSingleActivity extends AppCompatActivity implements MainMenuBut
         });
 
         // delete item button
+        // ToDo: Yes and No words do not show up on popup
         deleteButton = findViewById(R.id.button_delete);
         deleteButton.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -81,7 +83,16 @@ public class ViewSingleActivity extends AppCompatActivity implements MainMenuBut
                         .getOne(item.getMName());
                 return itemList;
             }
+
+            @Override
+            protected void onPostExecute(List<Item> items) {
+                super.onPostExecute(items);
+                SingleItemAdapter adapter = new SingleItemAdapter(ViewSingleActivity.this, items);
+                recylcerView.setAdapter(adapter);
+            }
         }
+        GetTasks gt = new GetTasks();
+        gt.execute();
     }
 
     private void deleteItem(final Item item) {
