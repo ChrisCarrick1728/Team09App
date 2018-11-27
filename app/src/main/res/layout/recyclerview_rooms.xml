@@ -4,7 +4,7 @@
     android:layout_height="wrap_content">
 
     <TextView
-        android:id="@+id/textViewName"
+        android:id="@+id/textViewRoom"
         style="@style/item_title"
         android:layout_width="250dp"
         android:layout_height="wrap_content"
@@ -12,7 +12,7 @@
         android:layout_alignParentTop="true"
         android:layout_marginStart="11dp"
         android:layout_marginTop="0dp"
-        android:text="Item Name" />
+        android:text="Room" />
 
     <TextView
         android:id="@+id/textViewNumber"

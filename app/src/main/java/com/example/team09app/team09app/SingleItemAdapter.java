@@ -22,13 +22,13 @@ public class SingleItemAdapter extends RecyclerView.Adapter<SingleItemAdapter.Si
     }
 
     @Override
-    public SingleItemHolder onCreateViewHolder(ViewGroup parent, int viewType) {
+    public SingleItemAdapter.SingleItemHolder onCreateViewHolder(ViewGroup parent, int viewType) {
         View view = LayoutInflater.from(mCtx).inflate(R.layout.recyclerview_single_item, parent, false);
-        return new SingleItemHolder(view);
+        return new SingleItemAdapter.SingleItemHolder(view);
     }
 
     @Override
-    public void onBindViewHolder(SingleItemHolder holder, int position) {
+    public void onBindViewHolder(SingleItemAdapter.SingleItemHolder holder, int position) {
         Item it = itemList.get(position);
         holder.itemNameText.setText(it.getMName());
         holder.roomText.setText(it.getMRoom());

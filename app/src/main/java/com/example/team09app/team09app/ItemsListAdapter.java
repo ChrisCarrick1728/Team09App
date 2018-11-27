@@ -11,7 +11,7 @@ import android.widget.TextView;
 
 import java.util.List;
 
-//ToDo: create Adapter class for BrowseByRoom, BrowseByCategory, ViewSingleItem, ViewSingleRoom, ViewSingleCategory
+//ToDo: create Adapter class for BrowseByRoom, BrowseByCategory, ViewSingleRoom ViewSingleCategory
 
 public class ItemsListAdapter extends RecyclerView.Adapter<ItemsListAdapter.ItemViewHolder> {
 
@@ -33,10 +33,6 @@ public class ItemsListAdapter extends RecyclerView.Adapter<ItemsListAdapter.Item
     public void onBindViewHolder(ItemViewHolder holder, int position) {
         Item it = itemList.get(position);
         holder.textViewName.setText(it.getMName());
-//        holder.textViewRoom.setText(it.getMRoom());
-//        holder.textViewCategory.setText(it.getMCategory());
-//        holder.textViewPrice.setText(it.getmPrice());
-//        holder.textViewDate.setText(it.getMDate());
     }
 
     // getItemCount() is called many times, and when it is first called,
