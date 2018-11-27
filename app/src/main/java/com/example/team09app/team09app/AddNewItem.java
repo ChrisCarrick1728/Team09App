@@ -167,6 +167,7 @@ public class AddNewItem extends AppCompatActivity implements MainMenuButtonFunct
         //End of code for add new room pop-up
     }
 
+    // ToDo: change strings to other formats for price and date?
     private void saveTask() {
         final String sName = editNameText.getText().toString().trim();
         final String sRoom = editRoom.getText().toString().trim();

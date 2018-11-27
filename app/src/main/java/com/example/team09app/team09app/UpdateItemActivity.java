@@ -69,7 +69,7 @@ public class UpdateItemActivity extends AppCompatActivity {
         editTextRoom.setText(item.getMRoom());
         editTextCategory.setText(item.getMCategory());
         editTextPrice.setText(item.getMPrice());
-        editTextDate.setText(item.getMPrice());
+        editTextDate.setText(item.getMDate());
     }
 
     private void updateItem(final Item item) {
