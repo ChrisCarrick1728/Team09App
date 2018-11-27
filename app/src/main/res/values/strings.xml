@@ -37,6 +37,7 @@
     <string name="empty_not_saved">Item not saved because it is empty.</string>
     <string name="button_save">Save</string>
     <string name="button_delete">Delete</string>
+    <string name="button_edit">Edit</string>
 
     <string-array name="RoomList">
         <item>Living Room</item>

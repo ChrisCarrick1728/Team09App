@@ -61,13 +61,11 @@ public class ItemsListAdapter extends RecyclerView.Adapter<ItemsListAdapter.Item
             iView.setOnClickListener(this);
         }
 
-        // This will open the UpdateItemActivity when item is clicked
-        // ToDo: change to open ViewSingleItem page
         @Override
         public void onClick(View view) {
             Item item = itemList.get(getAdapterPosition());
 
-            Intent intent = new Intent(mCtx, UpdateItemActivity.class);
+            Intent intent = new Intent(mCtx, ViewSingleActivity.class);
             intent.putExtra("item", item);
 
             mCtx.startActivity(intent);

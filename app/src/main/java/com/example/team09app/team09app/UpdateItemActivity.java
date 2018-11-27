@@ -38,30 +38,6 @@ public class UpdateItemActivity extends AppCompatActivity {
                 updateItem(item);
             }
         });
-
-        // delete item button
-        findViewById(R.id.button_delete).setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                AlertDialog.Builder builder = new AlertDialog.Builder(UpdateItemActivity.this);
-                builder.setTitle("Are you sure?");
-                builder.setPositiveButton("Yes", new DialogInterface.OnClickListener() {
-                    @Override
-                    public void onClick(DialogInterface dialog, int i) {
-                        deleteItem(item);
-                    }
-                });
-                builder.setNegativeButton("No", new DialogInterface.OnClickListener() {
-                    @Override
-                    public void onClick(DialogInterface dialog, int i) {
-
-                    }
-                });
-
-                AlertDialog ad = builder.create();
-                ad.show();
-            }
-        });
     }
 
     private void loadItem(Item item) {
