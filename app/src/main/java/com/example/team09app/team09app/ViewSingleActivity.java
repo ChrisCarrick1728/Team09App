@@ -80,7 +80,7 @@ public class ViewSingleActivity extends AppCompatActivity implements MainMenuBut
                         .getInstance(getApplicationContext())
                         .getItemRoomDatabase()
                         .itemDao()
-                        .getOne(item.getMName());
+                        .getOne(item.getMId());
                 return itemList;
             }
 
