@@ -6,29 +6,41 @@ import android.arch.persistence.room.PrimaryKey;
 
 import java.io.Serializable;
 
+/**
+ * Defines Item Class that will be stored in Database
+ *
+ * @author Team09
+ */
 
 @Entity(tableName = "items_table")
 public class Item implements Serializable {
 
+    /**  mID: Will hold an automatically generated id number for each item in database*/
     @PrimaryKey(autoGenerate = true)
     @ColumnInfo(name = "ID")
     private Long mId;
 
+    /** mName: Stores the name of an item */
     @ColumnInfo(name = "name")
     private String mName;
 
+    /** mRoom: Stores the room that the item is saved in */
     @ColumnInfo(name = "room")
     private String mRoom;
 
+    /** mCategory: Stores the category that the item is saved in */
     @ColumnInfo(name = "category")
     private String mCategory;
 
+    /** mDate: Stores the date */
     @ColumnInfo(name = "date")
     private String mDate;
 
+    /** mPrice: Stores the price of the item */
     @ColumnInfo(name = "price")
     private String mPrice;
 
+    /** mPicture: Stores the URI of the picture */
     @ColumnInfo(name = "picture")
     private String mPicture;
 

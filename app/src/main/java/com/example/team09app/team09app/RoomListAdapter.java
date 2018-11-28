@@ -33,13 +33,13 @@ public class RoomListAdapter extends RecyclerView.Adapter<RoomListAdapter.ItemVi
         Item it = itemList.get(position);
         holder.textViewRoom.setText(it.getMRoom());
         // get number of items in each room
-        int numItemsInRoom = DatabaseClient
+        /*int numItemsInRoom = DatabaseClient
                 .getInstance(mCtx)
                 .getItemRoomDatabase()
                 .itemDao()
-                .getNumRoom();
-        if(numItemsInRoom > 0)
-            holder.textViewNumber.setText(numItemsInRoom);
+                .getNumRoom();*/
+        /*if(numItemsInRoom > 0)
+            holder.textViewNumber.setText(numItemsInRoom);*/
     }
 
     @Override
