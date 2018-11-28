@@ -19,13 +19,7 @@
         app:layout_constraintTop_toBottomOf="@+id/browse_by_room_title_id"
         tools:listitem="@layout/recyclerview_items" />
 
-    <include
-        android:id="@+id/menu_overlay_id"
-        layout="@layout/main_menu_overlay"
-        android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:visibility="gone"
-        app:layout_constraintTop_toTopOf="parent" />
+
 
     <TextView
         android:id="@+id/browse_by_room_title_id"
@@ -63,6 +57,14 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/Item_Viewer"
         app:srcCompat="@drawable/add_new_item_btnxhdpi" />
+
+    <include
+        android:id="@+id/menu_overlay_id"
+        layout="@layout/main_menu_overlay"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:visibility="gone"
+        app:layout_constraintTop_toTopOf="parent" />
 
     <include
         android:id="@+id/title"

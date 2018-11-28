@@ -63,14 +63,6 @@
         app:layout_constraintStart_toStartOf="parent"
         app:srcCompat="@drawable/add_new_room_btnxhdpi" />
 
-    <include
-        android:id="@+id/menu_overlay_id"
-        layout="@layout/main_menu_overlay"
-        android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:visibility="gone"
-        app:layout_constraintTop_toTopOf="parent" />
-
     <TextView
         android:id="@+id/browse_by_room_title_id"
         android:layout_width="0dp"
@@ -113,5 +105,13 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/numItems_text2" />
+
+    <include
+        android:id="@+id/menu_overlay_id"
+        layout="@layout/main_menu_overlay"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:visibility="gone"
+        app:layout_constraintTop_toTopOf="parent" />
 
 </android.support.constraint.ConstraintLayout>

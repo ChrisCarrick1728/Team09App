@@ -6,6 +6,7 @@ import android.os.AsyncTask;
 import android.support.v7.app.AlertDialog;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.View;
 import android.widget.EditText;
 import android.widget.Toast;
@@ -13,7 +14,7 @@ import android.widget.Toast;
 public class UpdateItemActivity extends AppCompatActivity {
 
     private EditText editTextName, editTextRoom, editTextCategory, editTextPrice, editTextDate;
-
+    private static final String TAG = "UpdateItemActivity";
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -26,7 +27,7 @@ public class UpdateItemActivity extends AppCompatActivity {
         editTextDate = findViewById(R.id.editPurchaseDate);
 
         final Item item = (Item) getIntent().getSerializableExtra("item");
-
+        Log.d(TAG, "Item: " + getIntent().getSerializableExtra("item"));
         loadItem(item);
 
 

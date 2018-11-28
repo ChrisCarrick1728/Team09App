@@ -39,6 +39,7 @@ public class ViewSingleActivity extends AppCompatActivity implements MainMenuBut
             @Override
             public void onClick(View view) {
                 Intent intent = new Intent(ViewSingleActivity.this, UpdateItemActivity.class);
+                intent.putExtra("item", item);
                 startActivity(intent);
             }
         });

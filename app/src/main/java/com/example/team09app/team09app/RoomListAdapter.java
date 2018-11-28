@@ -36,7 +36,7 @@ public class RoomListAdapter extends RecyclerView.Adapter<RoomListAdapter.ItemVi
         //holder.textViewNumber_id.setText("1");
         holder.textViewRoom_id.setText(it.getMRoom());
         // get number of items in each room
-
+        // TODO: Need to figure out how to count number of items in each room
         /*int numItemsInRoom = DatabaseClient
                 .getInstance(mCtx)
                 .getItemRoomDatabase()
