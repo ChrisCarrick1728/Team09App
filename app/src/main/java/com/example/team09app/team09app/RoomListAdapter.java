@@ -5,6 +5,7 @@ import android.content.Intent;
 import android.provider.ContactsContract;
 import android.support.v7.view.menu.MenuView;
 import android.support.v7.widget.RecyclerView;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -16,6 +17,7 @@ public class RoomListAdapter extends RecyclerView.Adapter<RoomListAdapter.ItemVi
 
     private Context mCtx;
     private List<Item> itemList;
+    private static final String TAG = "RoomListAdapter";
 
     public RoomListAdapter (Context mCtx, List<Item> itemList) {
         this.mCtx = mCtx;
@@ -29,17 +31,20 @@ public class RoomListAdapter extends RecyclerView.Adapter<RoomListAdapter.ItemVi
     }
 
     @Override
-    public void onBindViewHolder(RoomListAdapter.ItemViewHolder holder, int position) {
+    public void onBindViewHolder(ItemViewHolder holder, int position) {
         Item it = itemList.get(position);
-        holder.textViewRoom.setText(it.getMRoom());
+        //holder.textViewNumber_id.setText("1");
+        holder.textViewRoom_id.setText(it.getMRoom());
         // get number of items in each room
+
         /*int numItemsInRoom = DatabaseClient
                 .getInstance(mCtx)
                 .getItemRoomDatabase()
                 .itemDao()
-                .getNumRoom();*/
+                .getNumRoom();
+        Log.d(TAG, "numItemsInRoom: " + numItemsInRoom);*/
         /*if(numItemsInRoom > 0)
-            holder.textViewNumber.setText(numItemsInRoom);*/
+            holder.textViewNumber_id.setText(numItemsInRoom);*/
     }
 
     @Override
@@ -52,13 +57,13 @@ public class RoomListAdapter extends RecyclerView.Adapter<RoomListAdapter.ItemVi
 
     class ItemViewHolder extends RecyclerView.ViewHolder implements View.OnClickListener {
 
-        TextView textViewRoom, textViewNumber;
+        TextView textViewRoom_id, textViewNumber_id;
 
         public ItemViewHolder(View iView) {
             super(iView);
 
-            textViewRoom = iView.findViewById(R.id.textViewName);
-            textViewNumber = iView.findViewById(R.id.textViewNumber);
+            textViewRoom_id = iView.findViewById(R.id.textViewRoom_id);
+            textViewNumber_id = iView.findViewById(R.id.textViewNumber_id);
 
             iView.setOnClickListener(this);
         }
