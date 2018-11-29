@@ -33,7 +33,6 @@ public class ViewSingleActivity extends AppCompatActivity implements MainMenuBut
         recylcerView = findViewById(R.id.singleItemViewer);
         recylcerView.setLayoutManager(new LinearLayoutManager(this));
 
-        // ToDo: App crashes when this button is clicked
         editButton = findViewById(R.id.button_edit);
         editButton.setOnClickListener(new View.OnClickListener() {
             @Override

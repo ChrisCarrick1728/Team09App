@@ -62,8 +62,8 @@ public class RoomListAdapter extends RecyclerView.Adapter<RoomListAdapter.ItemVi
         public void onClick(View view) {
             Item item = itemList.get(getAdapterPosition());
 
-            // ToDo: change to viewSingleRoom when ready
-            Intent intent = new Intent(mCtx, BrowseByRoom.class);
+            // ToDo: Will this pass the correct room into ItemsByRoom class or do we need to have a list of rooms to pass?
+            Intent intent = new Intent(mCtx, ItemsByRoom.class);
             intent.putExtra("room", item);
 
             mCtx.startActivity(intent);

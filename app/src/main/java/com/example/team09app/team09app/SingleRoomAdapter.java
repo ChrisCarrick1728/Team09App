@@ -1,6 +1,5 @@
 package com.example.team09app.team09app;
 
-
 import android.content.Context;
 import android.content.Intent;
 import android.support.v7.widget.RecyclerView;
@@ -11,22 +10,20 @@ import android.widget.TextView;
 
 import java.util.List;
 
-//ToDo: create Adapter class for ViewSingleRoom ViewSingleCategory
-
-public class ItemsListAdapter extends RecyclerView.Adapter<ItemsListAdapter.ItemViewHolder> {
+public class SingleRoomAdapter extends RecyclerView.Adapter<SingleRoomAdapter.ItemViewHolder>  {
 
     private Context mCtx;
     private List<Item> itemList;
 
-    public ItemsListAdapter(Context mCtx, List<Item> itemList) {
+    public SingleRoomAdapter(Context mCtx, List<Item> itemList) {
         this.mCtx = mCtx;
         this.itemList = itemList;
     }
 
     @Override
-    public ItemViewHolder onCreateViewHolder(ViewGroup parent, int viewType) {
+    public SingleRoomAdapter.ItemViewHolder onCreateViewHolder(ViewGroup parent, int viewType) {
         View view = LayoutInflater.from(mCtx).inflate(R.layout.recyclerview_items, parent, false);
-        return new ItemViewHolder(view);
+        return new SingleRoomAdapter.ItemViewHolder(view);
     }
 
     @Override
@@ -47,7 +44,6 @@ public class ItemsListAdapter extends RecyclerView.Adapter<ItemsListAdapter.Item
     class ItemViewHolder extends RecyclerView.ViewHolder implements View.OnClickListener {
 
         TextView textViewName;
-        //textViewRoom, textViewCategory, textViewPrice, textViewDate;
 
         public ItemViewHolder(View iView) {
             super(iView);
@@ -68,4 +64,3 @@ public class ItemsListAdapter extends RecyclerView.Adapter<ItemsListAdapter.Item
         }
     }
 }
-
