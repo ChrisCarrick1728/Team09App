@@ -25,7 +25,7 @@ public class ItemsByRoom extends AppCompatActivity implements MainMenuButtonFunc
 
         // ToDo: bring in the correct room from BrowseByRoom
 
-        recyclerView = findViewById(R.id.Item_Viewer);
+        recyclerView = findViewById(R.id.Item_Viewer2);
         recyclerView.setLayoutManager(new LinearLayoutManager(this));
 
         addItemButton = findViewById(R.id.add_new_item_btn_id);

@@ -59,8 +59,8 @@ public class CategoryListAdapter extends RecyclerView.Adapter<CategoryListAdapte
         public void onClick(View view) {
             Item item = itemList.get(getAdapterPosition());
 
-            // ToDo: change to viewSingleRoom when ready
-            Intent intent = new Intent(mCtx, BrowseByCategory.class);
+            // ToDo: Will this pass the correct category into ItemsByCategory class or do we need to have a list of categories to pass?
+            Intent intent = new Intent(mCtx, ItemsByCategory.class);
             intent.putExtra("room", item);
 
             mCtx.startActivity(intent);

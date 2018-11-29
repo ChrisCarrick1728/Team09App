@@ -22,6 +22,10 @@ public interface ItemDao {
     @Query("SELECT * FROM items_table WHERE ROOM=:room")
     List<Item> getOneRoom(String room);
 
+    //get all items from a single category
+    @Query("SELECT * FROM items_table WHERE CATEGORY=:category")
+    List<Item> getOneCategory(String category);
+
     // ToDo: Use these 2 for BrowseByRoom and BrowseByCategory pages
     @Query("SELECT room FROM items_table")
     List<Item> getAllRooms();

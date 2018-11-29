@@ -24,7 +24,8 @@
         <activity android:name=".BrowseByRoom" />
         <activity android:name=".UpdateItemActivity" />
         <activity android:name=".ViewSingleActivity" />
-        <activity android:name=".ItemsByRoom"></activity>
+        <activity android:name=".ItemsByRoom" />
+        <activity android:name=".ItemsByCategory"></activity>
     </application>
 
 </manifest>
