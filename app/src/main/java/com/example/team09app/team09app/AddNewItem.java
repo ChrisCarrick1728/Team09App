@@ -169,6 +169,7 @@ public class AddNewItem extends AppCompatActivity implements MainMenuButtonFunct
 
     String mCurrentPhotoPath;
 
+    /** Creates a new timestamped filename for the image */
     private File createImageFile() throws IOException {
         // Create an image file name
         String timeStamp = new SimpleDateFormat("yyyyMMdd_HHmmss").format(new Date());
