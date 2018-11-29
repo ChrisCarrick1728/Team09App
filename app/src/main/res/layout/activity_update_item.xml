@@ -60,6 +60,22 @@
         app:layout_constraintTop_toBottomOf="@+id/editCategory" />
 
     <ImageButton
+        android:id="@+id/item_image_id_update"
+        android:layout_width="0dp"
+        android:layout_height="150dp"
+        android:layout_marginTop="8dp"
+        android:layout_marginBottom="8dp"
+        android:background="@color/Blue"
+        android:clickable="true"
+        android:onClick="takePicture"
+        android:scaleType="fitCenter"
+        app:layout_constraintBottom_toTopOf="@+id/editNameText"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/category_text_id"
+        app:srcCompat="@color/clear" />
+
+    <ImageButton
         android:id="@+id/addNewCategoryPlus_btn_id"
         android:layout_width="47dp"
         android:layout_height="47dp"
@@ -90,14 +106,12 @@
         android:layout_height="42dp"
         android:layout_marginStart="16dp"
         android:layout_marginTop="8dp"
-        android:layout_marginEnd="158dp"
         android:ems="10"
         android:hint="@string/category_text"
         android:inputType="textPersonName"
         android:selectAllOnFocus="false"
         android:textColor="@color/White"
         android:textColorHint="@color/White"
-        app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/editRoom" />
 
@@ -126,7 +140,7 @@
         android:contentDescription="@string/export_button_description"
         android:cropToPadding="false"
         android:scaleType="fitCenter"
-        android:visibility="visible"
+        android:visibility="invisible"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/category_text_id"
@@ -173,6 +187,29 @@
         app:layout_constraintTop_toBottomOf="@+id/editNameText"
         app:srcCompat="@drawable/drop_down_btnxhdpi" />
 
+    <Spinner
+        android:id="@+id/roomSpinner"
+        android:layout_width="46dp"
+        android:layout_height="46dp"
+        android:layout_marginStart="8dp"
+        android:backgroundTint="@color/DarkBlue"
+        android:visibility="visible"
+        app:layout_constraintStart_toEndOf="@+id/editRoom"
+        app:layout_constraintTop_toBottomOf="@+id/editNameText" />
+
+
+    <ImageButton
+        android:id="@+id/button_save"
+        android:layout_width="wrap_content"
+        android:layout_height="50dp"
+        android:layout_marginBottom="16dp"
+        android:background="@color/clear"
+        android:scaleType="fitCenter"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:srcCompat="@drawable/save_item_btnxhdpi" />
+
     <include
         android:id="@+id/menu_overlay_id"
         layout="@layout/main_menu_overlay"
@@ -192,35 +229,6 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
-
-    <Spinner
-        android:id="@+id/roomSpinner"
-        android:layout_width="46dp"
-        android:layout_height="46dp"
-        android:layout_marginStart="8dp"
-        android:backgroundTint="@color/DarkBlue"
-        android:visibility="visible"
-        app:layout_constraintStart_toEndOf="@+id/editRoom"
-        app:layout_constraintTop_toBottomOf="@+id/editNameText" />
-
-    <Button
-        android:id="@+id/button_save"
-        android:layout_width="100dp"
-        android:layout_height="wrap_content"
-        android:layout_gravity="center_horizontal"
-        android:layout_marginStart="32dp"
-        android:layout_marginTop="8dp"
-        android:layout_marginEnd="8dp"
-        android:layout_marginBottom="8dp"
-        android:background="@color/DarkBlue"
-        android:text="@string/button_save"
-        android:textAllCaps="false"
-        android:textColor="@color/White"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/editPriceText"
-        tools:text="@string/button_save" />
 
 
 </android.support.constraint.ConstraintLayout>

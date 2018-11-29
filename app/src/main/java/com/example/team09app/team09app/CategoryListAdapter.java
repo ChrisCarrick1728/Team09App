@@ -60,10 +60,10 @@ public class CategoryListAdapter extends RecyclerView.Adapter<CategoryListAdapte
             Item item = itemList.get(getAdapterPosition());
 
             // ToDo: Will this pass the correct category into ItemsByCategory class or do we need to have a list of categories to pass?
-            Intent intent = new Intent(mCtx, ItemsByCategory.class);
-            intent.putExtra("room", item);
+            //Intent intent = new Intent(mCtx, ItemsByCategory.class);
+            //intent.putExtra("room", item);
 
-            mCtx.startActivity(intent);
+            //mCtx.startActivity(intent);
         }
     }
 }

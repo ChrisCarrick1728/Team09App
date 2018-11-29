@@ -38,6 +38,7 @@ import android.widget.Toast;
 public class AddNewItem extends AppCompatActivity implements MainMenuButtonFunction, AdapterView.OnItemSelectedListener {
 
     private EditText editNameText, editRoom, editCategory, editPriceText, editPurchaseDate;
+    private ImageView itemImage;
 
 
     private static final String TAG = "Add_New_Item";
@@ -57,6 +58,7 @@ public class AddNewItem extends AppCompatActivity implements MainMenuButtonFunct
         editCategory = findViewById(R.id.editCategory);
         editPriceText = findViewById(R.id.editPriceText);
         editPurchaseDate = findViewById(R.id.editPurchaseDate);
+        itemImage = findViewById(R.id.item_image_id);
 
         findViewById(R.id.button_save).setOnClickListener(new View.OnClickListener() {
             @Override
@@ -216,10 +218,14 @@ public class AddNewItem extends AppCompatActivity implements MainMenuButtonFunct
             } catch (IOException ex) {
                 Log.d(TAG, "dispatchTakePictureIntent:" + ex);
             }
-
+            Uri photoURI;
             if (photoFile != null) {
-                Uri photoURI = FileProvider.getUriForFile(this, "com.example.android.fileprovider", photoFile);
-                mainURI = photoURI;
+                if (mainURI == null) {
+                    photoURI = FileProvider.getUriForFile(this, "com.example.android.fileprovider", photoFile);
+                    mainURI = photoURI;
+                } else {
+                    photoURI = mainURI;
+                }
                 Log.d(TAG, "FileName: " + photoFile);
                 Log.d(TAG, "FileURI:  " + photoURI);
                 takePictureIntent.putExtra("PHOTOURI", photoURI);
@@ -264,6 +270,7 @@ public class AddNewItem extends AppCompatActivity implements MainMenuButtonFunct
         final String sCategory = editCategory.getText().toString().trim();
         final String sPrice = editPriceText.getText().toString().trim();
         final String sDate = editPurchaseDate.getText().toString().trim();
+        final String sImage = mainURI.toString().trim();
 
         // ToDo: All fields required right now. Change?
 
@@ -292,6 +299,9 @@ public class AddNewItem extends AppCompatActivity implements MainMenuButtonFunct
             editPurchaseDate.requestFocus();
             return;
         }
+        if(sImage.isEmpty()) {
+            return;
+        }
 
         class SaveTask extends AsyncTask<Void, Void, Void> {
             @Override
@@ -303,6 +313,7 @@ public class AddNewItem extends AppCompatActivity implements MainMenuButtonFunct
                 item.setMCategory(sCategory);
                 item.setMPrice(sPrice);
                 item.setMDate(sDate);
+                item.setMPicture(sImage);
 
                 // adding to database
                 DatabaseClient.getInstance(getApplicationContext()).getItemRoomDatabase()

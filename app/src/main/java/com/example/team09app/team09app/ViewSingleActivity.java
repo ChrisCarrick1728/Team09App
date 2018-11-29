@@ -11,6 +11,7 @@ import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.view.View;
 import android.widget.Button;
+import android.widget.ImageButton;
 import android.widget.ImageView;
 import android.widget.TextView;
 import android.widget.Toast;
@@ -20,8 +21,8 @@ import java.util.List;
 public class ViewSingleActivity extends AppCompatActivity implements MainMenuButtonFunction {
 
     private RecyclerView recylcerView;
-    private Button editButton;
-    private Button deleteButton;
+    private ImageButton editButton;
+    private ImageButton deleteButton;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
