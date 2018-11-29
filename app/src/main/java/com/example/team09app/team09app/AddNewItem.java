@@ -9,6 +9,8 @@ import android.content.pm.ActivityInfo;
 import android.graphics.Bitmap;
 import android.net.Uri;
 import android.provider.MediaStore;
+import android.content.Intent;
+import android.os.AsyncTask;
 import android.support.constraint.ConstraintLayout;
 import android.support.v4.content.FileProvider;
 import android.support.v7.app.AppCompatActivity;
@@ -21,7 +23,6 @@ import android.widget.ArrayAdapter;
 import android.widget.EditText;
 import android.widget.ImageButton;
 import android.widget.ImageView;
-import android.widget.ListView;
 import android.widget.Spinner;
 import android.widget.TextView;
 import android.os.Environment;
@@ -32,19 +33,37 @@ import java.net.URI;
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.Date;
+import android.widget.Toast;
 
 public class AddNewItem extends AppCompatActivity implements MainMenuButtonFunction, AdapterView.OnItemSelectedListener {
+
+    private EditText editNameText, editRoom, editCategory, editPriceText, editPurchaseDate;
+
 
     private static final String TAG = "Add_New_Item";
     static final int REQUEST_IMAGE_CAPTURE = 1;
     final Context context = this;
     private EditText result;
     Uri mainURI;
+    //private EditText result;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_add_new_item);
+
+        editNameText = findViewById(R.id.editNameText);
+        editRoom = findViewById(R.id.editRoom);
+        editCategory = findViewById(R.id.editCategory);
+        editPriceText = findViewById(R.id.editPriceText);
+        editPurchaseDate = findViewById(R.id.editPurchaseDate);
+
+        findViewById(R.id.button_save).setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                saveTask();
+            }
+        });
 
 
         //For the dropdown selection for Room
@@ -238,6 +257,74 @@ public class AddNewItem extends AppCompatActivity implements MainMenuButtonFunct
         Log.d(TAG, "takePicture: " + getExternalFilesDir(null));
     }
 
+    // ToDo: change strings to other formats for price and date?
+    private void saveTask() {
+        final String sName = editNameText.getText().toString().trim();
+        final String sRoom = editRoom.getText().toString().trim();
+        final String sCategory = editCategory.getText().toString().trim();
+        final String sPrice = editPriceText.getText().toString().trim();
+        final String sDate = editPurchaseDate.getText().toString().trim();
+
+        // ToDo: All fields required right now. Change?
+
+        if(sName.isEmpty()) {
+            editNameText.setError("Name required");
+            editNameText.requestFocus();
+            return;
+        }
+        if(sRoom.isEmpty()) {
+            editRoom.setError("Room required");
+            editRoom.requestFocus();
+            return;
+        }
+        if(sCategory.isEmpty()) {
+            editCategory.setError("Category required");
+            editCategory.requestFocus();
+            return;
+        }
+        if(sPrice.isEmpty()) {
+            editPriceText.setError("Price required");
+            editPriceText.requestFocus();
+            return;
+        }
+        if(sDate.isEmpty()) {
+            editPurchaseDate.setError("Date required");
+            editPurchaseDate.requestFocus();
+            return;
+        }
+
+        class SaveTask extends AsyncTask<Void, Void, Void> {
+            @Override
+            protected Void doInBackground(Void... voids) {
+                // creating an Item
+                Item item = new Item();
+                item.setMName(sName);
+                item.setMRoom(sRoom);
+                item.setMCategory(sCategory);
+                item.setMPrice(sPrice);
+                item.setMDate(sDate);
+
+                // adding to database
+                DatabaseClient.getInstance(getApplicationContext()).getItemRoomDatabase()
+                        .itemDao()
+                        .insert(item);
+                return null;
+            }
+
+            // ToDo: I think this sends user to ViewAllItems page once item is saved. Verify
+            @Override
+            protected void onPostExecute(Void aVoid) {
+                super.onPostExecute(aVoid);
+                finish();
+                startActivity(new Intent(getApplicationContext(), ViewAllItems.class));
+                Toast.makeText(getApplicationContext(), "Saved", Toast.LENGTH_LONG).show();
+            }
+        }
+
+        SaveTask st = new SaveTask();
+        st.execute();
+    }
+
     @Override // MainMenuButtonFunction
     public void hamburgerMenu(View view) {
 
@@ -266,7 +353,7 @@ public class AddNewItem extends AppCompatActivity implements MainMenuButtonFunct
     public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
         //So that the room can be prefilled once selected from drop down
         TextView input;
-        input = (TextView)findViewById(R.id.nameText2);
+        input = (TextView)findViewById(R.id.editRoom);
 
         parent.getItemAtPosition(position).toString();
 

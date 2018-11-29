@@ -1,0 +1,226 @@
+<?xml version="1.0" encoding="utf-8"?>
+<android.support.constraint.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/activity_add_new_item_id"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/Blue"
+    tools:context=".AddNewItem">
+
+    <TextView
+        android:id="@+id/category_text_id"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="@dimen/title_text_to_header_dim"
+        android:contentDescription="@string/room_page_text"
+        android:ems="10"
+        android:inputType="none"
+        android:singleLine="false"
+        android:text="@string/update_item"
+        android:textAlignment="center"
+        android:textAllCaps="false"
+        android:textColor="@color/White"
+        android:textIsSelectable="false"
+        android:textSize="@dimen/column_header_font_size"
+        android:textStyle="bold"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/title"
+        tools:textIsSelectable="false" />
+
+    <EditText
+        android:id="@+id/editPurchaseDate"
+        android:layout_width="210dp"
+        android:layout_height="42dp"
+        android:layout_marginStart="4dp"
+        android:layout_marginTop="8dp"
+        android:ems="10"
+        android:hint="@string/purchase_date"
+        android:inputType="textPersonName"
+        android:selectAllOnFocus="false"
+        android:textColor="@color/White"
+        android:textColorHint="@color/White"
+        app:layout_constraintStart_toEndOf="@+id/editPriceText"
+        app:layout_constraintTop_toBottomOf="@+id/editCategory" />
+
+    <EditText
+        android:id="@+id/editPriceText"
+        android:layout_width="141dp"
+        android:layout_height="42dp"
+        android:layout_marginStart="16dp"
+        android:layout_marginTop="8dp"
+        android:ems="10"
+        android:hint="@string/price_text"
+        android:inputType="textPersonName"
+        android:selectAllOnFocus="false"
+        android:textColor="@color/White"
+        android:textColorHint="@color/White"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/editCategory" />
+
+    <ImageButton
+        android:id="@+id/addNewCategoryPlus_btn_id"
+        android:layout_width="47dp"
+        android:layout_height="47dp"
+        android:layout_marginStart="8dp"
+        android:background="@color/clear"
+        android:padding="2dp"
+        android:scaleType="fitCenter"
+        android:visibility="visible"
+        app:layout_constraintStart_toEndOf="@+id/imageButton6"
+        app:layout_constraintTop_toBottomOf="@+id/addNewRoomPlus_btn_id"
+        app:srcCompat="@drawable/add_btnxhdpi" />
+
+    <ImageButton
+        android:id="@+id/imageButton6"
+        android:layout_width="45dp"
+        android:layout_height="48dp"
+        android:layout_marginStart="8dp"
+        android:background="@color/clear"
+        android:padding="2dp"
+        android:scaleType="fitCenter"
+        app:layout_constraintStart_toEndOf="@+id/editCategory"
+        app:layout_constraintTop_toBottomOf="@+id/roomSpinner"
+        app:srcCompat="@drawable/drop_down_btnxhdpi" />
+
+    <EditText
+        android:id="@+id/editCategory"
+        android:layout_width="210dp"
+        android:layout_height="42dp"
+        android:layout_marginStart="16dp"
+        android:layout_marginTop="8dp"
+        android:layout_marginEnd="158dp"
+        android:ems="10"
+        android:hint="@string/category_text"
+        android:inputType="textPersonName"
+        android:selectAllOnFocus="false"
+        android:textColor="@color/White"
+        android:textColorHint="@color/White"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/editRoom" />
+
+    <EditText
+        android:id="@+id/editRoom"
+        android:layout_width="210dp"
+        android:layout_height="40dp"
+        android:layout_marginStart="16dp"
+        android:layout_marginTop="8dp"
+        android:ems="10"
+        android:hint="@string/room_text"
+        android:inputType="textPersonName"
+        android:selectAllOnFocus="false"
+        android:textColor="@color/White"
+        android:textColorHint="@color/White"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/editNameText" />
+
+    <ImageButton
+        android:id="@+id/camera_btn_id_add"
+        android:layout_width="249dp"
+        android:layout_height="64dp"
+        android:layout_marginTop="48dp"
+        android:background="@color/Blue"
+        android:clickable="true"
+        android:contentDescription="@string/export_button_description"
+        android:cropToPadding="false"
+        android:scaleType="fitCenter"
+        android:visibility="visible"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/category_text_id"
+        app:srcCompat="@drawable/take_picture_btnxhdpi" />
+
+    <EditText
+        android:id="@+id/editNameText"
+        android:layout_width="210dp"
+        android:layout_height="40dp"
+        android:layout_marginStart="16dp"
+        android:layout_marginTop="48dp"
+        android:ems="10"
+        android:hint="@string/name_text"
+        android:inputType="textPersonName"
+        android:selectAllOnFocus="false"
+        android:textColor="@color/White"
+        android:textColorHint="@color/White"
+        app:layout_constraintHorizontal_chainStyle="spread_inside"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/camera_btn_id_add" />
+
+    <ImageButton
+        android:id="@+id/addNewRoomPlus_btn_id"
+        android:layout_width="47dp"
+        android:layout_height="48dp"
+        android:layout_marginStart="8dp"
+        android:background="@color/clear"
+        android:padding="2dp"
+        android:scaleType="fitCenter"
+        android:visibility="visible"
+        app:layout_constraintStart_toEndOf="@+id/roomSpinner"
+        app:layout_constraintTop_toBottomOf="@+id/editNameText"
+        app:srcCompat="@drawable/add_btnxhdpi" />
+
+    <ImageButton
+        android:id="@+id/addNewRoomDrop_btn"
+        android:layout_width="45dp"
+        android:layout_height="48dp"
+        android:layout_marginStart="8dp"
+        android:background="@color/clear"
+        android:padding="2dp"
+        android:scaleType="fitCenter"
+        app:layout_constraintStart_toEndOf="@+id/editRoom"
+        app:layout_constraintTop_toBottomOf="@+id/editNameText"
+        app:srcCompat="@drawable/drop_down_btnxhdpi" />
+
+    <include
+        android:id="@+id/menu_overlay_id"
+        layout="@layout/main_menu_overlay"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:visibility="gone"
+        app:layout_constraintBottom_toTopOf="@id/title"
+        app:layout_constraintTop_toTopOf="parent" />
+
+
+    <include
+        android:id="@+id/title"
+        layout="@layout/title_bar"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:visibility="visible"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <Spinner
+        android:id="@+id/roomSpinner"
+        android:layout_width="46dp"
+        android:layout_height="46dp"
+        android:layout_marginStart="8dp"
+        android:backgroundTint="@color/DarkBlue"
+        android:visibility="visible"
+        app:layout_constraintStart_toEndOf="@+id/editRoom"
+        app:layout_constraintTop_toBottomOf="@+id/editNameText" />
+
+    <Button
+        android:id="@+id/button_save"
+        android:layout_width="100dp"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center_horizontal"
+        android:layout_marginStart="32dp"
+        android:layout_marginTop="8dp"
+        android:layout_marginEnd="8dp"
+        android:layout_marginBottom="8dp"
+        android:background="@color/DarkBlue"
+        android:text="@string/button_save"
+        android:textAllCaps="false"
+        android:textColor="@color/White"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/editPriceText"
+        tools:text="@string/button_save" />
+
+
+</android.support.constraint.ConstraintLayout>

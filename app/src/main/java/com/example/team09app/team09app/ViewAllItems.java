@@ -1,36 +1,69 @@
 package com.example.team09app.team09app;
 
+import android.arch.lifecycle.Observer;
+import android.arch.lifecycle.ViewModelProviders;
+import android.content.Intent;
+import android.os.AsyncTask;
+import android.support.annotation.Nullable;
 import android.support.constraint.ConstraintLayout;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.view.View;
+import android.widget.ImageButton;
 import android.widget.ImageView;
+import android.widget.Toast;
+
+import java.util.List;
 
 public class ViewAllItems extends AppCompatActivity implements MainMenuButtonFunction {
 
-    private RecyclerView mRecyclerView;
-    private RecyclerView.Adapter mAdapter;
-    private RecyclerView.LayoutManager mLayoutManager;
+    private ImageButton addItemButton;
+    private RecyclerView recyclerView;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.view_all_items);
-        mRecyclerView = (RecyclerView) findViewById(R.id.Item_Viewer);
 
-        // use this setting to improve performance if you know that changes
-        // in content do not change the layout size of the RecyclerView
-        mRecyclerView.setHasFixedSize(true);
+        recyclerView = findViewById(R.id.Item_Viewer);
+        recyclerView.setLayoutManager(new LinearLayoutManager(this));
 
-        // use a linear layout manager
-        mLayoutManager = new LinearLayoutManager(this);
-        mRecyclerView.setLayoutManager(mLayoutManager);
+        addItemButton = findViewById(R.id.add_new_item_btn_id);
+        addItemButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent intent = new Intent(ViewAllItems.this, AddNewItem.class);
+                startActivity(intent);
+            }
+        });
 
-        // specify an adapter (see also next example)
-        //mAdapter = new MyAdapter(myDataset);
-        //mRecyclerView.setAdapter(mAdapter);
+        getTasks();
+    }
+
+    // call getAll() from ItemDao to get all items stored in database
+    private void getTasks() {
+        class GetTasks extends AsyncTask<Void, Void, List<Item>> {
+            @Override
+            protected List<Item> doInBackground(Void... voids) {
+                List<Item> itemList = DatabaseClient
+                        .getInstance(getApplicationContext())
+                        .getItemRoomDatabase()
+                        .itemDao()
+                        .getAll();
+                return itemList;
+            }
+
+            @Override
+            protected void onPostExecute(List<Item> items) {
+                super.onPostExecute(items);
+                ItemsListAdapter adapter = new ItemsListAdapter(ViewAllItems.this, items);
+                recyclerView.setAdapter(adapter);
+            }
+        }
+        GetTasks gt = new GetTasks();
+        gt.execute();
     }
 
     @Override // MainMenuButtonFunction
@@ -56,5 +89,4 @@ public class ViewAllItems extends AppCompatActivity implements MainMenuButtonFun
         mainMenuOverlay.setVisibility(View.GONE);
         hamburgerButton.setImageResource(R.drawable.hamburger_btnxhdpi);
     }
-
 }

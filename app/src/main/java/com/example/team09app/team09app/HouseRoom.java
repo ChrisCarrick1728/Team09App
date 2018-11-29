@@ -3,13 +3,13 @@ package com.example.team09app.team09app;
 import android.os.Parcel;
 import android.os.Parcelable;
 
-public class Room implements Parcelable {
+public class HouseRoom implements Parcelable {
     private String name;
 
     public String getName() {return name;}
     public void setName(String name){this.name = name;}
 
-    protected Room(Parcel in) {
+    protected HouseRoom(Parcel in) {
         name = in.readString();
     }
 
@@ -23,15 +23,15 @@ public class Room implements Parcelable {
         dest.writeString(name);
     }
 
-    public static final Parcelable.Creator<Room> CREATOR
-            = new Parcelable.Creator<Room>() {
+    public static final Parcelable.Creator<HouseRoom> CREATOR
+            = new Parcelable.Creator<HouseRoom>() {
         @Override
-        public Room createFromParcel(Parcel in) {
-            return new Room(in);
+        public HouseRoom createFromParcel(Parcel in) {
+            return new HouseRoom(in);
         }
 
-        public Room[] newArray(int size) {
-            return new Room[size];
+        public HouseRoom[] newArray(int size) {
+            return new HouseRoom[size];
         }
     };
 

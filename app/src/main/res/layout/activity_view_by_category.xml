@@ -7,30 +7,9 @@
     android:background="@color/Blue">
 
     <TextView
-        android:id="@+id/category_text_id"
-        android:layout_width="0dp"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="16dp"
-        android:layout_marginTop="16dp"
-        android:contentDescription="@string/room_page_text"
-        android:ems="10"
-        android:inputType="none"
-        android:singleLine="false"
-        android:text="@string/category"
-        android:textAllCaps="false"
-        android:textColor="@color/White"
-        android:textIsSelectable="false"
-        android:textSize="@dimen/column_header_font_size"
-        android:textStyle="bold"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/browse_by_room_title_id"
-        tools:textIsSelectable="false" />
-
-    <TextView
-        android:id="@+id/numItems_text_id"
-        android:layout_width="0dp"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="16dp"
+        android:id="@+id/numItems_text3"
+        android:layout_width="237dp"
+        android:layout_height="0dp"
         android:layout_marginTop="16dp"
         android:layout_marginEnd="16dp"
         android:contentDescription="@string/num_items_text"
@@ -42,20 +21,44 @@
         android:textSize="@dimen/column_header_font_size"
         android:textStyle="bold"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toEndOf="@+id/category_text_id"
         app:layout_constraintTop_toBottomOf="@+id/browse_by_room_title_id" />
 
-    <ListView
-        android:id="@+id/categoryList"
-        android:layout_width="0dp"
-        android:layout_height="0dp"
+    <TextView
+        android:id="@+id/categoryPage_text"
+        android:layout_width="237dp"
+        android:layout_height="wrap_content"
         android:layout_marginStart="16dp"
         android:layout_marginTop="16dp"
-        android:layout_marginEnd="16dp"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
+        android:layout_marginEnd="8dp"
+        android:contentDescription="@string/category_page_text"
+        android:ems="10"
+        android:inputType="none"
+        android:singleLine="false"
+        android:text="@string/category"
+        android:textAllCaps="false"
+        android:textColor="@color/White"
+        android:textIsSelectable="false"
+        android:textSize="@dimen/column_header_font_size"
+        android:textStyle="bold"
+        app:layout_constraintEnd_toStartOf="@+id/numItems_text2"
+        app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/category_text_id" />
+        app:layout_constraintTop_toBottomOf="@+id/browse_by_room_title_id"
+        tools:textIsSelectable="false" />
+
+    <android.support.v7.widget.RecyclerView
+        android:id="@+id/view_all_categories"
+        android:layout_width="368dp"
+        android:layout_height="295dp"
+        android:layout_marginStart="8dp"
+        android:layout_marginTop="8dp"
+        android:layout_marginEnd="8dp"
+        android:layout_marginBottom="8dp"
+        app:layout_constraintBottom_toTopOf="@+id/addNewRoom_btn_id"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/numItems_text3" />
 
     <ImageButton
         android:id="@+id/addNewCategory_btn_id"
@@ -72,20 +75,13 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent" />
 
-    <include
-        android:id="@+id/menu_overlay_id"
-        layout="@layout/main_menu_overlay"
-        android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:visibility="gone"
-        app:layout_constraintTop_toTopOf="parent" />
 
     <TextView
         android:id="@+id/browse_by_room_title_id"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
         android:layout_marginTop="@dimen/title_text_to_header_dim"
-        android:contentDescription="@string/room_page_text"
+        android:contentDescription="@string/category_page_text"
         android:ems="10"
         android:inputType="none"
         android:singleLine="false"
@@ -102,11 +98,20 @@
         tools:textIsSelectable="false" />
 
     <include
+        android:id="@+id/menu_overlay_id"
+        layout="@layout/main_menu_overlay"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:visibility="gone"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <include
         android:id="@+id/title"
         layout="@layout/title_bar"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:visibility="visible"
         app:layout_constraintTop_toTopOf="parent" />
+
 
 </android.support.constraint.ConstraintLayout>

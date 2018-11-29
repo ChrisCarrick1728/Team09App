@@ -3,9 +3,13 @@ package com.example.team09app.team09app;
 import android.app.AlertDialog;
 import android.content.Context;
 import android.content.DialogInterface;
+import android.os.AsyncTask;
 import android.os.Bundle;
 import android.support.constraint.ConstraintLayout;
 import android.support.v7.app.AppCompatActivity;
+import android.support.v7.widget.LinearLayoutManager;
+import android.support.v7.widget.RecyclerView;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.widget.EditText;
@@ -13,10 +17,15 @@ import android.widget.ImageButton;
 import android.widget.ImageView;
 import android.widget.ListView;
 
+import java.util.List;
+
 public class BrowseByRoom extends AppCompatActivity implements SaveCurrentActivity, MainMenuButtonFunction {
 
-    ListView roomList;
+    private ImageButton addRoomButton;
+    private RecyclerView recyclerView;
+
     private static final String CURRENT_ACTIVITY = "BrowseByRoom";
+    private static final String TAG = "BrowseByRoom";
     final Context context = this;
     private EditText result;
 
@@ -27,11 +36,11 @@ public class BrowseByRoom extends AppCompatActivity implements SaveCurrentActivi
         setContentView(R.layout.activity_view_by_room);
         saveCurrent(CURRENT_ACTIVITY);
 
-        ImageButton addNewRoom = (ImageButton)findViewById(R.id.addNewRoom_btn_id);
+        recyclerView = findViewById(R.id.view_all_rooms);
+        recyclerView.setLayoutManager(new LinearLayoutManager(this));
 
-        //roomList = (ListView)findViewById(R.id.roomList);
-
-        addNewRoom.setOnClickListener(new View.OnClickListener() {
+        addRoomButton = findViewById(R.id.addNewRoom_btn_id);
+        addRoomButton.setOnClickListener(new View.OnClickListener() {
 
             @Override
             public void onClick(View v) {
@@ -78,6 +87,36 @@ public class BrowseByRoom extends AppCompatActivity implements SaveCurrentActivi
 
             }
         });
+
+        getTasks();
+    }
+
+    // call functions from ItemDao()
+    private void getTasks() {
+        class GetTasks extends AsyncTask<Void, Void, List<Item>> {
+
+            @Override
+            protected List<Item> doInBackground(Void... voids) {
+                List<Item> roomList = DatabaseClient
+                        .getInstance(getApplicationContext())
+                        .getItemRoomDatabase()
+                        .itemDao()
+                        .getAllRooms();
+
+                Log.d(TAG, "doInBackground: completed");
+                return roomList;
+            }
+
+            @Override
+            protected void onPostExecute(List<Item> items) {
+                super.onPostExecute(items);
+                RoomListAdapter adapter = new RoomListAdapter(BrowseByRoom.this, items);
+                recyclerView.setAdapter(adapter);
+                Log.d(TAG, "onPostExecute: completed");
+            }
+        }
+        GetTasks gt = new GetTasks();
+        gt.execute();
     }
 
     @Override // MainMenuButtonFunction
