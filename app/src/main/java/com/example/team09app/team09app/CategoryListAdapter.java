@@ -2,10 +2,7 @@ package com.example.team09app.team09app;
 
 import android.content.Context;
 import android.content.Intent;
-import android.provider.ContactsContract;
-import android.support.v7.view.menu.MenuView;
 import android.support.v7.widget.RecyclerView;
-import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -13,28 +10,28 @@ import android.widget.TextView;
 
 import java.util.List;
 
-public class RoomListAdapter extends RecyclerView.Adapter<RoomListAdapter.ItemViewHolder> {
+public class CategoryListAdapter extends RecyclerView.Adapter<CategoryListAdapter.ItemViewHolder> {
 
     private Context mCtx;
     private List<Item> itemList;
-    private static final String TAG = "RoomListAdapter";
+    private static final String TAG = "CategoryListAdapter";
 
-    public RoomListAdapter (Context mCtx, List<Item> itemList) {
+    public CategoryListAdapter (Context mCtx, List<Item> itemList) {
         this.mCtx = mCtx;
         this.itemList = itemList;
     }
 
     @Override
-    public RoomListAdapter.ItemViewHolder onCreateViewHolder(ViewGroup parent, int viewType) {
-        View view = LayoutInflater.from(mCtx).inflate(R.layout.recyclerview_rooms, parent, false);
-        return new RoomListAdapter.ItemViewHolder(view);
+    public CategoryListAdapter.ItemViewHolder onCreateViewHolder(ViewGroup parent, int viewType) {
+        View view = LayoutInflater.from(mCtx).inflate(R.layout.recyclerview_categories, parent, false);
+        return new CategoryListAdapter.ItemViewHolder(view);
     }
 
     @Override
     public void onBindViewHolder(ItemViewHolder holder, int position) {
         Item it = itemList.get(position);
         //holder.textViewNumber_id.setText("1");
-        holder.textViewRoom_id.setText(it.getMRoom());
+        holder.textViewCategory_id.setText(it.getMCategory());
     }
 
     @Override
@@ -47,13 +44,13 @@ public class RoomListAdapter extends RecyclerView.Adapter<RoomListAdapter.ItemVi
 
     class ItemViewHolder extends RecyclerView.ViewHolder implements View.OnClickListener {
 
-        TextView textViewRoom_id, textViewNumber_id;
+        TextView textViewCategory_id, textViewNumber2_id;
 
         public ItemViewHolder(View iView) {
             super(iView);
 
-            textViewRoom_id = iView.findViewById(R.id.textViewRoom_id);
-            textViewNumber_id = iView.findViewById(R.id.textViewNumber_id);
+            textViewCategory_id = iView.findViewById(R.id.textViewCategory_id);
+            textViewNumber2_id = iView.findViewById(R.id.textViewNumber2_id);
 
             iView.setOnClickListener(this);
         }
@@ -63,7 +60,7 @@ public class RoomListAdapter extends RecyclerView.Adapter<RoomListAdapter.ItemVi
             Item item = itemList.get(getAdapterPosition());
 
             // ToDo: change to viewSingleRoom when ready
-            Intent intent = new Intent(mCtx, BrowseByRoom.class);
+            Intent intent = new Intent(mCtx, BrowseByCategory.class);
             intent.putExtra("room", item);
 
             mCtx.startActivity(intent);

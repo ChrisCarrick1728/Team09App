@@ -36,17 +36,10 @@ public class BrowseByRoom extends AppCompatActivity implements SaveCurrentActivi
         setContentView(R.layout.activity_view_by_room);
         saveCurrent(CURRENT_ACTIVITY);
 
-        Log.d(TAG, "onCreate: Activity started");
-
         recyclerView = findViewById(R.id.view_all_rooms);
         recyclerView.setLayoutManager(new LinearLayoutManager(this));
 
-        Log.d(TAG, "onCreate: RecyclerView set");
-
         addRoomButton = findViewById(R.id.addNewRoom_btn_id);
-
-        Log.d(TAG, "onCreate: addRoomButton set");
-        
         addRoomButton.setOnClickListener(new View.OnClickListener() {
 
             @Override
@@ -95,9 +88,7 @@ public class BrowseByRoom extends AppCompatActivity implements SaveCurrentActivi
             }
         });
 
-        Log.d(TAG, "onCreate: calling getTasks()");
         getTasks();
-        Log.d(TAG, "onCreate: getTasks() completed");
     }
 
     // call functions from ItemDao()

@@ -3,9 +3,13 @@ package com.example.team09app.team09app;
 import android.app.AlertDialog;
 import android.content.Context;
 import android.content.DialogInterface;
+import android.os.AsyncTask;
 import android.os.Bundle;
 import android.support.constraint.ConstraintLayout;
 import android.support.v7.app.AppCompatActivity;
+import android.support.v7.widget.LinearLayoutManager;
+import android.support.v7.widget.RecyclerView;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.widget.EditText;
@@ -13,10 +17,15 @@ import android.widget.ImageButton;
 import android.widget.ImageView;
 import android.widget.ListView;
 
+import java.util.List;
+
 public class BrowseByCategory extends AppCompatActivity implements SaveCurrentActivity, MainMenuButtonFunction {
 
-    ListView categoryList;
+    private ImageButton addCategoryButton;
+    private RecyclerView recyclerView;
+
     private static final String CURRENT_ACTIVITY = "BrowseByCategory";
+    private static final String TAG = "BrowseByCategogy";
     final Context context = this;
     private EditText result;
 
@@ -26,11 +35,11 @@ public class BrowseByCategory extends AppCompatActivity implements SaveCurrentAc
         setContentView(R.layout.activity_view_by_category);
         saveCurrent(CURRENT_ACTIVITY);
 
-        ImageButton addNewCategory = (ImageButton)findViewById(R.id.addNewCategory_btn_id);
+        recyclerView = findViewById(R.id.view_all_categories);
+        recyclerView.setLayoutManager(new LinearLayoutManager(this));
 
-        categoryList = (ListView)findViewById(R.id.categoryList);
-
-        addNewCategory.setOnClickListener(new View.OnClickListener() {
+        addCategoryButton = findViewById(R.id.addNewCategory_btn_id);
+        addCategoryButton.setOnClickListener(new View.OnClickListener() {
 
             @Override
             public void onClick(View v) {
@@ -76,6 +85,36 @@ public class BrowseByCategory extends AppCompatActivity implements SaveCurrentAc
 
             }
         });
+
+        getTasks();
+    }
+
+    // call functions from ItemDao()
+    private void getTasks() {
+        class GetTasks extends AsyncTask<Void, Void, List<Item>> {
+
+            @Override
+            protected List<Item> doInBackground(Void... voids) {
+                List<Item> categoryList = DatabaseClient
+                        .getInstance(getApplicationContext())
+                        .getItemRoomDatabase()
+                        .itemDao()
+                        .getAllCategories();
+
+                Log.d(TAG, "doInBackground: completed");
+                return categoryList;
+            }
+
+            @Override
+            protected void onPostExecute(List<Item> items) {
+                super.onPostExecute(items);
+                CategoryListAdapter adapter = new CategoryListAdapter(BrowseByCategory.this, items);
+                recyclerView.setAdapter(adapter);
+                Log.d(TAG, "onPostExecute: completed");
+            }
+        }
+        GetTasks gt = new GetTasks();
+        gt.execute();
     }
 
     @Override // MainMenuButtonFunction
