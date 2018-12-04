@@ -38,11 +38,4 @@
     <string name="button_save">Save</string>
     <string name="button_delete">Delete</string>
     <string name="button_edit">Edit</string>
-
-    <string-array name="RoomList">
-        <item>Living Room</item>
-        <item>Kitchen</item>
-        <item>Bedroom</item>
-    </string-array>
-
 </resources>

@@ -1,17 +1,18 @@
 package com.example.team09app.team09app;
 
 import android.app.AlertDialog;
+import android.app.DatePickerDialog;
+import android.app.Dialog;
 import android.content.ContentResolver;
 import android.content.Context;
 import android.content.DialogInterface;
 import android.content.Intent;
-import android.content.pm.ActivityInfo;
 import android.graphics.Bitmap;
 import android.net.Uri;
 import android.provider.MediaStore;
-import android.content.Intent;
 import android.os.AsyncTask;
 import android.support.constraint.ConstraintLayout;
+import android.support.v4.app.DialogFragment;
 import android.support.v4.content.FileProvider;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
@@ -20,6 +21,7 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
+import android.widget.DatePicker;
 import android.widget.EditText;
 import android.widget.ImageButton;
 import android.widget.ImageView;
@@ -29,10 +31,12 @@ import android.os.Environment;
 
 import java.io.File;
 import java.io.IOException;
-import java.net.URI;
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
+import java.util.Calendar;
 import java.util.Date;
+import java.util.List;
+
 import android.widget.Toast;
 
 public class AddNewItem extends AppCompatActivity implements MainMenuButtonFunction, AdapterView.OnItemSelectedListener {
@@ -68,13 +72,12 @@ public class AddNewItem extends AppCompatActivity implements MainMenuButtonFunct
         });
 
 
-        //For the dropdown selection for Room
-        Spinner spinner = findViewById(R.id.roomSpinner);
-        ArrayAdapter<CharSequence> adapter = ArrayAdapter.createFromResource(this, R.array.RoomList, android.R.layout.simple_spinner_item);
-        adapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
-        // Apply the adapter to the spinner
-        spinner.setAdapter(adapter);
-        spinner.setOnItemSelectedListener(this);
+        //call for room dropdown
+        getTasks();
+
+        //call for category dropdown
+        getCategory();
+
 
 
         //Start of the code for the add new category pop-up to open up
@@ -186,6 +189,86 @@ public class AddNewItem extends AppCompatActivity implements MainMenuButtonFunct
         });
 
         //End of code for add new room pop-up
+    }
+
+
+    // call getAllRooms() from ItemDao to get all items stored in database
+    private void getTasks() {
+        class GetTasks extends AsyncTask<Void, Void, List<Item>> {
+            @Override
+            protected List<Item> doInBackground(Void... voids) {
+                List<Item> itemList = DatabaseClient
+                        .getInstance(getApplicationContext())
+                        .getItemRoomDatabase()
+                        .itemDao()
+                        .getAllRooms();
+                return itemList;
+            }
+
+            @Override
+            protected void onPostExecute(List<Item> items) {
+                super.onPostExecute(items);
+
+                //Creating the spinner dropdown option
+                Spinner spinner = findViewById(R.id.roomSpinner);
+
+                //Need to get the size of how many items there are
+                List<String> stringList = new ArrayList<String>(items.size());
+
+                //sort through the items and place each item into the stringList
+                for (int i = 0; i < items.size(); i++)
+                {
+                    stringList.add(items.get(i).getMRoom().toString());
+                }
+                ArrayAdapter<String> adapter = new ArrayAdapter<String>(AddNewItem.this, android.R.layout.simple_spinner_item, stringList);
+                adapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
+                // Apply the adapter to the spinner
+
+                spinner.setAdapter(adapter);
+                spinner.setOnItemSelectedListener(AddNewItem.this);
+            }
+        }
+        GetTasks gt = new GetTasks();
+        gt.execute();
+    }
+
+    // call getAllCategories() from ItemDao to get all items stored in database
+    private void getCategory() {
+        class GetTasks extends AsyncTask<Void, Void, List<Item>> {
+            @Override
+            protected List<Item> doInBackground(Void... voids) {
+                List<Item> itemList = DatabaseClient
+                        .getInstance(getApplicationContext())
+                        .getItemRoomDatabase()
+                        .itemDao()
+                        .getAllCategories();
+                return itemList;
+            }
+
+            @Override
+            protected void onPostExecute(List<Item> items) {
+                super.onPostExecute(items);
+
+                //Creating the spinner dropdown option
+                Spinner spinner = findViewById(R.id.categorySpinner);
+
+                //Need to get the size of how many items there are
+                List<String> stringList = new ArrayList<String>(items.size());
+
+                //sort through the items and place each item into the stringList
+                for (int i = 0; i < items.size(); i++)
+                {
+                    stringList.add(items.get(i).getMCategory().toString());
+                }
+                ArrayAdapter<String> adapter = new ArrayAdapter<String>(AddNewItem.this, android.R.layout.simple_spinner_item, stringList);
+                adapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
+                // Apply the adapter to the spinner
+                spinner.setAdapter(adapter);
+                spinner.setOnItemSelectedListener(AddNewItem.this);
+            }
+        }
+        GetTasks gt = new GetTasks();
+        gt.execute();
     }
 
     String mCurrentPhotoPath;
@@ -373,13 +456,39 @@ public class AddNewItem extends AppCompatActivity implements MainMenuButtonFunct
 
         String str = spinner.getSelectedItem().toString();
         input.setText(str);
+        //end of code for room dropdown
+
+
+        //code for category dropdown
+        TextView input2;
+        input2 = (TextView)findViewById(R.id.editCategory);
+
+        parent.getItemAtPosition(position).toString();
+
+        Spinner spinner2 = (Spinner) findViewById(R.id.categorySpinner);
+        spinner2.setOnItemSelectedListener(this);
+
+        String str2 = spinner2.getSelectedItem().toString();
+        input2.setText(str2);
+        //end of code for categories dropdown
+
     }
 
+    //do not delete this empty function
     @Override
     public void onNothingSelected(AdapterView<?> parent) {
         //This can stay empty for spinner dropdown
+
     }
 
-    //Todo: Add Dropdown menu for Room/Category
+
+
+
+
+    //Todo: Add Dropdown menu for Category
     //Todo: Add Popup to add new Room/Category
+
+
 }
+
+

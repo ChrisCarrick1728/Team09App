@@ -17,12 +17,12 @@
         android:layout_marginTop="8dp"
         android:ems="10"
         android:hint="@string/purchase_date"
-        android:inputType="textPersonName"
+        android:inputType="date"
         android:selectAllOnFocus="false"
         android:textColor="@color/White"
         android:textColorHint="@color/White"
         app:layout_constraintStart_toEndOf="@+id/editPriceText"
-        app:layout_constraintTop_toBottomOf="@+id/imageButton6" />
+        app:layout_constraintTop_toBottomOf="@+id/editCategory" />
 
     <EditText
         android:id="@+id/editPriceText"
@@ -32,8 +32,8 @@
         android:layout_marginTop="8dp"
         android:ems="10"
         android:hint="@string/price_text"
-        android:inputType="text"
-        android:selectAllOnFocus="false"
+        android:inputType="numberDecimal"
+        android:selectAllOnFocus="true"
         android:textColor="@color/White"
         android:textColorHint="@color/White"
         app:layout_constraintStart_toStartOf="parent"
@@ -73,7 +73,7 @@
         android:ems="10"
         android:hint="@string/category_text"
         android:inputType="textPersonName"
-        android:selectAllOnFocus="false"
+        android:selectAllOnFocus="true"
         android:textColor="@color/White"
         android:textColorHint="@color/White"
         app:layout_constraintStart_toStartOf="parent"
@@ -88,7 +88,7 @@
         android:ems="10"
         android:hint="@string/room_text"
         android:inputType="textPersonName"
-        android:selectAllOnFocus="false"
+        android:selectAllOnFocus="true"
         android:textColor="@color/White"
         android:textColorHint="@color/White"
         app:layout_constraintStart_toStartOf="parent"
@@ -136,7 +136,7 @@
         android:ems="10"
         android:hint="@string/name_text"
         android:inputType="textPersonName"
-        android:selectAllOnFocus="false"
+        android:selectAllOnFocus="true"
         android:textColor="@color/White"
         android:textColorHint="@color/White"
         app:layout_constraintHorizontal_chainStyle="spread_inside"
@@ -170,7 +170,7 @@
 
     <Spinner
         android:id="@+id/roomSpinner"
-        android:layout_width="46dp"
+        android:layout_width="47dp"
         android:layout_height="46dp"
         android:layout_marginStart="8dp"
         android:layout_marginTop="8dp"
@@ -178,10 +178,20 @@
         android:visibility="visible"
         app:layout_constraintBottom_toBottomOf="@+id/addNewRoomDrop_btn"
         app:layout_constraintEnd_toEndOf="@+id/addNewRoomDrop_btn"
-        app:layout_constraintHorizontal_bias="1.0"
+        app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toEndOf="@+id/editRoom"
         app:layout_constraintTop_toBottomOf="@+id/editNameText"
         app:layout_constraintVertical_bias="1.0" />
+
+    <Spinner
+        android:id="@+id/categorySpinner"
+        android:layout_width="47dp"
+        android:layout_height="46dp"
+        android:layout_marginStart="8dp"
+        android:backgroundTint="@color/DarkBlue"
+        android:visibility="visible"
+        app:layout_constraintStart_toEndOf="@+id/editCategory"
+        app:layout_constraintTop_toBottomOf="@+id/roomSpinner" />
 
     <ImageButton
         android:id="@+id/button_save"
