@@ -45,7 +45,6 @@ public class ViewSingleActivity extends AppCompatActivity implements MainMenuBut
         });
 
         // delete item button
-        // ToDo: Yes and No words do not show up on popup
         deleteButton = findViewById(R.id.button_delete);
         deleteButton.setOnClickListener(new View.OnClickListener() {
             @Override
