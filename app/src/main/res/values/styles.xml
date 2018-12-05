@@ -19,4 +19,17 @@
         <item name="android:paddingLeft">8dp</item>
     </style>
 
+    <!--Thanks to https://stackoverflow.com/questions/27965662/how-can-i-change-default-dialog-button-text-color-in-android-5
+    for solution on alert styling -->
+    <style name="AlertDialogTheme" parent="Theme.AppCompat.Light.Dialog.Alert">
+        <item name="buttonBarNegativeButtonStyle">@style/NegativeButtonStyle</item>
+        <item name="buttonBarPositiveButtonStyle">@style/PositiveButtonStyle</item>
+    </style>
+    <style name="NegativeButtonStyle" parent="Widget.AppCompat.Button.ButtonBar.AlertDialog">
+        <item name="android:textColor">@color/Blue</item>
+    </style>
+    <style name="PositiveButtonStyle" parent="Widget.AppCompat.Button.ButtonBar.AlertDialog">
+        <item name="android:textColor">@color/Blue</item>
+    </style>
+
 </resources>

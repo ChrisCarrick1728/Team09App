@@ -50,7 +50,7 @@ public class ViewSingleActivity extends AppCompatActivity implements MainMenuBut
         deleteButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                AlertDialog.Builder builder = new AlertDialog.Builder(ViewSingleActivity.this);
+                AlertDialog.Builder builder = new AlertDialog.Builder(ViewSingleActivity.this, R.style.AlertDialogTheme);
                 builder.setTitle("Are you sure?");
                 builder.setPositiveButton("Yes", new DialogInterface.OnClickListener() {
                     @Override
