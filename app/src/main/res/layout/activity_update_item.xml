@@ -29,7 +29,7 @@
         app:layout_constraintTop_toBottomOf="@+id/title"
         tools:textIsSelectable="false" />
 
-    <EditText
+    <TextView
         android:id="@+id/editPurchaseDate"
         android:layout_width="210dp"
         android:layout_height="42dp"
@@ -37,7 +37,10 @@
         android:layout_marginTop="8dp"
         android:ems="10"
         android:hint="@string/purchase_date"
-        android:inputType="textPersonName"
+        android:inputType="text"
+        android:textSize="18sp"
+        android:textAlignment="center"
+        android:background="@color/DarkBlue"
         android:selectAllOnFocus="false"
         android:textColor="@color/White"
         android:textColorHint="@color/White"

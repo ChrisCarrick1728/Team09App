@@ -41,8 +41,10 @@ import android.widget.Toast;
 
 public class AddNewItem extends AppCompatActivity implements MainMenuButtonFunction, AdapterView.OnItemSelectedListener {
 
-    private EditText editNameText, editRoom, editCategory, editPriceText, editPurchaseDate;
+    private EditText editNameText, editRoom, editCategory, editPriceText;
     private ImageView itemImage;
+    private TextView editPurchaseDate;
+    private DatePickerDialog.OnDateSetListener mDateSetListener;
 
 
     private static final String TAG = "Add_New_Item";
@@ -63,6 +65,36 @@ public class AddNewItem extends AppCompatActivity implements MainMenuButtonFunct
         editPriceText = findViewById(R.id.editPriceText);
         editPurchaseDate = findViewById(R.id.editPurchaseDate);
         itemImage = findViewById(R.id.item_image_id);
+
+        // Calendar pop up to fill in date field
+        editPurchaseDate.setOnClickListener(new View.OnClickListener() {
+
+            @Override
+            public void onClick(View v) {
+                Calendar cal = Calendar.getInstance();
+                int year = cal.get(Calendar.YEAR);
+                int month = cal.get(Calendar.MONTH);
+                int day = cal.get(Calendar.DAY_OF_MONTH);
+
+                DatePickerDialog dialogDate = new DatePickerDialog(
+                        AddNewItem.this,
+                        android.R.style.Theme_DeviceDefault,
+                        mDateSetListener,
+                        year, month, day);
+                dialogDate.show();
+            }
+        });
+
+        // Set chosen date as a string
+        mDateSetListener = new DatePickerDialog.OnDateSetListener() {
+            @Override
+            public void onDateSet(DatePicker view, int year, int month, int dayOfMonth) {
+                // January == 1 ... December == 11
+                month = month + 1;
+                String date = month + "/" + dayOfMonth + "/" + year;
+                editPurchaseDate.setText(date);
+            }
+        };
 
         findViewById(R.id.button_save).setOnClickListener(new View.OnClickListener() {
             @Override

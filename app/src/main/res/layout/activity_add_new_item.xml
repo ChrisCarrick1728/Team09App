@@ -9,18 +9,22 @@
     tools:context=".AddNewItem">
 
 
-    <EditText
+    <TextView
         android:id="@+id/editPurchaseDate"
         android:layout_width="210dp"
         android:layout_height="42dp"
         android:layout_marginStart="4dp"
         android:layout_marginTop="8dp"
+        android:background="@color/DarkBlue"
         android:ems="10"
         android:hint="@string/purchase_date"
-        android:inputType="date"
+        android:inputType="text"
         android:selectAllOnFocus="false"
+        android:singleLine="true"
+        android:textAlignment="center"
         android:textColor="@color/White"
         android:textColorHint="@color/White"
+        android:textSize="18sp"
         app:layout_constraintStart_toEndOf="@+id/editPriceText"
         app:layout_constraintTop_toBottomOf="@+id/editCategory" />
 

@@ -19,6 +19,7 @@ import android.view.View;
 import android.widget.EditText;
 import android.widget.ImageButton;
 import android.widget.ImageView;
+import android.widget.TextView;
 import android.widget.Toast;
 
 import java.io.File;
@@ -31,7 +32,8 @@ import static com.example.team09app.team09app.AddNewItem.REQUEST_IMAGE_CAPTURE;
 
 public class UpdateItemActivity extends AppCompatActivity implements MainMenuButtonFunction {
 
-    private EditText editTextName, editTextRoom, editTextCategory, editTextPrice, editTextDate;
+    private EditText editTextName, editTextRoom, editTextCategory, editTextPrice;
+    private TextView editTextDate;
     private ImageButton itemImage;
     Uri mainURI;
     private static final String TAG = "UpdateItemActivity";
