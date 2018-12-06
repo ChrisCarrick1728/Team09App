@@ -93,7 +93,8 @@ public class UpdateItemActivity extends AppCompatActivity implements MainMenuBut
         final String sName = editTextName.getText().toString().trim();
         final String sRoom = editTextRoom.getText().toString().trim();
         final String sCategory = editTextCategory.getText().toString().trim();
-        final String sPrice = editTextPrice.getText().toString().trim();
+        String dollarSign = "$ ";
+        final String sPrice = dollarSign + editTextPrice.getText().toString().trim();
         final String sDate = editTextDate.getText().toString().trim();
 
         // ToDo: All fields required right now. Change?

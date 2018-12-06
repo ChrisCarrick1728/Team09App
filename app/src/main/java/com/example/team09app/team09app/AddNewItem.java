@@ -378,12 +378,13 @@ public class AddNewItem extends AppCompatActivity implements MainMenuButtonFunct
         Log.d(TAG, "takePicture: " + getExternalFilesDir(null));
     }
 
-    // ToDo: change strings to other formats for price and date?
+    // ToDo: change strings to other formats for price?
     private void saveTask() {
         final String sName = editNameText.getText().toString().trim();
         final String sRoom = editRoom.getText().toString().trim();
         final String sCategory = editCategory.getText().toString().trim();
-        final String sPrice = editPriceText.getText().toString().trim();
+        String dollarSign = "$ ";
+        final String sPrice = dollarSign + editPriceText.getText().toString().trim();
         final String sDate = editPurchaseDate.getText().toString().trim();
         final String sImage = mainURI.toString().trim();
 
