@@ -379,7 +379,6 @@ public class AddNewItem extends AppCompatActivity implements MainMenuButtonFunct
         Log.d(TAG, "takePicture: " + getExternalFilesDir(null));
     }
 
-    // ToDo: change strings to other formats for price?
     private void saveTask() {
         final String sName = editNameText.getText().toString().trim();
         final String sRoom = editRoom.getText().toString().trim();
@@ -514,14 +513,6 @@ public class AddNewItem extends AppCompatActivity implements MainMenuButtonFunct
         //This can stay empty for spinner dropdown
 
     }
-
-
-
-
-
-    //Todo: Add Dropdown menu for Category
-    //Todo: Add Popup to add new Room/Category
-
 
 }
 

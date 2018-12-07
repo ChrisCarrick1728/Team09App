@@ -11,8 +11,6 @@ import android.widget.TextView;
 
 import java.util.List;
 
-//ToDo: create Adapter class for ViewSingleRoom ViewSingleCategory
-
 public class ItemsListAdapter extends RecyclerView.Adapter<ItemsListAdapter.ItemViewHolder> {
 
     private Context mCtx;
