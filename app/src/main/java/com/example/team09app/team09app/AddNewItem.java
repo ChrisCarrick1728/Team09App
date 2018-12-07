@@ -78,6 +78,7 @@ public class AddNewItem extends AppCompatActivity implements MainMenuButtonFunct
 
                 DatePickerDialog dialogDate = new DatePickerDialog(
                         AddNewItem.this,
+                        // ToDo: we can change this style for a different calendar option, see styles
                         android.R.style.Theme_DeviceDefault,
                         mDateSetListener,
                         year, month, day);

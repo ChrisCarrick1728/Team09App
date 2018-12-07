@@ -32,4 +32,12 @@
         <item name="android:textColor">@color/Blue</item>
     </style>
 
+    <!-- This will change calendar pop up to spinner mode -->
+    <!-- The spinner mode is only available with API 21 and higher. We are set at 19 -->
+    <!-- ToDo: match this style with the one used in AddNewItem class and UpdateItem class if using spinner -->
+    <!--<style name="MyDatePickerStyle" parent="@android:style/Widget.Holo.DatePicker">-->
+        <!--<item name="android:datePickerMode">spinner</item>-->
+        <!--<item name="android:calendarViewShown">false</item>-->
+    <!--</style>-->
+
 </resources>
