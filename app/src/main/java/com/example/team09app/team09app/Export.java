@@ -21,7 +21,7 @@ public class Export extends AppCompatActivity implements MainMenuButtonFunction 
 
     private static final String TAG = "Export";
 
-    String excelFilePath = "items.cvs";
+    String excelFilePath = "items.csv";
     Context context = this;
 
     @Override
