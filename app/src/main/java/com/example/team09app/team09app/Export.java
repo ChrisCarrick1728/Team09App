@@ -14,6 +14,15 @@ public class Export extends AppCompatActivity implements MainMenuButtonFunction 
         setContentView(R.layout.activity_export);
     }
 
+    // ToDo: Export pdf
+
+    // ToDo: Export excel
+
+    // ToDo: Add backup button to this page
+
+    // ToDo: Save to online backup
+
+
     @Override
     public void hamburgerMenu(View view) {
         ConstraintLayout mainMenuOverlay = (ConstraintLayout) findViewById(R.id.menu_overlay_id);
