@@ -1,5 +1,6 @@
 package com.example.team09app.team09app;
 
+import android.app.DatePickerDialog;
 import android.content.ContentResolver;
 import android.content.DialogInterface;
 import android.content.Intent;
@@ -16,6 +17,7 @@ import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
+import android.widget.DatePicker;
 import android.widget.EditText;
 import android.widget.ImageButton;
 import android.widget.ImageView;
@@ -25,6 +27,7 @@ import android.widget.Toast;
 import java.io.File;
 import java.io.IOException;
 import java.text.SimpleDateFormat;
+import java.util.Calendar;
 import java.util.Date;
 
 import static android.support.constraint.Constraints.TAG;
@@ -35,8 +38,10 @@ public class UpdateItemActivity extends AppCompatActivity implements MainMenuBut
     private EditText editTextName, editTextRoom, editTextCategory, editTextPrice;
     private TextView editTextDate;
     private ImageButton itemImage;
+    private DatePickerDialog.OnDateSetListener mEditDateSetListener;
     Uri mainURI;
     private static final String TAG = "UpdateItemActivity";
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -52,6 +57,38 @@ public class UpdateItemActivity extends AppCompatActivity implements MainMenuBut
         final Item item = (Item) getIntent().getSerializableExtra("item");
         Log.d(TAG, "Item: " + getIntent().getSerializableExtra("item"));
         loadItem(item);
+
+
+        // Calendar pop up to fill in date field
+        editTextDate.setOnClickListener(new View.OnClickListener() {
+
+            @Override
+            public void onClick(View v) {
+                Calendar cal = Calendar.getInstance();
+                int year = cal.get(Calendar.YEAR);
+                int month = cal.get(Calendar.MONTH);
+                int day = cal.get(Calendar.DAY_OF_MONTH);
+
+                DatePickerDialog dialogDate = new DatePickerDialog(
+                        UpdateItemActivity.this,
+                        // ToDo: we can change this style for a different calendar option, see styles
+                        android.R.style.Theme_DeviceDefault,
+                        mEditDateSetListener,
+                        year, month, day);
+                dialogDate.show();
+            }
+        });
+
+        // Set chosen date as a string
+        mEditDateSetListener = new DatePickerDialog.OnDateSetListener() {
+            @Override
+            public void onDateSet(DatePicker view, int year, int month, int dayOfMonth) {
+                // January == 1 ... December == 11
+                month = month + 1;
+                String date = month + "/" + dayOfMonth + "/" + year;
+                editTextDate.setText(date);
+            }
+        };
 
 
         // update item button
