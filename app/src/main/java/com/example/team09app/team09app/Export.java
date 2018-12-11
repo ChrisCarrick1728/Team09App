@@ -23,7 +23,7 @@ import java.util.List;
 public class Export extends AppCompatActivity implements MainMenuButtonFunction {
     private static final String TAG = "Export";
 
-    String excelFilePath = "items.cvs";
+    String excelFilePath = "items.csv";
     Context context = this;
 
     @Override
@@ -56,10 +56,10 @@ public class Export extends AppCompatActivity implements MainMenuButtonFunction 
 
     private void saveExcel() throws IOException {
 
-        // create new cvs file
+        // create new csv file
         Log.d(TAG, "attempting to create new file");
         File cvsFile = new File(context.getFilesDir(), excelFilePath);
-        Log.d(TAG, "New file created");
+        Log.d(TAG, "New file created " + cvsFile);
 
         // open writer
         FileWriter fwExcel = new FileWriter(cvsFile, false);
@@ -82,7 +82,7 @@ public class Export extends AppCompatActivity implements MainMenuButtonFunction 
                         .getItemRoomDatabase()
                         .itemDao()
                         .getNumAllItems();
-                Log.d(TAG, "Got number of items");
+                Log.d(TAG, "Got number of items" + numItems);
 
                 // if no items in database, don't do anything
                 if(numItems == 0) {
