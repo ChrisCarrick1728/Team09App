@@ -4,6 +4,7 @@ import android.content.ContentResolver;
 import android.content.Context;
 import android.content.Intent;
 import android.graphics.Bitmap;
+import android.graphics.BitmapFactory;
 import android.net.Uri;
 import android.os.Bundle;
 import android.provider.MediaStore;
@@ -16,6 +17,7 @@ import android.view.ViewGroup;
 import android.widget.ImageView;
 import android.widget.TextView;
 
+import java.io.File;
 import java.io.IOException;
 import java.net.URI;
 import java.util.List;
@@ -48,9 +50,12 @@ public class SingleItemAdapter extends RecyclerView.Adapter<SingleItemAdapter.Si
         holder.dateText.setText(it.getMDate());
 
         // Load Image
+        StringToBitmap s = new StringToBitmap();
+        Decompress d = new Decompress();
+        Bitmap imageBitmap = s.convert(it.getMPicture());
+        holder.itemImage.setImageBitmap(imageBitmap);
 
-
-        ContentResolver cr = mCtx.getContentResolver();
+        /*ContentResolver cr = mCtx.getContentResolver();
         try {
             Uri imageURI = Uri.parse(it.getMPicture());
 
@@ -65,7 +70,7 @@ public class SingleItemAdapter extends RecyclerView.Adapter<SingleItemAdapter.Si
             }
         } catch (Exception e) {
             Log.d(TAG, "Error: Image doesn't exist " + e);
-        }
+        }*/
     }
 
     @Override

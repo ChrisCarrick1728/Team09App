@@ -52,6 +52,7 @@ public class AddNewItem extends AppCompatActivity implements MainMenuButtonFunct
     final Context context = this;
     private EditText result;
     Uri mainURI;
+    Bitmap imageBitmap;
     //private EditText result;
 
     @Override
@@ -326,14 +327,19 @@ public class AddNewItem extends AppCompatActivity implements MainMenuButtonFunct
     private void dispatchTakePictureIntent() {
         Intent takePictureIntent = new Intent(MediaStore.ACTION_IMAGE_CAPTURE);
         if (takePictureIntent.resolveActivity(getPackageManager()) != null) {
-
+            File storageDir = getExternalFilesDir(Environment.DIRECTORY_PICTURES);
             File photoFile = null;
-
             try {
+                photoFile = File.createTempFile("tempPhoto", ".jpg", storageDir);
+            } catch (IOException ex) {
+                Log.d(TAG, "Error: " + ex);
+            }
+
+            /*try {
                 photoFile = createImageFile();
             } catch (IOException ex) {
                 Log.d(TAG, "dispatchTakePictureIntent:" + ex);
-            }
+            }*/
             Uri photoURI;
             if (photoFile != null) {
                 if (mainURI == null) {
@@ -362,7 +368,7 @@ public class AddNewItem extends AppCompatActivity implements MainMenuButtonFunct
             ContentResolver cr = this.getContentResolver();
 
             Log.d(TAG, "LoadURI: " + mainURI);
-            Bitmap imageBitmap;
+
             try {
                 imageBitmap = MediaStore.Images.Media.getBitmap(cr, mainURI);
                 mImageButton.setVisibility(View.INVISIBLE);
@@ -386,70 +392,89 @@ public class AddNewItem extends AppCompatActivity implements MainMenuButtonFunct
         String dollarSign = "$ ";
         final String sPrice = dollarSign + editPriceText.getText().toString().trim();
         final String sDate = editPurchaseDate.getText().toString().trim();
-        final String sImage = mainURI.toString().trim();
 
-        // ToDo: All fields required right now. Change?
+        // Save Image as String
 
-        if(sName.isEmpty()) {
-            editNameText.setError("Name required");
-            editNameText.requestFocus();
-            return;
-        }
-        if(sRoom.isEmpty()) {
-            editRoom.setError("Room required");
-            editRoom.requestFocus();
-            return;
-        }
-        if(sCategory.isEmpty()) {
-            editCategory.setError("Category required");
-            editCategory.requestFocus();
-            return;
-        }
-        if(sPrice.isEmpty()) {
-            editPriceText.setError("Price required");
-            editPriceText.requestFocus();
-            return;
-        }
-        if(sDate.isEmpty()) {
-            editPurchaseDate.setError("Date required");
-            editPurchaseDate.requestFocus();
-            return;
-        }
-        if(sImage.isEmpty()) {
-            return;
-        }
+        try {
+            Compress c = new Compress();
+            BitmapToString b = new BitmapToString();
 
-        class SaveTask extends AsyncTask<Void, Void, Void> {
-            @Override
-            protected Void doInBackground(Void... voids) {
-                // creating an Item
-                Item item = new Item();
-                item.setMName(sName);
-                item.setMRoom(sRoom);
-                item.setMCategory(sCategory);
-                item.setMPrice(sPrice);
-                item.setMDate(sDate);
-                item.setMPicture(sImage);
+            final String sImage = (b.convert(imageBitmap));
 
-                // adding to database
-                DatabaseClient.getInstance(getApplicationContext()).getItemRoomDatabase()
-                        .itemDao()
-                        .insert(item);
-                return null;
+            // ToDo: All fields required right now. Change?
+
+            if(sName.isEmpty()) {
+                editNameText.setError("Name required");
+                editNameText.requestFocus();
+                return;
+
             }
 
-            // ToDo: I think this sends user to ViewAllItems page once item is saved. Verify
-            @Override
-            protected void onPostExecute(Void aVoid) {
-                super.onPostExecute(aVoid);
-                finish();
-                startActivity(new Intent(getApplicationContext(), ViewAllItems.class));
-                Toast.makeText(getApplicationContext(), "Saved", Toast.LENGTH_LONG).show();
+            if(sRoom.isEmpty()) {
+                editRoom.setError("Room required");
+                editRoom.requestFocus();
+                return;
             }
-        }
 
-        SaveTask st = new SaveTask();
-        st.execute();
+            if(sCategory.isEmpty()) {
+                editCategory.setError("Category required");
+                editCategory.requestFocus();
+                return;
+            }
+
+            if(sPrice.isEmpty()) {
+                editPriceText.setError("Price required");
+                editPriceText.requestFocus();
+                return;
+            }
+
+            if(sDate.isEmpty()) {
+                editPurchaseDate.setError("Date required");
+                editPurchaseDate.requestFocus();
+                return;
+            }
+
+            if(sImage.isEmpty()) {
+                return;
+            }
+
+
+            class SaveTask extends AsyncTask<Void, Void, Void> {
+                @Override
+                protected Void doInBackground(Void... voids) {
+                    // creating an Item
+                    Item item = new Item();
+                    item.setMName(sName);
+                    item.setMRoom(sRoom);
+                    item.setMCategory(sCategory);
+                    item.setMPrice(sPrice);
+                    item.setMDate(sDate);
+                    item.setMPicture(sImage);
+
+                    // adding to database
+                    DatabaseClient.getInstance(getApplicationContext()).getItemRoomDatabase()
+                            .itemDao()
+                            .insert(item);
+                    return null;
+                }
+
+
+                // ToDo: I think this sends user to ViewAllItems page once item is saved. Verify
+                @Override
+                protected void onPostExecute(Void aVoid) {
+                    super.onPostExecute(aVoid);
+                    finish();
+                    startActivity(new Intent(getApplicationContext(), ViewAllItems.class));
+                    Toast.makeText(getApplicationContext(), "Saved", Toast.LENGTH_LONG).show();
+                }
+            }
+
+            SaveTask st = new SaveTask();
+            st.execute();
+
+        } catch (Exception ex) {
+            Log.d(TAG, "Error: " + ex);
+        }
     }
 
     @Override // MainMenuButtonFunction
