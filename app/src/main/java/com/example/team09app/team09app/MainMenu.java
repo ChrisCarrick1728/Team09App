@@ -11,6 +11,10 @@ import android.widget.ImageView;
 import java.util.ArrayList;
 import java.util.List;
 
+/** This class contains the code for the main menu of the app.
+ * @author team 09
+ * @version 1.0
+ */
 public class MainMenu extends AppCompatActivity implements MainMenuButtonFunction {
     private static final String TAG = "MainMenu";
 

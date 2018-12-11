@@ -39,6 +39,10 @@ import java.util.List;
 
 import android.widget.Toast;
 
+/** This class is used for adding a new item to a database
+ * @version 1.0
+ * @author Team 09
+ */
 public class AddNewItem extends AppCompatActivity implements MainMenuButtonFunction, AdapterView.OnItemSelectedListener {
 
     private EditText editNameText, editRoom, editCategory, editPriceText;

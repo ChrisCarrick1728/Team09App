@@ -13,6 +13,10 @@ import android.widget.ImageView;
 
 import java.util.List;
 
+/** This class contains the code for the list items by category display
+ * @author team 09
+ * @version 1.0
+ */
 public class ItemsByCategory extends AppCompatActivity implements MainMenuButtonFunction{
 
     private ImageButton addItemButton;

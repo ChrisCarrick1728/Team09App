@@ -17,6 +17,10 @@ import android.widget.Toast;
 
 import java.util.List;
 
+/** This class lets the user view all her items
+ * @author team 09
+ * @version 1.0
+ */
 public class ViewAllItems extends AppCompatActivity implements MainMenuButtonFunction {
 
     private ImageButton addItemButton;

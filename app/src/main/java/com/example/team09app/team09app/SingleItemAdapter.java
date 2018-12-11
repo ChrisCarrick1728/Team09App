@@ -22,6 +22,10 @@ import java.util.List;
 
 import static android.support.constraint.Constraints.TAG;
 
+/** This class contains the adapter to have a display using a single item function.
+ * @author team 09
+ * @version 1.0
+ */
 public class SingleItemAdapter extends RecyclerView.Adapter<SingleItemAdapter.SingleItemHolder> {
 
     private Context mCtx;

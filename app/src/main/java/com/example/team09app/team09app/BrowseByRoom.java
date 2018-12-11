@@ -19,6 +19,10 @@ import android.widget.ListView;
 
 import java.util.List;
 
+/** This class lets the user browse her items sorted by what room they are located in.
+ * @author team 09.
+ * @version 1.0
+ */
 public class BrowseByRoom extends AppCompatActivity implements SaveCurrentActivity, MainMenuButtonFunction {
 
     private ImageButton addRoomButton;

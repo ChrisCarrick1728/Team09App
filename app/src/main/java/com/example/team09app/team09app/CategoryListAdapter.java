@@ -10,6 +10,10 @@ import android.widget.TextView;
 
 import java.util.List;
 
+/** This class contains the adapter to have the list of categories displayed correctly.
+ * @author team 09
+ * @version 1.0
+ */
 public class CategoryListAdapter extends RecyclerView.Adapter<CategoryListAdapter.ItemViewHolder> {
 
     private Context mCtx;

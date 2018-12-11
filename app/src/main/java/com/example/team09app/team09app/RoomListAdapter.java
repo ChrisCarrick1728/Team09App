@@ -13,6 +13,10 @@ import android.widget.TextView;
 
 import java.util.List;
 
+/** This class contains the adapter to have the list of rooms display function.
+ * @author team 09
+ * @version 1.0
+ */
 public class RoomListAdapter extends RecyclerView.Adapter<RoomListAdapter.ItemViewHolder> {
 
     private Context mCtx;

@@ -19,6 +19,10 @@ import android.widget.ListView;
 
 import java.util.List;
 
+/** This class lets the user browse her stored items sorted by category.
+ * @author team 09
+ * @version 1.0
+ */
 public class BrowseByCategory extends AppCompatActivity implements SaveCurrentActivity, MainMenuButtonFunction {
 
     private ImageButton addCategoryButton;

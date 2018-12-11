@@ -16,6 +16,10 @@ import java.io.IOException;
 import java.io.PrintWriter;
 import java.util.List;
 
+/** This class handles the exporting of data from the database into a pdf or excel file.
+ * @author Team 09
+ * @version 1.0
+ */
 public class Export extends AppCompatActivity implements MainMenuButtonFunction {
     private static final String TAG = "Export";
 

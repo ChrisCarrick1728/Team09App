@@ -10,6 +10,10 @@ import android.widget.TextView;
 
 import java.util.List;
 
+/** This class contains the adapter to have a display using a single category function correctly.
+ * @author team 09
+ * @version 1.0
+ */
 public class SingleCategoryAdapter extends RecyclerView.Adapter<SingleCategoryAdapter.ItemViewHolder> {
 
     private Context mCtx;

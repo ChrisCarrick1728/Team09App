@@ -10,6 +10,10 @@ import android.widget.TextView;
 
 import java.util.List;
 
+/** This class contains the adapter to have a display using a single room function correctly.
+ * @author team 09
+ * @version 1.0
+ */
 public class SingleRoomAdapter extends RecyclerView.Adapter<SingleRoomAdapter.ItemViewHolder>  {
 
     private Context mCtx;

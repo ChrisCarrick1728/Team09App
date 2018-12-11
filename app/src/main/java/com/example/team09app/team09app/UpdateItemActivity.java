@@ -33,6 +33,10 @@ import java.util.Date;
 import static android.support.constraint.Constraints.TAG;
 import static com.example.team09app.team09app.AddNewItem.REQUEST_IMAGE_CAPTURE;
 
+/** This class lets the user update the info for an item.
+ * @author team 09
+ * @version 1.0
+ */
 public class UpdateItemActivity extends AppCompatActivity implements MainMenuButtonFunction {
 
     private EditText editTextName, editTextRoom, editTextCategory, editTextPrice;

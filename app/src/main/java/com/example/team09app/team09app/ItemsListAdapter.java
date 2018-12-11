@@ -11,6 +11,10 @@ import android.widget.TextView;
 
 import java.util.List;
 
+/** This class contains the adapter for the list all items display to function
+ * @author team 09
+ * @version 1.0
+ */
 public class ItemsListAdapter extends RecyclerView.Adapter<ItemsListAdapter.ItemViewHolder> {
 
     private Context mCtx;
