@@ -35,7 +35,7 @@ public interface ItemDao {
     @Query("SELECT room FROM items_table GROUP BY room HAVING count(*) > 1")
     int getNumRoom();
 
-    @Query("SELECT ID FROM items_table GROUP BY ID HAVING count(*) > 1")
+    @Query("SELECT * FROM items_table GROUP BY ID HAVING count(*) = 1")
     int getNumAllItems();
 
     @Insert
