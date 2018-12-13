@@ -11,12 +11,13 @@
 
     <TextView
         android:id="@+id/editPurchaseDate"
-        android:layout_width="210dp"
+        android:layout_width="150dp"
         android:layout_height="42dp"
-        android:layout_marginStart="4dp"
+        android:layout_marginStart="20dp"
         android:layout_marginTop="8dp"
-        android:background="@color/DarkBlue"
+        android:background="@drawable/border_draw"
         android:ems="10"
+        android:gravity="center"
         android:hint="@string/purchase_date"
         android:inputType="text"
         android:selectAllOnFocus="false"
