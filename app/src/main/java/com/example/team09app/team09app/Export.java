@@ -1,5 +1,6 @@
 package com.example.team09app.team09app;
 
+import android.app.Activity;
 import android.content.Context;
 import android.content.DialogInterface;
 import android.content.Intent;
@@ -48,12 +49,14 @@ public class Export extends AppCompatActivity implements MainMenuButtonFunction 
         findViewById(R.id.export_btn_id).setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                File csvFile = new File(context.getExternalFilesDir(Environment.DIRECTORY_DOCUMENTS), excelFilePath);
+                File csvPath = new File(context.getExternalFilesDir(Environment.DIRECTORY_DOCUMENTS), "items");
+                File csvFile = new File(csvPath, excelFilePath);
                 Log.d(TAG, "New File created");
 
                 // save database to csv file
                 try {
                     saveExcel(csvFile);
+
 
                 } catch (IOException e) {
                     Log.d(TAG, "save to Excel failed");
@@ -93,6 +96,7 @@ public class Export extends AppCompatActivity implements MainMenuButtonFunction 
                // https://developer.android.com/training/secure-file-sharing/share-file
                 // https://guides.codepath.com/android/Sharing-Content-with-Intents
 
+                // Trial #1
 //                Intent shareIntent = new Intent();
 //                shareIntent.setAction(Intent.ACTION_SEND);
 //                if(file.exists()) {
@@ -102,20 +106,20 @@ public class Export extends AppCompatActivity implements MainMenuButtonFunction 
 //                    startActivity(Intent.createChooser(shareIntent, "Share File"));
 //                }
 
+                // Trial #2
                 Uri outputUri = FileProvider.getUriForFile(
                         context,"com.example.android.fileprovider", file);
                 if (outputUri != null) {
-                    Intent shareIntent = ShareCompat.IntentBuilder.from(Export.this)
-                            .setType("text/csv")
+                    Intent shareIntent = ShareCompat.IntentBuilder.from((Activity) context)
+                            .setType("application/csv")
                             .setStream(outputUri)
+                            .setEmailTo(new String[]{""})
                             .getIntent();
                     shareIntent.setDataAndType(outputUri, "application/csv");
                     shareIntent.addFlags(Intent.FLAG_GRANT_READ_URI_PERMISSION);
+                    shareIntent.addFlags(Intent.FLAG_GRANT_WRITE_URI_PERMISSION);
                     context.startActivity(Intent.createChooser(shareIntent, "Share File"));
                 }
-
-
-
             }
         });
 
@@ -135,6 +139,7 @@ public class Export extends AppCompatActivity implements MainMenuButtonFunction 
     }
 
     private void saveExcel(File csvFile) throws IOException {
+
 
         // create new csv file
         Log.d(TAG, "attempting to create new file");
@@ -203,11 +208,6 @@ public class Export extends AppCompatActivity implements MainMenuButtonFunction 
         }
         SaveExcel se = new SaveExcel();
         se.execute();
-
-        // ToDo: What to do with csv file? email, save online such as Google Drive? Do we give option here?
-        // send csv file by email
-
-        // save online
 
     }
 
