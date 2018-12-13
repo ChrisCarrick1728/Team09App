@@ -95,7 +95,7 @@ public class AddNewItem extends AppCompatActivity implements MainMenuButtonFunct
         mDateSetListener = new DatePickerDialog.OnDateSetListener() {
             @Override
             public void onDateSet(DatePicker view, int year, int month, int dayOfMonth) {
-                // January == 1 ... December == 11
+                // January == 0 ... December == 11
                 month = month + 1;
                 String date = month + "/" + dayOfMonth + "/" + year;
                 editPurchaseDate.setText(date);
@@ -309,25 +309,6 @@ public class AddNewItem extends AppCompatActivity implements MainMenuButtonFunct
         gt.execute();
     }
 
-    String mCurrentPhotoPath;
-
-    /** Creates a new timestamped filename for the image */
-    private File createImageFile() throws IOException {
-        // Create an image file name
-        String timeStamp = new SimpleDateFormat("yyyyMMdd_HHmmss").format(new Date());
-        String imageFileName = "JPEG_" + timeStamp + "_";
-        File storageDir = getExternalFilesDir(Environment.DIRECTORY_PICTURES);
-        File image = File.createTempFile(
-                imageFileName,   /* prefix */
-                ".jpg",   /* suffix */
-                storageDir       /* directory */
-        );
-
-        // Save a file: path for use with ACTION_VIEW intents
-        mCurrentPhotoPath = image.getAbsolutePath();
-        return image;
-    }
-
     private void dispatchTakePictureIntent() {
         Intent takePictureIntent = new Intent(MediaStore.ACTION_IMAGE_CAPTURE);
         if (takePictureIntent.resolveActivity(getPackageManager()) != null) {
@@ -339,11 +320,6 @@ public class AddNewItem extends AppCompatActivity implements MainMenuButtonFunct
                 Log.d(TAG, "Error: " + ex);
             }
 
-            /*try {
-                photoFile = createImageFile();
-            } catch (IOException ex) {
-                Log.d(TAG, "dispatchTakePictureIntent:" + ex);
-            }*/
             Uri photoURI;
             if (photoFile != null) {
                 if (mainURI == null) {
@@ -367,7 +343,6 @@ public class AddNewItem extends AppCompatActivity implements MainMenuButtonFunct
         ImageButton mImageButton = (ImageButton) findViewById(R.id.camera_btn_id_add);
         Log.d(TAG, "I'm here");
         if (requestCode == REQUEST_IMAGE_CAPTURE && resultCode == RESULT_OK) {
-            //Bundle extras = data.getExtras();
             this.getContentResolver().notifyChange(mainURI, null);
             ContentResolver cr = this.getContentResolver();
 

@@ -44,6 +44,7 @@ public class UpdateItemActivity extends AppCompatActivity implements MainMenuBut
     private ImageButton itemImage;
     private DatePickerDialog.OnDateSetListener mEditDateSetListener;
     Uri mainURI;
+    Bitmap imageBitmap;
     private static final String TAG = "UpdateItemActivity";
 
     @Override
@@ -111,23 +112,10 @@ public class UpdateItemActivity extends AppCompatActivity implements MainMenuBut
         editTextPrice.setText(item.getMPrice());
         editTextDate.setText(item.getMDate());
 
-        ContentResolver cr = this.getContentResolver();
-        try {
-            Uri imageURI = Uri.parse(item.getMPicture());
-
-            Log.d(TAG, "LoadURI: " + item.getMPicture());
-            Bitmap imageBitmap;
-            try {
-                imageBitmap = MediaStore.Images.Media.getBitmap(cr, imageURI);
-                //mImageButton.setVisibility(View.INVISIBLE);
-                itemImage.setImageBitmap(imageBitmap);
-                mainURI = Uri.parse(item.getMPicture());
-            } catch (IOException e) {
-                Log.d(TAG, "ERROR: " + e);
-            }
-        } catch (Exception e) {
-            Log.d(TAG, "Error: Image doesn't exist " + e);
-        }
+        StringToBitmap s = new StringToBitmap();
+        Decompress d = new Decompress();
+        imageBitmap = s.convert(item.getMPicture());
+        itemImage.setImageBitmap(imageBitmap);
     }
 
     private void updateItem(final Item item) {
@@ -142,59 +130,71 @@ public class UpdateItemActivity extends AppCompatActivity implements MainMenuBut
         final String sDate = editTextDate.getText().toString().trim();
 
         // ToDo: All fields required right now. Change?
+        try {
+            Compress c = new Compress();
+            BitmapToString b = new BitmapToString();
 
-        if(sName.isEmpty()) {
-            editTextName.setError("Name required");
-            editTextName.requestFocus();
-            return;
-        }
-        if(sRoom.isEmpty()) {
-            editTextRoom.setError("Room required");
-            editTextRoom.requestFocus();
-            return;
-        }
-        if(sCategory.isEmpty()) {
-            editTextCategory.setError("Category required");
-            editTextCategory.requestFocus();
-            return;
-        }
-        if(sPrice.isEmpty()) {
-            editTextPrice.setError("Price required");
-            editTextPrice.requestFocus();
-            return;
-        }
-        if(sDate.isEmpty()) {
-            editTextDate.setError("Date required");
-            editTextDate.requestFocus();
-            return;
-        }
+            final String sImage = (b.convert(imageBitmap));
 
-        class UpdateItem extends AsyncTask<Void, Void, Void> {
-            @Override
-            protected Void doInBackground(Void... voids) {
-                item.setMName(sName);
-                item.setMRoom(sRoom);
-                item.setMCategory(sCategory);
-                item.setMPrice(sPrice);
-                item.setMDate(sDate);
-                DatabaseClient.getInstance(getApplicationContext()).getItemRoomDatabase()
-                        .itemDao()
-                        .update(item);
-                return null;
+            if (sName.isEmpty()) {
+                editTextName.setError("Name required");
+                editTextName.requestFocus();
+                return;
+            }
+            if (sRoom.isEmpty()) {
+                editTextRoom.setError("Room required");
+                editTextRoom.requestFocus();
+                return;
+            }
+            if (sCategory.isEmpty()) {
+                editTextCategory.setError("Category required");
+                editTextCategory.requestFocus();
+                return;
+            }
+            if (sPrice.isEmpty()) {
+                editTextPrice.setError("Price required");
+                editTextPrice.requestFocus();
+                return;
+            }
+            if (sDate.isEmpty()) {
+                editTextDate.setError("Date required");
+                editTextDate.requestFocus();
+                return;
+            }
+            if (sImage.isEmpty()) {
+                return;
+            }
+            // TODO: Update Image
+            class UpdateItem extends AsyncTask<Void, Void, Void> {
+                @Override
+                protected Void doInBackground(Void... voids) {
+                    item.setMName(sName);
+                    item.setMRoom(sRoom);
+                    item.setMCategory(sCategory);
+                    item.setMPrice(sPrice);
+                    item.setMDate(sDate);
+                    item.setMPicture(sImage);
+                    DatabaseClient.getInstance(getApplicationContext()).getItemRoomDatabase()
+                            .itemDao()
+                            .update(item);
+                    return null;
+                }
+
+                // ToDo: I think this sends user to ViewAllItems page once item is saved. Verify
+                @Override
+                protected void onPostExecute(Void aVoid) {
+                    super.onPostExecute(aVoid);
+                    Toast.makeText(getApplicationContext(), "Updated", Toast.LENGTH_LONG).show();
+                    finish();
+                    startActivity(new Intent(UpdateItemActivity.this, ViewAllItems.class));
+                }
             }
 
-            // ToDo: I think this sends user to ViewAllItems page once item is saved. Verify
-            @Override
-            protected void onPostExecute(Void aVoid) {
-                super.onPostExecute(aVoid);
-                Toast.makeText(getApplicationContext(), "Updated", Toast.LENGTH_LONG).show();
-                finish();
-                startActivity(new Intent(UpdateItemActivity.this, ViewAllItems.class));
-            }
+            UpdateItem uItem = new UpdateItem();
+            uItem.execute();
+        } catch (Exception e) {
+            Log.d(TAG, "Error: " + e);
         }
-
-        UpdateItem uItem = new UpdateItem();
-        uItem.execute();
     }
 
     private void deleteItem(final Item item) {
@@ -238,36 +238,19 @@ public class UpdateItemActivity extends AppCompatActivity implements MainMenuBut
         deleteItem.execute();
     }
 
-    String mCurrentPhotoPath;
 
-    /** Creates a new timestamped filename for the image */
-    private File createImageFile() throws IOException {
-        // Create an image file name
-        String timeStamp = new SimpleDateFormat("yyyyMMdd_HHmmss").format(new Date());
-        String imageFileName = "JPEG_" + timeStamp + "_";
-        File storageDir = getExternalFilesDir(Environment.DIRECTORY_PICTURES);
-        File image = File.createTempFile(
-                imageFileName,   /* prefix */
-                ".jpg",   /* suffix */
-                storageDir       /* directory */
-        );
-
-        // Save a file: path for use with ACTION_VIEW intents
-        mCurrentPhotoPath = image.getAbsolutePath();
-        return image;
-    }
 
     private void dispatchTakePictureIntent() {
         Intent takePictureIntent = new Intent(MediaStore.ACTION_IMAGE_CAPTURE);
         if (takePictureIntent.resolveActivity(getPackageManager()) != null) {
-
+            File storageDir = getExternalFilesDir(Environment.DIRECTORY_PICTURES);
             File photoFile = null;
-
             try {
-                photoFile = createImageFile();
+                photoFile = File.createTempFile("tempPhoto", ".jpg", storageDir);
             } catch (IOException ex) {
-                Log.d(TAG, "dispatchTakePictureIntent:" + ex);
+                Log.d(TAG, "Error: " + ex);
             }
+
             Uri photoURI;
             if (photoFile != null) {
                 if (mainURI == null) {
@@ -288,18 +271,14 @@ public class UpdateItemActivity extends AppCompatActivity implements MainMenuBut
     @Override
     protected void onActivityResult(int requestCode, int resultCode, Intent data) {
         ImageView mImageView = (ImageView) findViewById(R.id.item_image_id_update);
-        //ImageButton mImageButton = (ImageButton) findViewById(R.id.camera_btn_id_add);
         Log.d(TAG, "I'm here");
         if (requestCode == REQUEST_IMAGE_CAPTURE && resultCode == RESULT_OK) {
-            Bundle extras = data.getExtras();
             this.getContentResolver().notifyChange(mainURI, null);
             ContentResolver cr = this.getContentResolver();
 
             Log.d(TAG, "LoadURI: " + mainURI);
-            Bitmap imageBitmap;
             try {
                 imageBitmap = MediaStore.Images.Media.getBitmap(cr, mainURI);
-                //mImageButton.setVisibility(View.INVISIBLE);
                 mImageView.setImageBitmap(imageBitmap);
             } catch (IOException e) {
                 Log.d(TAG, "ERROR: " + e);

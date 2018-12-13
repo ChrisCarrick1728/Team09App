@@ -31,19 +31,20 @@
 
     <TextView
         android:id="@+id/editPurchaseDate"
-        android:layout_width="210dp"
+        android:layout_width="150dp"
         android:layout_height="42dp"
-        android:layout_marginStart="4dp"
+        android:layout_marginStart="8dp"
         android:layout_marginTop="8dp"
+        android:background="@drawable/border_draw"
         android:ems="10"
+        android:gravity="center"
         android:hint="@string/purchase_date"
         android:inputType="text"
-        android:textSize="18sp"
-        android:textAlignment="center"
-        android:background="@color/DarkBlue"
         android:selectAllOnFocus="false"
+        android:textAlignment="center"
         android:textColor="@color/White"
         android:textColorHint="@color/White"
+        android:textSize="18sp"
         app:layout_constraintStart_toEndOf="@+id/editPriceText"
         app:layout_constraintTop_toBottomOf="@+id/editCategory" />
 
