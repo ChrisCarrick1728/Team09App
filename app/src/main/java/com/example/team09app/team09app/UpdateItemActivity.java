@@ -76,7 +76,6 @@ public class UpdateItemActivity extends AppCompatActivity implements MainMenuBut
 
                 DatePickerDialog dialogDate = new DatePickerDialog(
                         UpdateItemActivity.this,
-                        // ToDo: we can change this style for a different calendar option, see styles
                         android.R.style.Theme_DeviceDefault,
                         mEditDateSetListener,
                         year, month, day);
@@ -129,7 +128,7 @@ public class UpdateItemActivity extends AppCompatActivity implements MainMenuBut
         final String sPrice = dollarSign + editTextPrice.getText().toString().trim();
         final String sDate = editTextDate.getText().toString().trim();
 
-        // ToDo: All fields required right now. Change?
+
         try {
             Compress c = new Compress();
             BitmapToString b = new BitmapToString();
@@ -164,7 +163,7 @@ public class UpdateItemActivity extends AppCompatActivity implements MainMenuBut
             if (sImage.isEmpty()) {
                 return;
             }
-            // TODO: Update Image
+
             class UpdateItem extends AsyncTask<Void, Void, Void> {
                 @Override
                 protected Void doInBackground(Void... voids) {
@@ -180,7 +179,6 @@ public class UpdateItemActivity extends AppCompatActivity implements MainMenuBut
                     return null;
                 }
 
-                // ToDo: I think this sends user to ViewAllItems page once item is saved. Verify
                 @Override
                 protected void onPostExecute(Void aVoid) {
                     super.onPostExecute(aVoid);
@@ -201,22 +199,6 @@ public class UpdateItemActivity extends AppCompatActivity implements MainMenuBut
         class DeleteItem extends AsyncTask<Void, Void, Void> {
             @Override
             protected Void doInBackground(Void... voids) {
-                // TODO: Delete Image File
-                try {
-                    File fileDelete = new File(Uri.parse(item.getMPicture()).getPath());
-                    if (fileDelete.exists()) {
-                        Log.d(TAG, "Success: Image Exists");
-                        if (fileDelete.delete()) {
-                            Log.d(TAG, "Success: Image Deleted");
-                        } else {
-                            Log.d(TAG, "ERROR: Image not deleted");
-                        }
-                    } else {
-                        Log.d(TAG, "ERROR: Image not Found");
-                    }
-                } catch ( Exception e ) {
-                    Log.d(TAG, "ERROR: " + e);
-                }
 
                 DatabaseClient.getInstance(getApplicationContext()).getItemRoomDatabase()
                         .itemDao()
@@ -224,7 +206,6 @@ public class UpdateItemActivity extends AppCompatActivity implements MainMenuBut
                 return null;
             }
 
-            // ToDo: I think this sends user to ViewAllItems page once item is saved. Verify
             @Override
             protected void onPostExecute(Void aVoid) {
                 super.onPostExecute(aVoid);

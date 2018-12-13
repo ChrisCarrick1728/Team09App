@@ -83,7 +83,6 @@ public class AddNewItem extends AppCompatActivity implements MainMenuButtonFunct
 
                 DatePickerDialog dialogDate = new DatePickerDialog(
                         AddNewItem.this,
-                        // ToDo: we can change this style for a different calendar option, see styles
                         android.R.style.Theme_DeviceDefault,
                         mDateSetListener,
                         year, month, day);
@@ -380,8 +379,6 @@ public class AddNewItem extends AppCompatActivity implements MainMenuButtonFunct
 
             final String sImage = (b.convert(imageBitmap));
 
-            // ToDo: All fields required right now. Change?
-
             if(sName.isEmpty()) {
                 editNameText.setError("Name required");
                 editNameText.requestFocus();
@@ -437,8 +434,6 @@ public class AddNewItem extends AppCompatActivity implements MainMenuButtonFunct
                     return null;
                 }
 
-
-                // ToDo: I think this sends user to ViewAllItems page once item is saved. Verify
                 @Override
                 protected void onPostExecute(Void aVoid) {
                     super.onPostExecute(aVoid);
@@ -515,7 +510,6 @@ public class AddNewItem extends AppCompatActivity implements MainMenuButtonFunct
     @Override
     public void onNothingSelected(AdapterView<?> parent) {
         //This can stay empty for spinner dropdown
-
     }
 
 }

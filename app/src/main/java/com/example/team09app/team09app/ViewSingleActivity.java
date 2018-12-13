@@ -106,7 +106,6 @@ public class ViewSingleActivity extends AppCompatActivity implements MainMenuBut
                 return null;
             }
 
-            // ToDo: I think this sends user to ViewAllItems page once item is saved. Verify
             @Override
             protected void onPostExecute(Void aVoid) {
                 super.onPostExecute(aVoid);
