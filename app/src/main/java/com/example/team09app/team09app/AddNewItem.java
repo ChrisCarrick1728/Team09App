@@ -239,6 +239,7 @@ public class AddNewItem extends AppCompatActivity implements MainMenuButtonFunct
                         .getItemRoomDatabase()
                         .itemDao()
                         .getAllRooms();
+                Log.d("Test TAG", "doInBackground/AddNewItem all rooms: " + itemList.size());
                 return itemList;
             }
 
@@ -279,6 +280,8 @@ public class AddNewItem extends AppCompatActivity implements MainMenuButtonFunct
                         .getItemRoomDatabase()
                         .itemDao()
                         .getAllCategories();
+                Log.d("Test TAG", "doInBackground/AddNewItem all categories: " + itemList.size());
+
                 return itemList;
             }
 
@@ -431,6 +434,7 @@ public class AddNewItem extends AppCompatActivity implements MainMenuButtonFunct
                     DatabaseClient.getInstance(getApplicationContext()).getItemRoomDatabase()
                             .itemDao()
                             .insert(item);
+                    Log.d("Test TAG", "item: " + item.getMName() + " " + item.getMRoom() + " " + item.getMCategory());
                     return null;
                 }
 

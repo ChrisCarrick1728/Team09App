@@ -169,7 +169,7 @@ public class Export extends AppCompatActivity implements MainMenuButtonFunction 
                         .getItemRoomDatabase()
                         .itemDao()
                         .getNumAllItems();
-                Log.d(TAG, "Got number of items" + numItems);
+                Log.d(TAG, "Got number of items: " + numItems);
 
                 // if no items in database, don't do anything
                 if(numItems == 0) {
@@ -191,17 +191,20 @@ public class Export extends AppCompatActivity implements MainMenuButtonFunction 
                     return null;
                 }
 
+
                 // save each item
-                for (int i = 0; i < numItems; i++) {
+                int numItemsSaved = 0;
+                for (int i = 0; i < itemList.size(); i++) {
                     pwExcel.println(itemList.get(i).getMName() + ", "
                             + itemList.get(i).getMRoom() + ", "
                             + itemList.get(i).getMCategory() + ", "
                             + itemList.get(i).getMDate() + ", "
                             + itemList.get(i).getMPrice());
+                    numItemsSaved++;
                 }
 
                 // close file writer
-                Log.d(TAG, "Saved all items to file");
+                Log.d(TAG, "Saved all items to file: " + numItemsSaved);
                 pwExcel.flush();
                 pwExcel.close();
 

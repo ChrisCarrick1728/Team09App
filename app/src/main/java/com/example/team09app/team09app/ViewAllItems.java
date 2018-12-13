@@ -10,6 +10,7 @@ import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
+import android.util.Log;
 import android.view.View;
 import android.widget.ImageButton;
 import android.widget.ImageView;
@@ -56,11 +57,14 @@ public class ViewAllItems extends AppCompatActivity implements MainMenuButtonFun
                         .getItemRoomDatabase()
                         .itemDao()
                         .getAll();
+                Log.d("Test TAG", "doInBackground itemList size: " + itemList.size());
                 return itemList;
             }
 
             @Override
             protected void onPostExecute(List<Item> items) {
+                Log.d("Test Tag", "onPostExecute started");
+                Log.d("Test TAG", "onPostExecute itemList size: " + items.size());
                 super.onPostExecute(items);
                 ItemsListAdapter adapter = new ItemsListAdapter(ViewAllItems.this, items);
                 recyclerView.setAdapter(adapter);

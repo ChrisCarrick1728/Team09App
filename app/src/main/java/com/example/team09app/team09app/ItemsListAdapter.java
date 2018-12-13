@@ -4,6 +4,7 @@ package com.example.team09app.team09app;
 import android.content.Context;
 import android.content.Intent;
 import android.support.v7.widget.RecyclerView;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -23,16 +24,20 @@ public class ItemsListAdapter extends RecyclerView.Adapter<ItemsListAdapter.Item
     public ItemsListAdapter(Context mCtx, List<Item> itemList) {
         this.mCtx = mCtx;
         this.itemList = itemList;
+        Log.d("Test TAG", "itemList size: " + itemList.size());
     }
 
     @Override
     public ItemViewHolder onCreateViewHolder(ViewGroup parent, int viewType) {
+        Log.d("Test TAG", "ItemViewHolder started");
         View view = LayoutInflater.from(mCtx).inflate(R.layout.recyclerview_items, parent, false);
         return new ItemViewHolder(view);
     }
 
     @Override
     public void onBindViewHolder(ItemViewHolder holder, int position) {
+        Log.d("Test TAG", "onBindViewHolder started");
+        Log.d("Test TAG", "position: " + position);
         Item it = itemList.get(position);
         holder.textViewName.setText(it.getMName());
     }
@@ -41,8 +46,10 @@ public class ItemsListAdapter extends RecyclerView.Adapter<ItemsListAdapter.Item
     // mItems has not been updated (means initially, it's null, and we can't return null).
     @Override
     public int getItemCount() {
-        if (itemList != null)
+        if (itemList != null){
+            Log.d("Test TAG", "Item Count: " + itemList.size());
             return itemList.size();
+        }
         else return 0;
     }
 
