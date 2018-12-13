@@ -49,9 +49,11 @@ public class Export extends AppCompatActivity implements MainMenuButtonFunction 
         findViewById(R.id.export_btn_id).setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                File csvPath = new File(context.getExternalFilesDir(Environment.DIRECTORY_DOCUMENTS), "items");
-                File csvFile = new File(csvPath, excelFilePath);
-                Log.d(TAG, "New File created");
+                //File csvPath = new File(context.getExternalFilesDir(Environment.DIRECTORY_DOCUMENTS), "items");
+                //Log.d(TAG, "New path created " + csvPath);
+                //File csvFile = new File(csvPath, excelFilePath);
+                File csvFile = new File(context.getExternalFilesDir(Environment.DIRECTORY_DOCUMENTS), excelFilePath);
+                Log.d(TAG, "New File created " + csvFile);
 
                 // save database to csv file
                 try {
@@ -141,15 +143,15 @@ public class Export extends AppCompatActivity implements MainMenuButtonFunction 
     private void saveExcel(File csvFile) throws IOException {
 
 
-        // create new csv file
-        Log.d(TAG, "attempting to create new file");
-//        File csvFile = new File(context.getFilesDir(), excelFilePath);
-        Log.d(TAG, "New file created " + csvFile);
+        Log.d(TAG, "Opening FileWriter");
 
         // open writer
         FileWriter fwExcel = new FileWriter(csvFile, false);
+        Log.d(TAG, "New File Writer created");
         BufferedWriter bwExcel = new BufferedWriter(fwExcel);
+        Log.d(TAG, "New Buffered Writer created");
         PrintWriter pwExcel = new PrintWriter(bwExcel);
+        Log.d(TAG, "New Print Writer created");
 
         // start file with column headings
         pwExcel.println("Item Name, Room, Category, Purchase Date, Purchase Price");
