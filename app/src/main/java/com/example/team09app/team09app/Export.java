@@ -1,13 +1,24 @@
 package com.example.team09app.team09app;
 
 import android.content.Context;
+import android.content.DialogInterface;
+import android.content.Intent;
+import android.net.Uri;
 import android.os.AsyncTask;
+import android.os.Environment;
 import android.support.constraint.ConstraintLayout;
+import android.support.v4.app.ShareCompat;
+import android.support.v4.content.FileProvider;
+import android.support.v7.app.AlertDialog;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.util.Log;
+import android.view.LayoutInflater;
 import android.view.View;
+import android.widget.Button;
+import android.widget.ImageButton;
 import android.widget.ImageView;
+import android.widget.ShareActionProvider;
 
 import java.io.BufferedWriter;
 import java.io.File;
@@ -25,6 +36,9 @@ public class Export extends AppCompatActivity implements MainMenuButtonFunction 
 
     String excelFilePath = "items.csv";
     Context context = this;
+    ImageButton shareButton;
+    ShareActionProvider shareActionProvider;
+    File csvFile;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -35,13 +49,21 @@ public class Export extends AppCompatActivity implements MainMenuButtonFunction 
         findViewById(R.id.export_btn_id).setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
+                File csvFile = new File(context.getExternalFilesDir(Environment.DIRECTORY_DOCUMENTS), excelFilePath);
+                Log.d(TAG, "New File created");
+
+                // save database to csv file
                 try {
-                    Log.d(TAG, "button clicked");
-                    saveExcel();
+                    saveExcel(csvFile);
+
                 } catch (IOException e) {
                     Log.d(TAG, "save to Excel failed");
                     e.printStackTrace();
                 }
+
+                // pop up created to export
+                createPopup(csvFile);
+
             }
         });
 
@@ -54,15 +76,59 @@ public class Export extends AppCompatActivity implements MainMenuButtonFunction 
 
     }
 
-    private void saveExcel() throws IOException {
+    private void createPopup(File file) {
+
+        // inflate the layout of the the popup window
+        LayoutInflater liExport = LayoutInflater.from(context);
+        View exportView = liExport.inflate(R.layout.activity_send_file, null);
+
+        AlertDialog.Builder alertDB = new AlertDialog.Builder(
+                context, R.style.alertDialog);
+        alertDB.setView(exportView);
+
+        shareButton = (ImageButton) exportView.findViewById(R.id.action_share);
+        shareButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+
+               // https://developer.android.com/training/secure-file-sharing/share-file
+                // https://guides.codepath.com/android/Sharing-Content-with-Intents
+
+                Intent shareIntent = new Intent();
+                shareIntent.setAction(Intent.ACTION_SEND);
+                if(file.exists()) {
+                    Uri outputUri = FileProvider.getUriForFile(
+                            context, "com.example.android.fileprovider", file);
+                    shareIntent.setDataAndType(outputUri,"application/csv");
+                    startActivity(Intent.createChooser(shareIntent, "Share File"));
+                }
+            }
+        });
+
+        alertDB
+                .setCancelable(true)
+                .setNegativeButton("Cancel",
+                        new DialogInterface.OnClickListener() {
+                            @Override
+                            public void onClick(DialogInterface dialog, int which) {
+                                dialog.cancel();
+                            }
+                        });
+
+        AlertDialog alert = alertDB.create();
+
+        alert.show();
+    }
+
+    private void saveExcel(File csvFile) throws IOException {
 
         // create new csv file
         Log.d(TAG, "attempting to create new file");
-        File cvsFile = new File(context.getFilesDir(), excelFilePath);
-        Log.d(TAG, "New file created " + cvsFile);
+//        File csvFile = new File(context.getFilesDir(), excelFilePath);
+        Log.d(TAG, "New file created " + csvFile);
 
         // open writer
-        FileWriter fwExcel = new FileWriter(cvsFile, false);
+        FileWriter fwExcel = new FileWriter(csvFile, false);
         BufferedWriter bwExcel = new BufferedWriter(fwExcel);
         PrintWriter pwExcel = new PrintWriter(bwExcel);
 
