@@ -3,6 +3,6 @@
     <external-path name="my_images" path="Android/data/com.example.team09app.team09app/files/Pictures" />
     <external-files-path
         name="my_items"
-        path="/data/data/com.example.team09app.team09app/files" />
+        path="." />
 
 </paths>

@@ -5,7 +5,9 @@ import android.content.DialogInterface;
 import android.content.Intent;
 import android.net.Uri;
 import android.os.AsyncTask;
+import android.os.Environment;
 import android.support.constraint.ConstraintLayout;
+import android.support.v4.app.ShareCompat;
 import android.support.v4.content.FileProvider;
 import android.support.v7.app.AlertDialog;
 import android.support.v7.app.AppCompatActivity;
@@ -47,7 +49,8 @@ public class Export extends AppCompatActivity implements MainMenuButtonFunction 
         findViewById(R.id.export_btn_id).setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                File csvFile = new File(context.getFilesDir(), excelFilePath);
+                File csvFile = new File(context.getExternalFilesDir(Environment.DIRECTORY_DOCUMENTS), excelFilePath);
+                Log.d(TAG, "New File created");
 
                 // save database to csv file
                 try {
@@ -87,24 +90,18 @@ public class Export extends AppCompatActivity implements MainMenuButtonFunction 
         shareButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                // do something with share button
 
                // https://developer.android.com/training/secure-file-sharing/share-file
-//                https://guides.codepath.com/android/Sharing-Content-with-Intents
+                // https://guides.codepath.com/android/Sharing-Content-with-Intents
 
-
-
-
-//                Intent sendIntent = new Intent();
-//                sendIntent.setAction(Intent.ACTION_SEND);
-//                if(file.exists()) {
-//                    Uri mUri = FileProvider.getUriForFile(
-//                            context,
-//                            context.getApplicationContext()
-//                                    .getPackageName() + ".provider", file);
-//                    sendIntent.setDataAndType(mUri,"application/csv");
-//                    startActivity(Intent.createChooser(sendIntent, "Share File"));
-//                }
+                Intent shareIntent = new Intent();
+                shareIntent.setAction(Intent.ACTION_SEND);
+                if(file.exists()) {
+                    Uri outputUri = FileProvider.getUriForFile(
+                            context, "com.example.android.fileprovider", file);
+                    shareIntent.setDataAndType(outputUri,"application/csv");
+                    startActivity(Intent.createChooser(shareIntent, "Share File"));
+                }
             }
         });
 
