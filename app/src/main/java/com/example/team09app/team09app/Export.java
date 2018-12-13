@@ -38,7 +38,6 @@ public class Export extends AppCompatActivity implements MainMenuButtonFunction 
     Context context = this;
     ImageButton shareButton;
     ShareActionProvider shareActionProvider;
-    File csvFile;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -94,14 +93,29 @@ public class Export extends AppCompatActivity implements MainMenuButtonFunction 
                // https://developer.android.com/training/secure-file-sharing/share-file
                 // https://guides.codepath.com/android/Sharing-Content-with-Intents
 
-                Intent shareIntent = new Intent();
-                shareIntent.setAction(Intent.ACTION_SEND);
-                if(file.exists()) {
-                    Uri outputUri = FileProvider.getUriForFile(
-                            context, "com.example.android.fileprovider", file);
-                    shareIntent.setDataAndType(outputUri,"application/csv");
-                    startActivity(Intent.createChooser(shareIntent, "Share File"));
+//                Intent shareIntent = new Intent();
+//                shareIntent.setAction(Intent.ACTION_SEND);
+//                if(file.exists()) {
+//                    Uri outputUri = FileProvider.getUriForFile(
+//                            context, "com.example.android.fileprovider", file);
+//                    shareIntent.setDataAndType(outputUri,"application/csv");
+//                    startActivity(Intent.createChooser(shareIntent, "Share File"));
+//                }
+
+                Uri outputUri = FileProvider.getUriForFile(
+                        context,"com.example.android.fileprovider", file);
+                if (outputUri != null) {
+                    Intent shareIntent = ShareCompat.IntentBuilder.from(Export.this)
+                            .setType("text/csv")
+                            .setStream(outputUri)
+                            .getIntent();
+                    shareIntent.setDataAndType(outputUri, "application/csv");
+                    shareIntent.addFlags(Intent.FLAG_GRANT_READ_URI_PERMISSION);
+                    context.startActivity(Intent.createChooser(shareIntent, "Share File"));
                 }
+
+
+
             }
         });
 
