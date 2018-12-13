@@ -26,10 +26,10 @@ public interface ItemDao {
     @Query("SELECT * FROM items_table WHERE CATEGORY=:category")
     List<Item> getOneCategory(String category);
 
-    @Query("SELECT room FROM items_table")
+    @Query("SELECT room FROM items_table GROUP BY room ORDER BY room ASC")
     List<Item> getAllRooms();
 
-    @Query("SELECT category FROM items_table")
+    @Query("SELECT category FROM items_table GROUP BY category ORDER BY category ASC")
     List<Item> getAllCategories();
 
     @Query("SELECT room FROM items_table GROUP BY room HAVING count(*) > 1")
