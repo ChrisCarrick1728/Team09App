@@ -49,9 +49,6 @@ public class Export extends AppCompatActivity implements MainMenuButtonFunction 
         findViewById(R.id.export_btn_id).setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                //File csvPath = new File(context.getExternalFilesDir(Environment.DIRECTORY_DOCUMENTS), "items");
-                //Log.d(TAG, "New path created " + csvPath);
-                //File csvFile = new File(csvPath, excelFilePath);
                 File csvFile = new File(context.getExternalFilesDir(Environment.DIRECTORY_DOCUMENTS), excelFilePath);
                 Log.d(TAG, "New File created " + csvFile);
 
@@ -67,17 +64,8 @@ public class Export extends AppCompatActivity implements MainMenuButtonFunction 
 
                 // pop up created to export
                 createPopup(csvFile);
-
             }
         });
-
-
-        // ToDo: Export pdf
-
-        // ToDo: Add backup button to this page
-
-        // ToDo: Save to online backup
-
     }
 
     private void createPopup(File file) {
@@ -87,28 +75,13 @@ public class Export extends AppCompatActivity implements MainMenuButtonFunction 
         View exportView = liExport.inflate(R.layout.activity_send_file, null);
 
         AlertDialog.Builder alertDB = new AlertDialog.Builder(
-                context, R.style.alertDialog);
+                context, R.style.AlertDialogTheme);
         alertDB.setView(exportView);
 
         shareButton = (ImageButton) exportView.findViewById(R.id.action_share);
         shareButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-
-               // https://developer.android.com/training/secure-file-sharing/share-file
-                // https://guides.codepath.com/android/Sharing-Content-with-Intents
-
-                // Trial #1
-//                Intent shareIntent = new Intent();
-//                shareIntent.setAction(Intent.ACTION_SEND);
-//                if(file.exists()) {
-//                    Uri outputUri = FileProvider.getUriForFile(
-//                            context, "com.example.android.fileprovider", file);
-//                    shareIntent.setDataAndType(outputUri,"application/csv");
-//                    startActivity(Intent.createChooser(shareIntent, "Share File"));
-//                }
-
-                // Trial #2
                 Uri outputUri = FileProvider.getUriForFile(
                         context,"com.example.android.fileprovider", file);
                 if (outputUri != null) {
@@ -138,6 +111,7 @@ public class Export extends AppCompatActivity implements MainMenuButtonFunction 
         AlertDialog alert = alertDB.create();
 
         alert.show();
+        //alert.getWindow().setLayout(600, 400);
     }
 
     private void saveExcel(File csvFile) throws IOException {

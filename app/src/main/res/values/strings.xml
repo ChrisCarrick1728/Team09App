@@ -40,4 +40,5 @@
     <string name="button_edit">Edit</string>
     <string name="button_cancel">Cancel</string>
     <string name="action_share">Share File</string>
+    <string name="share_file">Export the File</string>
 </resources>
