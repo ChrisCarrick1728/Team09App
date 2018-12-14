@@ -83,13 +83,10 @@ public class BrowseByCategory extends AppCompatActivity implements SaveCurrentAc
                 // create alert dialog
                 AlertDialog alertDialog = alertDialogBuilder.create();
 
-
                 // show it
                 alertDialog.show();
-
             }
         });
-
         getTasks();
     }
 
@@ -145,12 +142,9 @@ public class BrowseByCategory extends AppCompatActivity implements SaveCurrentAc
         hamburgerButton.setImageResource(R.drawable.hamburger_btnxhdpi);
     }
 
+    // ToDo: I don't think we used this so can we delete?
     @Override
     public void saveCurrent(String currentActivity) {
-        /* Context context = getApplicationContext();
-        SharedPreferences sp = context.getSharedPreferences(getString(R.string.PREFERENCE_FILE_KEY), Context.MODE_PRIVATE);
-        SharedPreferences.Editor editor = sp.edit();
-        editor.putString(getString(R.string.CURRENT_STATE), currentActivity);
-        editor.commit(); */
+
     }
 }

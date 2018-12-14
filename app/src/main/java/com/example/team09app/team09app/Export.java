@@ -38,7 +38,7 @@ public class Export extends AppCompatActivity implements MainMenuButtonFunction 
     String excelFilePath = "items.csv";
     Context context = this;
     ImageButton shareButton;
-    ShareActionProvider shareActionProvider;
+    //ShareActionProvider shareActionProvider;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -55,7 +55,6 @@ public class Export extends AppCompatActivity implements MainMenuButtonFunction 
                 // save database to csv file
                 try {
                     saveExcel(csvFile);
-
 
                 } catch (IOException e) {
                     Log.d(TAG, "save to Excel failed");
@@ -115,8 +114,6 @@ public class Export extends AppCompatActivity implements MainMenuButtonFunction 
     }
 
     private void saveExcel(File csvFile) throws IOException {
-
-
         Log.d(TAG, "Opening FileWriter");
 
         // open writer
@@ -165,7 +162,6 @@ public class Export extends AppCompatActivity implements MainMenuButtonFunction 
                     return null;
                 }
 
-
                 // save each item
                 int numItemsSaved = 0;
                 for (int i = 0; i < itemList.size(); i++) {
@@ -189,8 +185,6 @@ public class Export extends AppCompatActivity implements MainMenuButtonFunction 
         se.execute();
 
     }
-
-
 
     @Override
     public void hamburgerMenu(View view) {

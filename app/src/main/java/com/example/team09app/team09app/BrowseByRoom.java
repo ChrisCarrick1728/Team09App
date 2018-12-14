@@ -33,7 +33,6 @@ public class BrowseByRoom extends AppCompatActivity implements SaveCurrentActivi
     final Context context = this;
     private EditText result;
 
-
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -84,14 +83,10 @@ public class BrowseByRoom extends AppCompatActivity implements SaveCurrentActivi
                 // create alert dialog
                 AlertDialog alertDialog = alertDialogBuilder.create();
 
-
                 // show it
                 alertDialog.show();
-
-
             }
         });
-
         getTasks();
     }
 
@@ -147,12 +142,9 @@ public class BrowseByRoom extends AppCompatActivity implements SaveCurrentActivi
         hamburgerButton.setImageResource(R.drawable.hamburger_btnxhdpi);
     }
 
+    // ToDo: I don't think we used this so can we delete?
     @Override
     public void saveCurrent(String currentActivity) {
-        /* Context context = getApplicationContext();
-        SharedPreferences sp = context.getSharedPreferences(getString(R.string.PREFERENCE_FILE_KEY), Context.MODE_PRIVATE);
-        SharedPreferences.Editor editor = sp.edit();
-        editor.putString(getString(R.string.CURRENT_STATE), currentActivity);
-        editor.commit(); */
+
     }
 }

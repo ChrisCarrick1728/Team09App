@@ -25,7 +25,6 @@ public class MainMenu extends AppCompatActivity implements MainMenuButtonFunctio
         Log.d(TAG, "Main Menu");
     }
 
-
     // Main Menu Button Functions interface methods
     @Override //MainMenuButtonFunction
     public void hamburgerMenu(View view) { } // Not used

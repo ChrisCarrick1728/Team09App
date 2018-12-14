@@ -63,7 +63,4 @@ public interface MainMenuButtonFunction {
         Intent mainMenuIntent = new Intent(context, Export.class);
         context.startActivity(mainMenuIntent);
     }
-
-
-
 }

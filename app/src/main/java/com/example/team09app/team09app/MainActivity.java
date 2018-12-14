@@ -19,7 +19,6 @@ public class MainActivity extends AppCompatActivity {
 
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
-
     }
 
     public void clickContinueButton(View view) {
@@ -29,11 +28,9 @@ public class MainActivity extends AppCompatActivity {
         startActivity(mainMenuIntent);
     }
 
+    // ToDo: I don't think we used this so can we delete?
     public void checkCurrentActivity() {
-        /* Context context = getApplicationContext();
-        SharedPreferences sp = context.getSharedPreferences(getString(R.string.PREFERENCE_FILE_KEY), Context.MODE_PRIVATE);
-        String saveState = sp.getString(getString(R.string.CURRENT_STATE), "");
-        Log.d(TAG, "checkCurrentActivity: " + saveState); */
+
     }
 
 }

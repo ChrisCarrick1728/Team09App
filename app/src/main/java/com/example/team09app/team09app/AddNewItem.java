@@ -57,7 +57,6 @@ public class AddNewItem extends AppCompatActivity implements MainMenuButtonFunct
     private EditText result;
     Uri mainURI;
     Bitmap imageBitmap;
-    //private EditText result;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -115,12 +114,8 @@ public class AddNewItem extends AppCompatActivity implements MainMenuButtonFunct
         //call for category dropdown
         getCategory();
 
-
-
         //Start of the code for the add new category pop-up to open up
-
         ImageButton addNewCategoryPlus = (ImageButton)findViewById(R.id.addNewCategoryPlus_btn_id);
-
         //categoryList = (ListView)findViewById(R.id.categoryList);
 
         addNewCategoryPlus.setOnClickListener(new View.OnClickListener() {
@@ -159,22 +154,17 @@ public class AddNewItem extends AppCompatActivity implements MainMenuButtonFunct
                                         dialog.cancel();
                                     }
                                 });
-
                 // create alert dialog
                 AlertDialog alertDialog = alertDialogBuilder.create();
 
-
                 // show it
                 alertDialog.show();
-
             }
         });
         //End of add new category pop-up code
 
         //Start of code for the add new room pop-up
-
         ImageButton addNewRoomPlus = (ImageButton)findViewById(R.id.addNewRoomPlus_btn_id);
-
         //roomList = (ListView)findViewById(R.id.roomList);
 
         addNewRoomPlus.setOnClickListener(new View.OnClickListener() {
@@ -217,17 +207,12 @@ public class AddNewItem extends AppCompatActivity implements MainMenuButtonFunct
                 // create alert dialog
                 AlertDialog alertDialog = alertDialogBuilder.create();
 
-
                 // show it
                 alertDialog.show();
-
-
             }
         });
-
         //End of code for add new room pop-up
     }
-
 
     // call getAllRooms() from ItemDao to get all items stored in database
     private void getTasks() {
@@ -357,7 +342,6 @@ public class AddNewItem extends AppCompatActivity implements MainMenuButtonFunct
             } catch (IOException e) {
                 Log.d(TAG, "ERROR: " + e);
             }
-
         }
     }
 
@@ -375,7 +359,6 @@ public class AddNewItem extends AppCompatActivity implements MainMenuButtonFunct
         final String sDate = editPurchaseDate.getText().toString().trim();
 
         // Save Image as String
-
         try {
             Compress c = new Compress();
             BitmapToString b = new BitmapToString();
@@ -386,7 +369,6 @@ public class AddNewItem extends AppCompatActivity implements MainMenuButtonFunct
                 editNameText.setError("Name required");
                 editNameText.requestFocus();
                 return;
-
             }
 
             if(sRoom.isEmpty()) {
@@ -416,7 +398,6 @@ public class AddNewItem extends AppCompatActivity implements MainMenuButtonFunct
             if(sImage.isEmpty()) {
                 return;
             }
-
 
             class SaveTask extends AsyncTask<Void, Void, Void> {
                 @Override
@@ -494,7 +475,6 @@ public class AddNewItem extends AppCompatActivity implements MainMenuButtonFunct
         input.setText(str);
         //end of code for room dropdown
 
-
         //code for category dropdown
         TextView input2;
         input2 = (TextView)findViewById(R.id.editCategory);
@@ -507,7 +487,6 @@ public class AddNewItem extends AppCompatActivity implements MainMenuButtonFunct
         String str2 = spinner2.getSelectedItem().toString();
         input2.setText(str2);
         //end of code for categories dropdown
-
     }
 
     //do not delete this empty function
@@ -515,7 +494,6 @@ public class AddNewItem extends AppCompatActivity implements MainMenuButtonFunct
     public void onNothingSelected(AdapterView<?> parent) {
         //This can stay empty for spinner dropdown
     }
-
 }
 
 

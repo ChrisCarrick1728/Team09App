@@ -63,7 +63,6 @@ public class UpdateItemActivity extends AppCompatActivity implements MainMenuBut
         Log.d(TAG, "Item: " + getIntent().getSerializableExtra("item"));
         loadItem(item);
 
-
         // Calendar pop up to fill in date field
         editTextDate.setOnClickListener(new View.OnClickListener() {
 
@@ -93,7 +92,6 @@ public class UpdateItemActivity extends AppCompatActivity implements MainMenuBut
                 editTextDate.setText(date);
             }
         };
-
 
         // update item button
         findViewById(R.id.button_save).setOnClickListener(new View.OnClickListener() {
@@ -218,8 +216,6 @@ public class UpdateItemActivity extends AppCompatActivity implements MainMenuBut
         DeleteItem deleteItem = new DeleteItem();
         deleteItem.execute();
     }
-
-
 
     private void dispatchTakePictureIntent() {
         Intent takePictureIntent = new Intent(MediaStore.ACTION_IMAGE_CAPTURE);
