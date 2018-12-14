@@ -106,8 +106,7 @@ public class AddNewItem extends AppCompatActivity implements MainMenuButtonFunct
                 saveTask();
             }
         });
-
-
+        
         //call for room dropdown
         getTasks();
 
