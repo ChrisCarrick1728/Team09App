@@ -51,11 +51,11 @@ public class ItemsByRoom extends AppCompatActivity implements MainMenuButtonFunc
             @Override
             protected List<Item> doInBackground(Void... voids) {
                 List<Item> itemList = DatabaseClient
-                        .getInstance(getApplicationContext())
-                        .getItemRoomDatabase()
-                        .itemDao()
-                        // ToDo: switch out with getOneRoom() when room parameter is passed
-                        .getAllRooms();
+                    .getInstance(getApplicationContext())
+                    .getItemRoomDatabase()
+                    .itemDao()
+                    // ToDo: switch out with getOneRoom() when room parameter is passed
+                    .getAllRooms();
                 //.getOneRoom(room);
                 return itemList;
             }

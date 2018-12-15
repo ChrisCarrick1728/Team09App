@@ -35,7 +35,7 @@ public class HouseRoom implements Parcelable {
     }
 
     public static final Parcelable.Creator<HouseRoom> CREATOR
-            = new Parcelable.Creator<HouseRoom>() {
+        = new Parcelable.Creator<HouseRoom>() {
         @Override
         public HouseRoom createFromParcel(Parcel in) {
             return new HouseRoom(in);
@@ -45,6 +45,4 @@ public class HouseRoom implements Parcelable {
             return new HouseRoom[size];
         }
     };
-
-
 }

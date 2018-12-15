@@ -51,11 +51,11 @@ public class ItemsByCategory extends AppCompatActivity implements MainMenuButton
             @Override
             protected List<Item> doInBackground(Void... voids) {
                 List<Item> itemList = DatabaseClient
-                        .getInstance(getApplicationContext())
-                        .getItemRoomDatabase()
-                        .itemDao()
-                        // ToDo: switch out with getOneCategory() when category parameter is passed
-                        .getAllRooms();
+                    .getInstance(getApplicationContext())
+                    .getItemRoomDatabase()
+                    .itemDao()
+                    // ToDo: switch out with getOneCategory() when category parameter is passed
+                    .getAllRooms();
                 //.getOneCategory(room);
                 return itemList;
             }

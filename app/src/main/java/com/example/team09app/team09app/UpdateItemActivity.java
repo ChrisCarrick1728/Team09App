@@ -74,10 +74,10 @@ public class UpdateItemActivity extends AppCompatActivity implements MainMenuBut
                 int day = cal.get(Calendar.DAY_OF_MONTH);
 
                 DatePickerDialog dialogDate = new DatePickerDialog(
-                        UpdateItemActivity.this,
-                        android.R.style.Theme_DeviceDefault,
-                        mEditDateSetListener,
-                        year, month, day);
+                    UpdateItemActivity.this,
+                    android.R.style.Theme_DeviceDefault,
+                    mEditDateSetListener,
+                    year, month, day);
                 dialogDate.show();
             }
         });
@@ -172,8 +172,8 @@ public class UpdateItemActivity extends AppCompatActivity implements MainMenuBut
                     item.setMDate(sDate);
                     item.setMPicture(sImage);
                     DatabaseClient.getInstance(getApplicationContext()).getItemRoomDatabase()
-                            .itemDao()
-                            .update(item);
+                        .itemDao()
+                        .update(item);
                     return null;
                 }
 
@@ -199,8 +199,8 @@ public class UpdateItemActivity extends AppCompatActivity implements MainMenuBut
             protected Void doInBackground(Void... voids) {
 
                 DatabaseClient.getInstance(getApplicationContext()).getItemRoomDatabase()
-                        .itemDao()
-                        .delete(item);
+                    .itemDao()
+                    .delete(item);
                 return null;
             }
 

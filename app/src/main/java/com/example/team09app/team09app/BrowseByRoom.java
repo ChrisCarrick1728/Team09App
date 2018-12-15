@@ -52,33 +52,33 @@ public class BrowseByRoom extends AppCompatActivity implements SaveCurrentActivi
                 View promptsView = li.inflate(R.layout.add_new_room_popup, null);
 
                 AlertDialog.Builder alertDialogBuilder = new AlertDialog.Builder(
-                        context,R.style.alertDialog);
+                    context,R.style.alertDialog);
 
                 // set prompts.xml to alertdialog builder
                 alertDialogBuilder.setView(promptsView);
 
                 final EditText userInput = (EditText) promptsView
-                        .findViewById(R.id.editText2);
+                    .findViewById(R.id.editText2);
 
                 // set dialog message
                 alertDialogBuilder
-                        .setCancelable(true)
-                        .setPositiveButton("Save Room",
-                                new DialogInterface.OnClickListener() {
-                                    public void onClick(DialogInterface dialog,int id) {
-                                        // get user input and set it to result
-                                        // edit text
-                                        //Room newRoom = new Room();
-                                        //newRoom.setName(String.valueOf(userInput.getText()));
-                                        //roomList.add(newRoom);
-                                    }
-                                })
-                        .setNegativeButton("Cancel",
-                                new DialogInterface.OnClickListener() {
-                                    public void onClick(DialogInterface dialog,int id) {
-                                        dialog.cancel();
-                                    }
-                                });
+                    .setCancelable(true)
+                    .setPositiveButton("Save Room",
+                        new DialogInterface.OnClickListener() {
+                            public void onClick(DialogInterface dialog,int id) {
+                                // get user input and set it to result
+                                // edit text
+                                //Room newRoom = new Room();
+                                //newRoom.setName(String.valueOf(userInput.getText()));
+                                //roomList.add(newRoom);
+                            }
+                        })
+                    .setNegativeButton("Cancel",
+                        new DialogInterface.OnClickListener() {
+                            public void onClick(DialogInterface dialog,int id) {
+                                dialog.cancel();
+                            }
+                        });
 
                 // create alert dialog
                 AlertDialog alertDialog = alertDialogBuilder.create();
@@ -97,10 +97,10 @@ public class BrowseByRoom extends AppCompatActivity implements SaveCurrentActivi
             @Override
             protected List<Item> doInBackground(Void... voids) {
                 List<Item> roomList = DatabaseClient
-                        .getInstance(getApplicationContext())
-                        .getItemRoomDatabase()
-                        .itemDao()
-                        .getAllRooms();
+                    .getInstance(getApplicationContext())
+                    .getItemRoomDatabase()
+                    .itemDao()
+                    .getAllRooms();
 
                 Log.d(TAG, "doInBackground: completed");
                 return roomList;

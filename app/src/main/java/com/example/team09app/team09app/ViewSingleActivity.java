@@ -50,7 +50,7 @@ public class ViewSingleActivity extends AppCompatActivity implements MainMenuBut
             @Override
             public void onClick(View view) {
                 AlertDialog.Builder builder = new AlertDialog.Builder(ViewSingleActivity.this,
-                        R.style.AlertDialogTheme);
+                    R.style.AlertDialogTheme);
                 builder.setTitle("Are you sure?");
                 builder.setPositiveButton("Yes", new DialogInterface.OnClickListener() {
                     @Override
@@ -78,10 +78,10 @@ public class ViewSingleActivity extends AppCompatActivity implements MainMenuBut
             @Override
             protected List<Item> doInBackground(Void... voids) {
                 List<Item> itemList = DatabaseClient
-                        .getInstance(getApplicationContext())
-                        .getItemRoomDatabase()
-                        .itemDao()
-                        .getOne(item.getMId());
+                    .getInstance(getApplicationContext())
+                    .getItemRoomDatabase()
+                    .itemDao()
+                    .getOne(item.getMId());
                 return itemList;
             }
 
@@ -101,8 +101,8 @@ public class ViewSingleActivity extends AppCompatActivity implements MainMenuBut
             @Override
             protected Void doInBackground(Void... voids) {
                 DatabaseClient.getInstance(getApplicationContext()).getItemRoomDatabase()
-                        .itemDao()
-                        .delete(item);
+                    .itemDao()
+                    .delete(item);
                 return null;
             }
 

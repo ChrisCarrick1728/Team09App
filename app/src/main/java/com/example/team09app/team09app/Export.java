@@ -74,7 +74,7 @@ public class Export extends AppCompatActivity implements MainMenuButtonFunction 
         View exportView = liExport.inflate(R.layout.activity_send_file, null);
 
         AlertDialog.Builder alertDB = new AlertDialog.Builder(
-                context, R.style.AlertDialogTheme);
+            context, R.style.AlertDialogTheme);
         alertDB.setView(exportView);
 
         shareButton = (ImageButton) exportView.findViewById(R.id.action_share);
@@ -82,13 +82,13 @@ public class Export extends AppCompatActivity implements MainMenuButtonFunction 
             @Override
             public void onClick(View v) {
                 Uri outputUri = FileProvider.getUriForFile(
-                        context,"com.example.android.fileprovider", file);
+                    context,"com.example.android.fileprovider", file);
                 if (outputUri != null) {
                     Intent shareIntent = ShareCompat.IntentBuilder.from((Activity) context)
-                            .setType("application/csv")
-                            .setStream(outputUri)
-                            .setEmailTo(new String[]{""})
-                            .getIntent();
+                        .setType("application/csv")
+                        .setStream(outputUri)
+                        .setEmailTo(new String[]{""})
+                        .getIntent();
                     shareIntent.setDataAndType(outputUri, "application/csv");
                     shareIntent.addFlags(Intent.FLAG_GRANT_READ_URI_PERMISSION);
                     shareIntent.addFlags(Intent.FLAG_GRANT_WRITE_URI_PERMISSION);
@@ -98,14 +98,14 @@ public class Export extends AppCompatActivity implements MainMenuButtonFunction 
         });
 
         alertDB
-                .setCancelable(true)
-                .setNegativeButton("Cancel",
-                        new DialogInterface.OnClickListener() {
-                            @Override
-                            public void onClick(DialogInterface dialog, int which) {
-                                dialog.cancel();
-                            }
-                        });
+            .setCancelable(true)
+            .setNegativeButton("Cancel",
+                new DialogInterface.OnClickListener() {
+                    @Override
+                    public void onClick(DialogInterface dialog, int which) {
+                        dialog.cancel();
+                    }
+                });
 
         AlertDialog alert = alertDB.create();
 
@@ -136,10 +136,10 @@ public class Export extends AppCompatActivity implements MainMenuButtonFunction 
                 // get number of items from database
                 int numItems = 0;
                 numItems = DatabaseClient
-                        .getInstance(getApplicationContext())
-                        .getItemRoomDatabase()
-                        .itemDao()
-                        .getNumAllItems();
+                    .getInstance(getApplicationContext())
+                    .getItemRoomDatabase()
+                    .itemDao()
+                    .getNumAllItems();
                 Log.d(TAG, "Got number of items: " + numItems);
 
                 // if no items in database, don't do anything
@@ -150,10 +150,10 @@ public class Export extends AppCompatActivity implements MainMenuButtonFunction 
 
                 // get all items
                 List<Item> itemList = DatabaseClient
-                        .getInstance(getApplicationContext())
-                        .getItemRoomDatabase()
-                        .itemDao()
-                        .getAll();
+                    .getInstance(getApplicationContext())
+                    .getItemRoomDatabase()
+                    .itemDao()
+                    .getAll();
                 Log.d(TAG, "Got all items");
 
                 // if no items in database, don't do anything
@@ -166,10 +166,10 @@ public class Export extends AppCompatActivity implements MainMenuButtonFunction 
                 int numItemsSaved = 0;
                 for (int i = 0; i < itemList.size(); i++) {
                     pwExcel.println(itemList.get(i).getMName() + ", "
-                            + itemList.get(i).getMRoom() + ", "
-                            + itemList.get(i).getMCategory() + ", "
-                            + itemList.get(i).getMDate() + ", "
-                            + itemList.get(i).getMPrice());
+                        + itemList.get(i).getMRoom() + ", "
+                        + itemList.get(i).getMCategory() + ", "
+                        + itemList.get(i).getMDate() + ", "
+                        + itemList.get(i).getMPrice());
                     numItemsSaved++;
                 }
 

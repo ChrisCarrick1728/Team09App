@@ -108,7 +108,7 @@ public class AddNewItem extends AppCompatActivity implements MainMenuButtonFunct
         });
         
         //call for room dropdown
-        getTasks();
+        getRoom();
 
         //call for category dropdown
         getCategory();
@@ -214,8 +214,8 @@ public class AddNewItem extends AppCompatActivity implements MainMenuButtonFunct
     }
 
     // call getAllRooms() from ItemDao to get all items stored in database
-    private void getTasks() {
-        class GetTasks extends AsyncTask<Void, Void, List<Item>> {
+    private void getRoom() {
+        class GetRoom extends AsyncTask<Void, Void, List<Item>> {
             @Override
             protected List<Item> doInBackground(Void... voids) {
                 List<Item> itemList = DatabaseClient
@@ -250,13 +250,13 @@ public class AddNewItem extends AppCompatActivity implements MainMenuButtonFunct
                 spinner.setOnItemSelectedListener(AddNewItem.this);
             }
         }
-        GetTasks gt = new GetTasks();
-        gt.execute();
+        GetRoom gr = new GetRoom();
+        gr.execute();
     }
 
     // call getAllCategories() from ItemDao to get all items stored in database
     private void getCategory() {
-        class GetTasks extends AsyncTask<Void, Void, List<Item>> {
+        class GetCategory extends AsyncTask<Void, Void, List<Item>> {
             @Override
             protected List<Item> doInBackground(Void... voids) {
                 List<Item> itemList = DatabaseClient
@@ -291,9 +291,10 @@ public class AddNewItem extends AppCompatActivity implements MainMenuButtonFunct
                 spinner.setOnItemSelectedListener(AddNewItem.this);
             }
         }
-        GetTasks gt = new GetTasks();
-        gt.execute();
+        GetCategory gc = new GetCategory();
+        gc.execute();
     }
+    //End of dropdown spinner code
 
     private void dispatchTakePictureIntent() {
         Intent takePictureIntent = new Intent(MediaStore.ACTION_IMAGE_CAPTURE);

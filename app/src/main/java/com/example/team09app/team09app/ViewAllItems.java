@@ -53,10 +53,10 @@ public class ViewAllItems extends AppCompatActivity implements MainMenuButtonFun
             @Override
             protected List<Item> doInBackground(Void... voids) {
                 List<Item> itemList = DatabaseClient
-                        .getInstance(getApplicationContext())
-                        .getItemRoomDatabase()
-                        .itemDao()
-                        .getAll();
+                    .getInstance(getApplicationContext())
+                    .getItemRoomDatabase()
+                    .itemDao()
+                    .getAll();
                 Log.d("Test TAG", "doInBackground itemList size: " + itemList.size());
                 return itemList;
             }
