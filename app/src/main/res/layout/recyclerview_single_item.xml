@@ -60,14 +60,14 @@
 
     <TextView
         android:id="@+id/priceText"
-        android:layout_width="163dp"
+        android:layout_width="89dp"
         android:layout_height="25dp"
         android:layout_marginStart="8dp"
         android:layout_marginTop="8dp"
         android:text="Price"
         android:textColor="@color/White"
         android:textSize="18sp"
-        app:layout_constraintStart_toEndOf="@+id/textView4"
+        app:layout_constraintStart_toEndOf="@+id/textView6"
         app:layout_constraintTop_toBottomOf="@+id/categoryText" />
 
     <TextView
@@ -133,5 +133,17 @@
         android:textStyle="bold"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/priceText" />
+
+    <TextView
+        android:id="@+id/textView6"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="8dp"
+        android:layout_marginTop="8dp"
+        android:text="$"
+        android:textColor="@color/White"
+        android:textSize="18sp"
+        app:layout_constraintStart_toEndOf="@+id/textView4"
+        app:layout_constraintTop_toBottomOf="@+id/categoryText" />
 
 </android.support.constraint.ConstraintLayout>

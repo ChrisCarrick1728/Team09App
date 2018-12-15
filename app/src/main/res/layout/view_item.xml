@@ -26,9 +26,9 @@
 
     <EditText
         android:id="@+id/priceText"
-        android:layout_width="141dp"
+        android:layout_width="124dp"
         android:layout_height="42dp"
-        android:layout_marginStart="16dp"
+        android:layout_marginStart="4dp"
         android:layout_marginTop="8dp"
         android:ems="10"
         android:hint="@string/price_text"
@@ -36,7 +36,7 @@
         android:selectAllOnFocus="false"
         android:textColor="@color/White"
         android:textColorHint="@color/White"
-        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintStart_toEndOf="@+id/textView8"
         app:layout_constraintTop_toBottomOf="@+id/nameText3" />
 
     <EditText
@@ -137,6 +137,18 @@
         android:layout_height="wrap_content"
         android:visibility="visible"
         app:layout_constraintTop_toTopOf="parent" />
+
+    <TextView
+        android:id="@+id/textView8"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="16dp"
+        android:layout_marginTop="16dp"
+        android:text="$"
+        android:textColor="@color/White"
+        android:textSize="18sp"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/nameText3" />
 
 
 </android.support.constraint.ConstraintLayout>

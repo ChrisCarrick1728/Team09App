@@ -354,8 +354,7 @@ public class AddNewItem extends AppCompatActivity implements MainMenuButtonFunct
         final String sName = editNameText.getText().toString().trim();
         final String sRoom = editRoom.getText().toString().trim();
         final String sCategory = editCategory.getText().toString().trim();
-        String dollarSign = "$ ";
-        final String sPrice = dollarSign + editPriceText.getText().toString().trim();
+        final String sPrice = editPriceText.getText().toString().trim();
         final String sDate = editPurchaseDate.getText().toString().trim();
 
         // Save Image as String

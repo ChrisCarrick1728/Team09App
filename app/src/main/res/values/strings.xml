@@ -29,7 +29,7 @@
     <string name="add_new_category_pop_up">Enter New Category</string>
     <string name="PREFERENCE_FILE_KEY">com.example.team09app.PREFERENCE_FILE_KEY</string>
     <string name="CURRENT_STATE">currentState</string>
-    <string name="price_text">$ 0.00</string>
+    <string name="price_text">0.00</string>
     <string name="purchase_date">Purchase Date</string>
     <string name="browse_by_category">Browse By Category</string>
     <string name="browse_by_room">Browse By Room</string>

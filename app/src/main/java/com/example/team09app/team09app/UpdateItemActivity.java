@@ -128,9 +128,7 @@ public class UpdateItemActivity extends AppCompatActivity implements MainMenuBut
         final String sCategory = editTextCategory.getText().toString().trim();
 
         // ToDo: Adds an extra dollar sign each time page loads
-        final String dollarSign = "$ ";
-
-        final String sPrice = dollarSign + editTextPrice.getText().toString().trim();
+        final String sPrice =  editTextPrice.getText().toString().trim();
         final String sDate = editTextDate.getText().toString().trim();
 
 
