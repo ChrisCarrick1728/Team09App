@@ -28,10 +28,10 @@
         app:srcCompat="@drawable/house_logoxhdpi" />
 
     <ImageButton
-        android:id="@+id/pdf_btn_id"
+        android:id="@+id/export_btn_id"
         android:layout_width="0dp"
         android:layout_height="65dp"
-        android:layout_marginTop="36dp"
+        android:layout_marginTop="32dp"
         android:background="@color/Blue"
         android:contentDescription="@string/export_button_description"
         android:cropToPadding="false"
@@ -41,22 +41,6 @@
         app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/exportPage_text"
-        app:srcCompat="@drawable/export_pdf_btnxhdpi" />
-
-    <ImageButton
-        android:id="@+id/export_btn_id"
-        android:layout_width="0dp"
-        android:layout_height="65dp"
-        android:layout_marginTop="28dp"
-        android:background="@color/Blue"
-        android:contentDescription="@string/export_button_description"
-        android:cropToPadding="false"
-        android:scaleType="fitCenter"
-        android:visibility="visible"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.0"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/pdf_btn_id"
         app:srcCompat="@drawable/export_excel_btnxhdpi" />
 
     <include
