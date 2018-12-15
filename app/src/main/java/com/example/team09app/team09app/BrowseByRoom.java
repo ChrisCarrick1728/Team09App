@@ -17,6 +17,7 @@ import android.widget.ImageButton;
 import android.widget.ImageView;
 import android.widget.ListView;
 
+import java.math.RoundingMode;
 import java.util.List;
 
 /** This class lets the user browse her items sorted by what room they are located in.
@@ -92,24 +93,33 @@ public class BrowseByRoom extends AppCompatActivity implements SaveCurrentActivi
 
     // call functions from ItemDao()
     private void getTasks() {
-        class GetTasks extends AsyncTask<Void, Void, List<Item>> {
+        class GetTasks extends AsyncTask<Void, Void, RoomObject> {
 
             @Override
-            protected List<Item> doInBackground(Void... voids) {
+            protected RoomObject doInBackground(Void... voids) {
+                RoomObject r = new RoomObject();
                 List<Item> roomList = DatabaseClient
                     .getInstance(getApplicationContext())
                     .getItemRoomDatabase()
                     .itemDao()
                     .getAllRooms();
+                r.setItem(roomList);
+
+                List<Integer> numRooms = DatabaseClient
+                        .getInstance(getApplicationContext())
+                        .getItemRoomDatabase()
+                        .itemDao()
+                        .getNumRoom();
+                r.setNumItems(numRooms);
 
                 Log.d(TAG, "doInBackground: completed");
-                return roomList;
+                return r;
             }
 
             @Override
-            protected void onPostExecute(List<Item> items) {
-                super.onPostExecute(items);
-                RoomListAdapter adapter = new RoomListAdapter(BrowseByRoom.this, items);
+            protected void onPostExecute(RoomObject r) {
+                super.onPostExecute(r);
+                RoomListAdapter adapter = new RoomListAdapter(BrowseByRoom.this, r);
                 recyclerView.setAdapter(adapter);
                 Log.d(TAG, "onPostExecute: completed");
             }

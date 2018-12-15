@@ -20,12 +20,12 @@ import java.util.List;
 public class RoomListAdapter extends RecyclerView.Adapter<RoomListAdapter.ItemViewHolder> {
 
     private Context mCtx;
-    private List<Item> itemList;
+    private RoomObject rList;
     private static final String TAG = "RoomListAdapter";
 
-    public RoomListAdapter (Context mCtx, List<Item> itemList) {
+    public RoomListAdapter (Context mCtx, RoomObject r) {
         this.mCtx = mCtx;
-        this.itemList = itemList;
+        rList = r;
     }
 
     @Override
@@ -36,15 +36,17 @@ public class RoomListAdapter extends RecyclerView.Adapter<RoomListAdapter.ItemVi
 
     @Override
     public void onBindViewHolder(ItemViewHolder holder, int position) {
-        Item it = itemList.get(position);
-        //holder.textViewNumber_id.setText("1");
+        Item it = rList.getItem().get(position);
+        Integer num = rList.getNumItems().get(position);
+        holder.textViewNumber_id.setText(num.toString());
+
         holder.textViewRoom_id.setText(it.getMRoom());
     }
 
     @Override
     public int getItemCount() {
-        if(itemList != null)
-            return itemList.size();
+        if(rList != null)
+            return rList.getItem().size();
         else
             return 0;
     }
@@ -64,7 +66,7 @@ public class RoomListAdapter extends RecyclerView.Adapter<RoomListAdapter.ItemVi
 
         @Override
         public void onClick(View view) {
-            Item item = itemList.get(getAdapterPosition());
+            Item item = rList.getItem().get(getAdapterPosition());
 
             // ToDo: Will this pass the correct room into ItemsByRoom class or do we need to have a list of rooms to pass?
             Intent intent = new Intent(mCtx, ItemsByRoom.class);
