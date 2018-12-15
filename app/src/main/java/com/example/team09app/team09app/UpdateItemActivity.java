@@ -109,10 +109,17 @@ public class UpdateItemActivity extends AppCompatActivity implements MainMenuBut
         editTextPrice.setText(item.getMPrice());
         editTextDate.setText(item.getMDate());
 
-        StringToBitmap s = new StringToBitmap();
-        Decompress d = new Decompress();
-        imageBitmap = s.convert(item.getMPicture());
-        itemImage.setImageBitmap(imageBitmap);
+
+
+        try {
+            StringToBitmap s = new StringToBitmap();
+            Decompress d = new Decompress();
+            imageBitmap = s.convert(d.decompress(item.getMPicture()));
+            itemImage.setImageBitmap(imageBitmap);
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+
     }
 
     private void updateItem(final Item item) {
@@ -131,7 +138,7 @@ public class UpdateItemActivity extends AppCompatActivity implements MainMenuBut
             Compress c = new Compress();
             BitmapToString b = new BitmapToString();
 
-            final String sImage = (b.convert(imageBitmap));
+            final byte[] sImage = (c.compress(b.convert(imageBitmap)));
 
             if (sName.isEmpty()) {
                 editTextName.setError("Name required");
@@ -158,7 +165,7 @@ public class UpdateItemActivity extends AppCompatActivity implements MainMenuBut
                 editTextDate.requestFocus();
                 return;
             }
-            if (sImage.isEmpty()) {
+            if (sImage == null) {
                 return;
             }
 

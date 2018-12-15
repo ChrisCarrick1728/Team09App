@@ -363,7 +363,7 @@ public class AddNewItem extends AppCompatActivity implements MainMenuButtonFunct
             Compress c = new Compress();
             BitmapToString b = new BitmapToString();
 
-            final String sImage = (b.convert(imageBitmap));
+            final byte[] sImage = (c.compress(b.convert(imageBitmap)));
 
             if(sName.isEmpty()) {
                 editNameText.setError("Name required");
@@ -395,7 +395,7 @@ public class AddNewItem extends AppCompatActivity implements MainMenuButtonFunct
                 return;
             }
 
-            if(sImage.isEmpty()) {
+            if(sImage == null) {
                 return;
             }
 

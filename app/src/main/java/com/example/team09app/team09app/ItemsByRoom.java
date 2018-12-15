@@ -56,7 +56,6 @@ public class ItemsByRoom extends AppCompatActivity implements MainMenuButtonFunc
                     .itemDao()
                     // ToDo: switch out with getOneRoom() when room parameter is passed
                     .getAllRooms();
-                //.getOneRoom(room);
                 return itemList;
             }
 

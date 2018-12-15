@@ -54,10 +54,16 @@ public class SingleItemAdapter extends RecyclerView.Adapter<SingleItemAdapter.Si
         holder.dateText.setText(it.getMDate());
 
         // Load Image
-        StringToBitmap s = new StringToBitmap();
-        Decompress d = new Decompress();
-        Bitmap imageBitmap = s.convert(it.getMPicture());
-        holder.itemImage.setImageBitmap(imageBitmap);
+        try {
+            StringToBitmap s = new StringToBitmap();
+            Decompress d = new Decompress();
+            Bitmap imageBitmap = null;
+            imageBitmap = s.convert(d.decompress(it.getMPicture()));
+            holder.itemImage.setImageBitmap(imageBitmap);
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+
 
         /*ContentResolver cr = mCtx.getContentResolver();
         try {

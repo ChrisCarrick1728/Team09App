@@ -1,6 +1,7 @@
 package com.example.team09app.team09app;
 
 import android.arch.persistence.room.ColumnInfo;
+import android.arch.persistence.room.Database;
 import android.arch.persistence.room.Entity;
 import android.arch.persistence.room.PrimaryKey;
 
@@ -42,7 +43,7 @@ public class Item implements Serializable {
 
     /** mPicture: Stores the URI of the picture */
     @ColumnInfo(name = "picture")
-    private String mPicture;
+    private byte[] mPicture;
 
     // Getters and Setters
     // Room DB will only recognize a getter with the exact variable name except starting with a capital letter
@@ -130,14 +131,14 @@ public class Item implements Serializable {
     /** Gets the picture of the item.
      * @return A string representing the URI of the picture of the item.
      */
-    public String getMPicture() {
+    public byte[] getMPicture() {
         return mPicture;
     }
 
     /** Sets the picture of the item
      * @param picture A string containing the URI of the picture of the item.
      */
-    public void setMPicture(String picture) {
+    public void setMPicture(byte[] picture) {
         this.mPicture = picture;
     }
 }
