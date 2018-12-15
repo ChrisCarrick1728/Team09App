@@ -296,17 +296,36 @@ public class AddNewItem extends AppCompatActivity implements MainMenuButtonFunct
     }
     //End of dropdown spinner code
 
+    String mCurrentPhotoPath;
+
+    /** Creates a new timestamped filename for the image */
+    private File createImageFile() throws IOException {
+        // Create an image file name
+        String timeStamp = new SimpleDateFormat("yyyyMMdd_HHmmss").format(new Date());
+        String imageFileName = "JPEG_" + timeStamp + "_";
+        File storageDir = getExternalFilesDir(Environment.DIRECTORY_PICTURES);
+        File image = File.createTempFile(
+                imageFileName,   /* prefix */
+                ".jpg",   /* suffix */
+                storageDir       /* directory */
+        );
+
+        // Save a file: path for use with ACTION_VIEW intents
+        mCurrentPhotoPath = image.getAbsolutePath();
+        return image;
+    }
+
     private void dispatchTakePictureIntent() {
         Intent takePictureIntent = new Intent(MediaStore.ACTION_IMAGE_CAPTURE);
         if (takePictureIntent.resolveActivity(getPackageManager()) != null) {
-            File storageDir = getExternalFilesDir(Environment.DIRECTORY_PICTURES);
-            File photoFile = null;
-            try {
-                photoFile = File.createTempFile("tempPhoto", ".jpg", storageDir);
-            } catch (IOException ex) {
-                Log.d(TAG, "Error: " + ex);
-            }
 
+            File photoFile = null;
+
+            try {
+                photoFile = createImageFile();
+            } catch (IOException ex) {
+                Log.d(TAG, "dispatchTakePictureIntent:" + ex);
+            }
             Uri photoURI;
             if (photoFile != null) {
                 if (mainURI == null) {
@@ -330,11 +349,12 @@ public class AddNewItem extends AppCompatActivity implements MainMenuButtonFunct
         ImageButton mImageButton = (ImageButton) findViewById(R.id.camera_btn_id_add);
         Log.d(TAG, "I'm here");
         if (requestCode == REQUEST_IMAGE_CAPTURE && resultCode == RESULT_OK) {
+            Bundle extras = data.getExtras();
             this.getContentResolver().notifyChange(mainURI, null);
             ContentResolver cr = this.getContentResolver();
 
             Log.d(TAG, "LoadURI: " + mainURI);
-
+            Bitmap imageBitmap;
             try {
                 imageBitmap = MediaStore.Images.Media.getBitmap(cr, mainURI);
                 mImageButton.setVisibility(View.INVISIBLE);
@@ -342,6 +362,7 @@ public class AddNewItem extends AppCompatActivity implements MainMenuButtonFunct
             } catch (IOException e) {
                 Log.d(TAG, "ERROR: " + e);
             }
+
         }
     }
 
@@ -349,6 +370,7 @@ public class AddNewItem extends AppCompatActivity implements MainMenuButtonFunct
         dispatchTakePictureIntent();
         Log.d(TAG, "takePicture: " + getExternalFilesDir(null));
     }
+
 
     private void saveTask() {
         final String sName = editNameText.getText().toString().trim();

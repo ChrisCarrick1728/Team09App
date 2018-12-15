@@ -54,7 +54,7 @@ public class SingleItemAdapter extends RecyclerView.Adapter<SingleItemAdapter.Si
         holder.dateText.setText(it.getMDate());
 
         // Load Image
-        try {
+        /*try {
             StringToBitmap s = new StringToBitmap();
             Decompress d = new Decompress();
             Bitmap imageBitmap = null;
@@ -62,10 +62,10 @@ public class SingleItemAdapter extends RecyclerView.Adapter<SingleItemAdapter.Si
             holder.itemImage.setImageBitmap(imageBitmap);
         } catch (IOException e) {
             e.printStackTrace();
-        }
+        }*/
 
 
-        /*ContentResolver cr = mCtx.getContentResolver();
+        ContentResolver cr = mCtx.getContentResolver();
         try {
             Uri imageURI = Uri.parse(it.getMPicture());
 
@@ -80,7 +80,7 @@ public class SingleItemAdapter extends RecyclerView.Adapter<SingleItemAdapter.Si
             }
         } catch (Exception e) {
             Log.d(TAG, "Error: Image doesn't exist " + e);
-        }*/
+        }
     }
 
     @Override

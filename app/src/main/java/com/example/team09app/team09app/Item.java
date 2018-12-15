@@ -43,7 +43,7 @@ public class Item implements Serializable {
 
     /** mPicture: Stores the URI of the picture */
     @ColumnInfo(name = "picture")
-    private byte[] mPicture;
+    private String mPicture;
 
     // Getters and Setters
     // Room DB will only recognize a getter with the exact variable name except starting with a capital letter
@@ -131,14 +131,14 @@ public class Item implements Serializable {
     /** Gets the picture of the item.
      * @return A string representing the URI of the picture of the item.
      */
-    public byte[] getMPicture() {
+    public String getMPicture() {
         return mPicture;
     }
 
     /** Sets the picture of the item
      * @param picture A string containing the URI of the picture of the item.
      */
-    public void setMPicture(byte[] picture) {
+    public void setMPicture(String picture) {
         this.mPicture = picture;
     }
 }
