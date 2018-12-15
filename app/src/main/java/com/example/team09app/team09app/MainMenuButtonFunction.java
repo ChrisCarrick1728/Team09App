@@ -5,6 +5,10 @@ import android.content.Intent;
 import android.util.Log;
 import android.view.View;
 
+/** This class handles the code for the buttons on the main menu
+ * @author team 09
+ * @version 1.0
+ */
 public interface MainMenuButtonFunction {
 
     static final String TAG = "MainMenuButtonFunction";

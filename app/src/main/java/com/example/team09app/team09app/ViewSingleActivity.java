@@ -18,6 +18,10 @@ import android.widget.Toast;
 
 import java.util.List;
 
+/** This class contains the code to let the user view a single item.
+ * @author team 09
+ * @version 1.0
+ */
 public class ViewSingleActivity extends AppCompatActivity implements MainMenuButtonFunction {
 
     private RecyclerView recylcerView;

@@ -6,6 +6,10 @@ import java.io.ByteArrayOutputStream;
 import android.util.Base64;
 import android.util.Log;
 
+/** This class handles the code to have the app convert a bitmap to a string
+ * @author team 09
+ * @version 1.0
+ */
 public class BitmapToString {
 
     public String convert(Bitmap bitmap) {

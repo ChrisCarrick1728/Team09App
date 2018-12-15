@@ -4,6 +4,10 @@ import java.io.*;
 import java.nio.charset.StandardCharsets;
 import java.util.zip.GZIPInputStream;
 
+/** This class lets the app decompress data that has been stored in a compressed file.
+ * @author team 09.
+ * @version 1.0
+ */
 public class Decompress {
     public static String decompress(byte[] b) throws IOException {
 

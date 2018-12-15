@@ -4,6 +4,10 @@ import android.arch.persistence.room.Room;
 import android.content.Context;
 import android.provider.ContactsContract;
 
+/** This class contains code required for the room database to function.
+ * @author team 09.
+ * @version 1.0
+ */
 public class DatabaseClient {
 
     private Context mCtx;
