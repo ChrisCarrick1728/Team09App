@@ -276,7 +276,7 @@ public class AddNewItem extends AppCompatActivity implements MainMenuButtonFunct
         final String sCategory = editCategory.getText().toString().trim();
         final String sPrice = editPriceText.getText().toString().trim();
         final String sDate = editPurchaseDate.getText().toString().trim();
-        final String sImage = mainURI.toString().trim();
+        final String sImage = (mainURI == null ? mainURI.toString().trim() : "");
         final String sImagePath = photoFile.toString().trim();
 
         if(sName.isEmpty()) {
@@ -304,9 +304,7 @@ public class AddNewItem extends AppCompatActivity implements MainMenuButtonFunct
             editPurchaseDate.requestFocus();
             return;
         }
-        if(sImage.isEmpty()) {
-            return;
-        }
+
 
         class SaveTask extends AsyncTask<Void, Void, Void> {
             @Override

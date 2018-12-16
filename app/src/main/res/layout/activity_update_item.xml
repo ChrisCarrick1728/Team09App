@@ -8,6 +8,22 @@
     android:background="@color/Blue"
     tools:context=".AddNewItem">
 
+    <ImageButton
+        android:id="@+id/camera_btn_id_add"
+        android:layout_width="249dp"
+        android:layout_height="64dp"
+        android:layout_marginTop="48dp"
+        android:background="@color/Blue"
+        android:clickable="true"
+        android:contentDescription="@string/export_button_description"
+        android:cropToPadding="false"
+        android:scaleType="fitCenter"
+        android:visibility="visible"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/category_text_id"
+        app:srcCompat="@drawable/take_picture_btnxhdpi" />
+
     <TextView
         android:id="@+id/category_text_id"
         android:layout_width="0dp"
@@ -69,7 +85,7 @@
         android:layout_height="150dp"
         android:layout_marginTop="8dp"
         android:layout_marginBottom="8dp"
-        android:background="@color/Blue"
+        android:background="@color/clear"
         android:clickable="true"
         android:onClick="takePicture"
         android:scaleType="fitCenter"
@@ -120,22 +136,6 @@
         android:textColorHint="@color/White"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/editNameText" />
-
-    <ImageButton
-        android:id="@+id/camera_btn_id_add"
-        android:layout_width="249dp"
-        android:layout_height="64dp"
-        android:layout_marginTop="48dp"
-        android:background="@color/Blue"
-        android:clickable="true"
-        android:contentDescription="@string/export_button_description"
-        android:cropToPadding="false"
-        android:scaleType="fitCenter"
-        android:visibility="invisible"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/category_text_id"
-        app:srcCompat="@drawable/take_picture_btnxhdpi" />
 
     <EditText
         android:id="@+id/editNameText"
