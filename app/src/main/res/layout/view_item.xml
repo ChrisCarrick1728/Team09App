@@ -100,14 +100,17 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/camera_btn_id_add" />
 
-    <include
-        android:id="@+id/menu_overlay_id"
-        layout="@layout/main_menu_overlay"
-        android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:visibility="gone"
-        app:layout_constraintBottom_toTopOf="@id/title"
-        app:layout_constraintTop_toTopOf="parent" />
+    <TextView
+        android:id="@+id/textView8"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="16dp"
+        android:layout_marginTop="16dp"
+        android:text="$"
+        android:textColor="@color/White"
+        android:textSize="18sp"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/nameText3" />
 
     <TextView
         android:id="@+id/category_text_id"
@@ -131,24 +134,21 @@
         tools:textIsSelectable="false" />
 
     <include
+        android:id="@+id/menu_overlay_id"
+        layout="@layout/main_menu_overlay"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:visibility="gone"
+        app:layout_constraintBottom_toTopOf="@id/title"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <include
         android:id="@+id/title"
         layout="@layout/title_bar"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:visibility="visible"
         app:layout_constraintTop_toTopOf="parent" />
-
-    <TextView
-        android:id="@+id/textView8"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="16dp"
-        android:layout_marginTop="16dp"
-        android:text="$"
-        android:textColor="@color/White"
-        android:textSize="18sp"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/nameText3" />
 
 
 </android.support.constraint.ConstraintLayout>

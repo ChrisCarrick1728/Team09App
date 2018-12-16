@@ -205,6 +205,18 @@
         app:layout_constraintTop_toBottomOf="@+id/title"
         tools:textIsSelectable="false" />
 
+    <TextView
+        android:id="@+id/textView7"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="16dp"
+        android:layout_marginTop="16dp"
+        android:text="$"
+        android:textColor="@color/White"
+        android:textSize="18sp"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/editCategory" />
+
     <include
         android:id="@+id/menu_overlay_id"
         layout="@layout/main_menu_overlay"
@@ -221,18 +233,6 @@
         android:layout_height="wrap_content"
         android:visibility="visible"
         app:layout_constraintTop_toTopOf="parent" />
-
-    <TextView
-        android:id="@+id/textView7"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="16dp"
-        android:layout_marginTop="16dp"
-        android:text="$"
-        android:textColor="@color/White"
-        android:textSize="18sp"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/editCategory" />
 
 
 </android.support.constraint.ConstraintLayout>
