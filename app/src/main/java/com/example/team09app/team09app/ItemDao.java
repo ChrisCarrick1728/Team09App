@@ -32,8 +32,8 @@ public interface ItemDao {
     @Query("SELECT category FROM items_table GROUP BY category ORDER BY category ASC")
     List<Item> getAllCategories();
 
-    @Query("SELECT COUNT(*) FROM items_table")
-    List<Integer> getNumRoom();
+    @Query("SELECT COUNT(*) FROM items_table WHERE ROOM=:room")
+    Integer getNumRoom(String room);
 
     @Query("SELECT * FROM items_table GROUP BY ID HAVING count(*) = 1")
     int getNumAllItems();

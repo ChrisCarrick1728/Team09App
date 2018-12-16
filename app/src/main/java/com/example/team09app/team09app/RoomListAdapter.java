@@ -37,9 +37,9 @@ public class RoomListAdapter extends RecyclerView.Adapter<RoomListAdapter.ItemVi
     @Override
     public void onBindViewHolder(ItemViewHolder holder, int position) {
         Item it = rList.getItem().get(position);
+        Log.d("Test Num", "numItems: " + rList.getNumItems().get(position));
         Integer num = rList.getNumItems().get(position);
         holder.textViewNumber_id.setText(num.toString());
-
         holder.textViewRoom_id.setText(it.getMRoom());
     }
 
@@ -70,7 +70,7 @@ public class RoomListAdapter extends RecyclerView.Adapter<RoomListAdapter.ItemVi
 
             Log.d(TAG, "onClick: " + item.getMRoom());
             Intent intent = new Intent(mCtx, ItemsByRoom.class);
-            intent.putExtra("room", item);
+            intent.putExtra("room", item.getMRoom());
 
             mCtx.startActivity(intent);
         }

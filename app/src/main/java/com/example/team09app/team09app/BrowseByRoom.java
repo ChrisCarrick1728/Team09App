@@ -18,6 +18,7 @@ import android.widget.ImageView;
 import android.widget.ListView;
 
 import java.math.RoundingMode;
+import java.util.ArrayList;
 import java.util.List;
 
 /** This class lets the user browse her items sorted by what room they are located in.
@@ -104,14 +105,19 @@ public class BrowseByRoom extends AppCompatActivity implements SaveCurrentActivi
                     .itemDao()
                     .getAllRooms();
                 r.setItem(roomList);
+                List<Integer> numRooms = new ArrayList<>();
+                for (int i = 0; i < roomList.size(); i++) {
+                    Integer num = DatabaseClient
+                            .getInstance(getApplicationContext())
+                            .getItemRoomDatabase()
+                            .itemDao()
+                            .getNumRoom(roomList.get(i).getMRoom());
+                    numRooms.add(num);
 
-                List<Integer> numRooms = DatabaseClient
-                        .getInstance(getApplicationContext())
-                        .getItemRoomDatabase()
-                        .itemDao()
-                        .getNumRoom();
+                    Log.d("Test_Num", roomList.get(i).getMRoom() + " " + numRooms.get(i).toString());
+                }
+
                 r.setNumItems(numRooms);
-
                 Log.d(TAG, "doInBackground: completed");
                 return r;
             }

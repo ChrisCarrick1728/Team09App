@@ -10,6 +10,7 @@ import android.support.v7.widget.RecyclerView;
 import android.view.View;
 import android.widget.ImageButton;
 import android.widget.ImageView;
+import android.widget.TextView;
 
 import java.util.List;
 
@@ -21,16 +22,23 @@ public class ItemsByRoom extends AppCompatActivity implements MainMenuButtonFunc
 
     private ImageButton addItemButton;
     private RecyclerView recyclerView;
+    private TextView title;
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_items_by_room);
-
+        Intent intent = getIntent();
         // ToDo: bring in the correct room from BrowseByRoom
+        String room = intent.getStringExtra("room");
+            // Set the Title
+            title = findViewById(R.id.single_room_title_id);
+            title.setText(room);
 
         recyclerView = findViewById(R.id.Item_Viewer2);
         recyclerView.setLayoutManager(new LinearLayoutManager(this));
+
 
         addItemButton = findViewById(R.id.add_new_item_btn_id);
         addItemButton.setOnClickListener(new View.OnClickListener() {
@@ -42,11 +50,11 @@ public class ItemsByRoom extends AppCompatActivity implements MainMenuButtonFunc
         });
 
         // ToDo: send room as a parameter into getTasks
-        getTasks();
+        getTasks(room);
     }
 
     // call getAll() from ItemDao to get all items stored in database
-    private void getTasks() {
+    private void getTasks(String room) {
         class GetTasks extends AsyncTask<Void, Void, List<Item>> {
             @Override
             protected List<Item> doInBackground(Void... voids) {
@@ -54,14 +62,14 @@ public class ItemsByRoom extends AppCompatActivity implements MainMenuButtonFunc
                     .getInstance(getApplicationContext())
                     .getItemRoomDatabase()
                     .itemDao()
-                    // ToDo: switch out with getOneRoom() when room parameter is passed
-                    .getAllRooms();
+                    .getOneRoom(room);
                 return itemList;
             }
 
             @Override
             protected void onPostExecute(List<Item> items) {
                 super.onPostExecute(items);
+
                 SingleRoomAdapter adapter = new SingleRoomAdapter(ItemsByRoom.this, items);
                 recyclerView.setAdapter(adapter);
             }

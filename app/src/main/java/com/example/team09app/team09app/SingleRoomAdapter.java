@@ -3,6 +3,7 @@ package com.example.team09app.team09app;
 import android.content.Context;
 import android.content.Intent;
 import android.support.v7.widget.RecyclerView;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -33,6 +34,7 @@ public class SingleRoomAdapter extends RecyclerView.Adapter<SingleRoomAdapter.It
     @Override
     public void onBindViewHolder(ItemViewHolder holder, int position) {
         Item it = itemList.get(position);
+        Log.d("Room_Test", "onBindViewHolder : " + it.getMRoom());
         holder.textViewName.setText(it.getMName());
     }
 
