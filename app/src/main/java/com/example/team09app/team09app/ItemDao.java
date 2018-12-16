@@ -35,6 +35,9 @@ public interface ItemDao {
     @Query("SELECT COUNT(*) FROM items_table WHERE ROOM=:room")
     Integer getNumRoom(String room);
 
+    @Query("SELECT COUNT(*) FROM items_table WHERE CATEGORY=:category")
+    Integer getNumCategory(String category);
+
     @Query("SELECT * FROM items_table GROUP BY ID HAVING count(*) = 1")
     int getNumAllItems();
 

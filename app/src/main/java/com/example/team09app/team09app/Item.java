@@ -1,7 +1,6 @@
 package com.example.team09app.team09app;
 
 import android.arch.persistence.room.ColumnInfo;
-import android.arch.persistence.room.Database;
 import android.arch.persistence.room.Entity;
 import android.arch.persistence.room.PrimaryKey;
 

@@ -10,6 +10,7 @@ import android.support.v7.widget.RecyclerView;
 import android.view.View;
 import android.widget.ImageButton;
 import android.widget.ImageView;
+import android.widget.TextView;
 
 import java.util.List;
 
@@ -21,13 +22,18 @@ public class ItemsByCategory extends AppCompatActivity implements MainMenuButton
 
     private ImageButton addItemButton;
     private RecyclerView recyclerView;
+    private TextView title;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_items_by_category);
+        Intent intent = getIntent();
+        String category = intent.getStringExtra("category");
 
-        // ToDo: bring in the correct category from BrowseByCategory
+        // Set the Title
+        title = findViewById(R.id.single_category_title_id);
+        title.setText(category);
 
         recyclerView = findViewById(R.id.Item_Viewer3);
         recyclerView.setLayoutManager(new LinearLayoutManager(this));
@@ -41,12 +47,11 @@ public class ItemsByCategory extends AppCompatActivity implements MainMenuButton
             }
         });
 
-        // ToDo: send category as a parameter into getTasks
-        getTasks();
+        getTasks(category);
     }
 
     // call getAll() from ItemDao to get all items stored in database
-    private void getTasks() {
+    private void getTasks(String category) {
         class GetTasks extends AsyncTask<Void, Void, List<Item>> {
             @Override
             protected List<Item> doInBackground(Void... voids) {
@@ -54,9 +59,7 @@ public class ItemsByCategory extends AppCompatActivity implements MainMenuButton
                     .getInstance(getApplicationContext())
                     .getItemRoomDatabase()
                     .itemDao()
-                    // ToDo: switch out with getOneCategory() when category parameter is passed
-                    .getAllRooms();
-                //.getOneCategory(room);
+                    .getOneCategory(category);
                 return itemList;
             }
 

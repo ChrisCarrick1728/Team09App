@@ -44,8 +44,8 @@
     <ImageButton
         android:id="@+id/add_new_item_btn_id"
         android:layout_width="wrap_content"
-        android:layout_height="@dimen/button_height"
-        android:layout_marginTop="8dp"
+        android:layout_height="70dp"
+        android:layout_marginBottom="8dp"
         android:adjustViewBounds="true"
         android:background="@color/Blue"
         android:contentDescription="@string/add_new_button_description"
@@ -54,7 +54,6 @@
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/Item_Viewer2"
         app:srcCompat="@drawable/add_new_item_btnxhdpi" />
 
     <include

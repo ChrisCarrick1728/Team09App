@@ -111,17 +111,7 @@ public class UpdateItemActivity extends AppCompatActivity implements MainMenuBut
         editTextDate.setText(item.getMDate());
         photoFile = new File(item.getMPicturePath());
 
-
-
-        /*try {
-            StringToBitmap s = new StringToBitmap();
-            Decompress d = new Decompress();
-            imageBitmap = s.convert(d.decompress(item.getMPicture()));
-            itemImage.setImageBitmap(imageBitmap);
-        } catch (IOException e) {
-            e.printStackTrace();
-        }*/
-
+        // Load Image
         ContentResolver cr = this.getContentResolver();
         try {
             Uri imageURI = Uri.parse(item.getMPicture());
@@ -152,8 +142,6 @@ public class UpdateItemActivity extends AppCompatActivity implements MainMenuBut
 
 
         try {
-
-            //final String sImage = imageBitmap;
 
             if (sName.isEmpty()) {
                 editTextName.setError("Name required");
@@ -213,30 +201,6 @@ public class UpdateItemActivity extends AppCompatActivity implements MainMenuBut
         } catch (Exception e) {
             Log.d(TAG, "Error: " + e);
         }
-    }
-
-    private void deleteItem(final Item item) {
-        class DeleteItem extends AsyncTask<Void, Void, Void> {
-            @Override
-            protected Void doInBackground(Void... voids) {
-
-                DatabaseClient.getInstance(getApplicationContext()).getItemRoomDatabase()
-                    .itemDao()
-                    .delete(item);
-                return null;
-            }
-
-            @Override
-            protected void onPostExecute(Void aVoid) {
-                super.onPostExecute(aVoid);
-                Toast.makeText(getApplicationContext(), "Deleted", Toast.LENGTH_LONG).show();
-                finish();
-                startActivity(new Intent(UpdateItemActivity.this, ViewAllItems.class));
-            }
-        }
-
-        DeleteItem deleteItem = new DeleteItem();
-        deleteItem.execute();
     }
 
     private void dispatchTakePictureIntent() {

@@ -30,11 +30,10 @@ public class ItemsByRoom extends AppCompatActivity implements MainMenuButtonFunc
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_items_by_room);
         Intent intent = getIntent();
-        // ToDo: bring in the correct room from BrowseByRoom
         String room = intent.getStringExtra("room");
-            // Set the Title
-            title = findViewById(R.id.single_room_title_id);
-            title.setText(room);
+        // Set the Title
+        title = findViewById(R.id.single_room_title_id);
+        title.setText(room);
 
         recyclerView = findViewById(R.id.Item_Viewer2);
         recyclerView.setLayoutManager(new LinearLayoutManager(this));
@@ -49,7 +48,6 @@ public class ItemsByRoom extends AppCompatActivity implements MainMenuButtonFunc
             }
         });
 
-        // ToDo: send room as a parameter into getTasks
         getTasks(room);
     }
 

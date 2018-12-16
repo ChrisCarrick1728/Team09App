@@ -1,8 +1,6 @@
 package com.example.team09app.team09app;
 
-import android.app.AlertDialog;
 import android.content.Context;
-import android.content.DialogInterface;
 import android.os.AsyncTask;
 import android.os.Bundle;
 import android.support.constraint.ConstraintLayout;
@@ -10,14 +8,11 @@ import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.util.Log;
-import android.view.LayoutInflater;
 import android.view.View;
 import android.widget.EditText;
 import android.widget.ImageButton;
 import android.widget.ImageView;
-import android.widget.ListView;
 
-import java.math.RoundingMode;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -25,70 +20,21 @@ import java.util.List;
  * @author team 09.
  * @version 1.0
  */
-public class BrowseByRoom extends AppCompatActivity implements SaveCurrentActivity, MainMenuButtonFunction {
+public class BrowseByRoom extends AppCompatActivity implements MainMenuButtonFunction {
 
-    private ImageButton addRoomButton;
     private RecyclerView recyclerView;
 
-    private static final String CURRENT_ACTIVITY = "BrowseByRoom";
     private static final String TAG = "BrowseByRoom";
     final Context context = this;
-    private EditText result;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_view_by_room);
-        saveCurrent(CURRENT_ACTIVITY);
 
         recyclerView = findViewById(R.id.view_all_rooms);
         recyclerView.setLayoutManager(new LinearLayoutManager(this));
 
-        addRoomButton = findViewById(R.id.addNewRoom_btn_id);
-        addRoomButton.setOnClickListener(new View.OnClickListener() {
-
-            @Override
-            public void onClick(View v) {
-                // get prompts.xml view
-                LayoutInflater li = LayoutInflater.from(context);
-                View promptsView = li.inflate(R.layout.add_new_room_popup, null);
-
-                AlertDialog.Builder alertDialogBuilder = new AlertDialog.Builder(
-                    context,R.style.alertDialog);
-
-                // set prompts.xml to alertdialog builder
-                alertDialogBuilder.setView(promptsView);
-
-                final EditText userInput = (EditText) promptsView
-                    .findViewById(R.id.editText2);
-
-                // set dialog message
-                alertDialogBuilder
-                    .setCancelable(true)
-                    .setPositiveButton("Save Room",
-                        new DialogInterface.OnClickListener() {
-                            public void onClick(DialogInterface dialog,int id) {
-                                // get user input and set it to result
-                                // edit text
-                                //Room newRoom = new Room();
-                                //newRoom.setName(String.valueOf(userInput.getText()));
-                                //roomList.add(newRoom);
-                            }
-                        })
-                    .setNegativeButton("Cancel",
-                        new DialogInterface.OnClickListener() {
-                            public void onClick(DialogInterface dialog,int id) {
-                                dialog.cancel();
-                            }
-                        });
-
-                // create alert dialog
-                AlertDialog alertDialog = alertDialogBuilder.create();
-
-                // show it
-                alertDialog.show();
-            }
-        });
         getTasks();
     }
 
@@ -158,9 +104,5 @@ public class BrowseByRoom extends AppCompatActivity implements SaveCurrentActivi
         hamburgerButton.setImageResource(R.drawable.hamburger_btnxhdpi);
     }
 
-    // ToDo: I don't think we used this so can we delete?
-    @Override
-    public void saveCurrent(String currentActivity) {
 
-    }
 }

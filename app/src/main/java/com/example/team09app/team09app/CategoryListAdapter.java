@@ -3,12 +3,11 @@ package com.example.team09app.team09app;
 import android.content.Context;
 import android.content.Intent;
 import android.support.v7.widget.RecyclerView;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.TextView;
-
-import java.util.List;
 
 /** This class contains the adapter to have the list of categories displayed correctly.
  * @author team 09
@@ -17,12 +16,12 @@ import java.util.List;
 public class CategoryListAdapter extends RecyclerView.Adapter<CategoryListAdapter.ItemViewHolder> {
 
     private Context mCtx;
-    private List<Item> itemList;
+    private CategoryObject c;
     private static final String TAG = "CategoryListAdapter";
 
-    public CategoryListAdapter (Context mCtx, List<Item> itemList) {
+    public CategoryListAdapter (Context mCtx, CategoryObject c) {
         this.mCtx = mCtx;
-        this.itemList = itemList;
+        this.c = c;
     }
 
     @Override
@@ -33,15 +32,16 @@ public class CategoryListAdapter extends RecyclerView.Adapter<CategoryListAdapte
 
     @Override
     public void onBindViewHolder(ItemViewHolder holder, int position) {
-        Item it = itemList.get(position);
-        //holder.textViewNumber_id.setText("1");
+        Item it = c.getItem().get(position);
+        Integer num = c.getNumItems().get(position);
+        holder.textViewNumber2_id.setText(num.toString());
         holder.textViewCategory_id.setText(it.getMCategory());
     }
 
     @Override
     public int getItemCount() {
-        if(itemList != null)
-            return itemList.size();
+        if(c != null)
+            return c.getItem().size();
         else
             return 0;
     }
@@ -54,20 +54,21 @@ public class CategoryListAdapter extends RecyclerView.Adapter<CategoryListAdapte
             super(iView);
 
             textViewCategory_id = iView.findViewById(R.id.textViewCategory_id);
-            textViewNumber2_id = iView.findViewById(R.id.textViewNumber2_id);
+            Log.d("Test_Num", textViewCategory_id.getText().toString());
+            textViewNumber2_id = iView.findViewById(R.id.textViewCategoryNumber2_id);
+            Log.d("Test_Num", textViewNumber2_id.getText().toString());
 
             iView.setOnClickListener(this);
         }
 
         @Override
         public void onClick(View view) {
-            Item item = itemList.get(getAdapterPosition());
+            Item item = c.getItem().get(getAdapterPosition());
 
-            // ToDo: Will this pass the correct category into ItemsByCategory class or do we need to have a list of categories to pass?
-            //Intent intent = new Intent(mCtx, ItemsByCategory.class);
-            //intent.putExtra("room", item);
+            Intent intent = new Intent(mCtx, ItemsByCategory.class);
+            intent.putExtra("category", item.getMCategory());
 
-            //mCtx.startActivity(intent);
+            mCtx.startActivity(intent);
         }
     }
 }

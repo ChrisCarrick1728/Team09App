@@ -6,7 +6,9 @@ import java.util.List;
  * @version 1.0
  * @author team 09
  */
-public class RoomObject {
+public class CategoryObject {
+
+
     private List<Item> item;
     private List<Integer>  numItems;
 
@@ -17,7 +19,7 @@ public class RoomObject {
         return item;
     }
 
-    /** Gets a List containing the number of items in each Room.
+    /** Gets a List containing the number of items in each Category.
      * @return A List of Integers.
      */
     public List<Integer> getNumItems() {
