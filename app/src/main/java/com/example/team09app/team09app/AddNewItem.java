@@ -350,7 +350,6 @@ public class AddNewItem extends AppCompatActivity implements MainMenuButtonFunct
         ImageButton mImageButton = (ImageButton) findViewById(R.id.camera_btn_id_add);
         Log.d(TAG, "I'm here");
         if (requestCode == REQUEST_IMAGE_CAPTURE && resultCode == RESULT_OK) {
-            Bundle extras = data.getExtras();
             this.getContentResolver().notifyChange(mainURI, null);
             ContentResolver cr = this.getContentResolver();
 

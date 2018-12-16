@@ -68,7 +68,7 @@ public class RoomListAdapter extends RecyclerView.Adapter<RoomListAdapter.ItemVi
         public void onClick(View view) {
             Item item = rList.getItem().get(getAdapterPosition());
 
-            // ToDo: Will this pass the correct room into ItemsByRoom class or do we need to have a list of rooms to pass?
+            Log.d(TAG, "onClick: " + item.getMRoom());
             Intent intent = new Intent(mCtx, ItemsByRoom.class);
             intent.putExtra("room", item);
 

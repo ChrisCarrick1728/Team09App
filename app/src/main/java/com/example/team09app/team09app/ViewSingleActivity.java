@@ -121,9 +121,9 @@ public class ViewSingleActivity extends AppCompatActivity implements MainMenuBut
             @Override
             protected Void doInBackground(Void... voids) {
 
-                /*DatabaseClient.getInstance(getApplicationContext()).getItemRoomDatabase()
+                DatabaseClient.getInstance(getApplicationContext()).getItemRoomDatabase()
                     .itemDao()
-                    .delete(item);*/
+                    .delete(item);
                 return null;
             }
 
