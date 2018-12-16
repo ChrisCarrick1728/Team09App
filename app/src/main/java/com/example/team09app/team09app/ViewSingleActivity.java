@@ -1,14 +1,20 @@
 package com.example.team09app.team09app;
 
+import android.content.ContentResolver;
 import android.content.DialogInterface;
 import android.content.Intent;
+import android.database.Cursor;
+import android.net.Uri;
 import android.os.AsyncTask;
+import android.os.Environment;
+import android.provider.MediaStore;
 import android.support.constraint.ConstraintLayout;
 import android.support.v7.app.AlertDialog;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
+import android.util.Log;
 import android.view.View;
 import android.widget.Button;
 import android.widget.ImageButton;
@@ -16,6 +22,8 @@ import android.widget.ImageView;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import java.io.File;
+import java.net.URI;
 import java.util.List;
 
 /** This class contains the code to let the user view a single item.
@@ -100,13 +108,22 @@ public class ViewSingleActivity extends AppCompatActivity implements MainMenuBut
         gt.execute();
     }
 
+
+
     private void deleteItem(final Item item) {
+        // Delete Image File:
+        Log.d("Delete_Item", "DeleteItem: " + item.getMPicture());
+        DeleteImage d = new DeleteImage(item.getMPicturePath());
+
+
+
         class DeleteItem extends AsyncTask<Void, Void, Void> {
             @Override
             protected Void doInBackground(Void... voids) {
-                DatabaseClient.getInstance(getApplicationContext()).getItemRoomDatabase()
+
+                /*DatabaseClient.getInstance(getApplicationContext()).getItemRoomDatabase()
                     .itemDao()
-                    .delete(item);
+                    .delete(item);*/
                 return null;
             }
 

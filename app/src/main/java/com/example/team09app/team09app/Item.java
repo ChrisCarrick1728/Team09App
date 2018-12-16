@@ -45,6 +45,10 @@ public class Item implements Serializable {
     @ColumnInfo(name = "picture")
     private String mPicture;
 
+    /** mPicture: Stores the URI of the picture */
+    @ColumnInfo(name = "picturePath")
+    private String mPicturePath;
+
     // Getters and Setters
     // Room DB will only recognize a getter with the exact variable name except starting with a capital letter
 
@@ -140,5 +144,19 @@ public class Item implements Serializable {
      */
     public void setMPicture(String picture) {
         this.mPicture = picture;
+    }
+
+    /** Gets the picturePath of the item.
+     * @return A string representing the Path of the picture of the item.
+     */
+    public String getMPicturePath() {
+        return mPicturePath;
+    }
+
+    /** Sets the picture of the item
+     * @param picturePath A string containing the URI of the picture of the item.
+     */
+    public void setMPicturePath(String picturePath) {
+        this.mPicturePath = picturePath;
     }
 }

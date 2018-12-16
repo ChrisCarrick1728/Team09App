@@ -56,6 +56,7 @@ public class AddNewItem extends AppCompatActivity implements MainMenuButtonFunct
     final Context context = this;
     private EditText result;
     Uri mainURI;
+    File photoFile;
     Bitmap imageBitmap;
 
     @Override
@@ -319,7 +320,7 @@ public class AddNewItem extends AppCompatActivity implements MainMenuButtonFunct
         Intent takePictureIntent = new Intent(MediaStore.ACTION_IMAGE_CAPTURE);
         if (takePictureIntent.resolveActivity(getPackageManager()) != null) {
 
-            File photoFile = null;
+            photoFile = null;
 
             try {
                 photoFile = createImageFile();
@@ -378,83 +379,71 @@ public class AddNewItem extends AppCompatActivity implements MainMenuButtonFunct
         final String sCategory = editCategory.getText().toString().trim();
         final String sPrice = editPriceText.getText().toString().trim();
         final String sDate = editPurchaseDate.getText().toString().trim();
+        final String sImage = mainURI.toString().trim();
+        final String sImagePath = photoFile.toString().trim();
 
-        // Save Image as String
-        try {
-            Compress c = new Compress();
-            BitmapToString b = new BitmapToString();
-
-            final byte[] sImage = (c.compress(b.convert(imageBitmap)));
-
-            if(sName.isEmpty()) {
-                editNameText.setError("Name required");
-                editNameText.requestFocus();
-                return;
-            }
-
-            if(sRoom.isEmpty()) {
-                editRoom.setError("Room required");
-                editRoom.requestFocus();
-                return;
-            }
-
-            if(sCategory.isEmpty()) {
-                editCategory.setError("Category required");
-                editCategory.requestFocus();
-                return;
-            }
-
-            if(sPrice.isEmpty()) {
-                editPriceText.setError("Price required");
-                editPriceText.requestFocus();
-                return;
-            }
-
-            if(sDate.isEmpty()) {
-                editPurchaseDate.setError("Date required");
-                editPurchaseDate.requestFocus();
-                return;
-            }
-
-            if(sImage == null) {
-                return;
-            }
-
-            class SaveTask extends AsyncTask<Void, Void, Void> {
-                @Override
-                protected Void doInBackground(Void... voids) {
-                    // creating an Item
-                    Item item = new Item();
-                    item.setMName(sName);
-                    item.setMRoom(sRoom);
-                    item.setMCategory(sCategory);
-                    item.setMPrice(sPrice);
-                    item.setMDate(sDate);
-                    item.setMPicture(sImage);
-
-                    // adding to database
-                    DatabaseClient.getInstance(getApplicationContext()).getItemRoomDatabase()
-                            .itemDao()
-                            .insert(item);
-                    Log.d("Test TAG", "item: " + item.getMName() + " " + item.getMRoom() + " " + item.getMCategory());
-                    return null;
-                }
-
-                @Override
-                protected void onPostExecute(Void aVoid) {
-                    super.onPostExecute(aVoid);
-                    finish();
-                    startActivity(new Intent(getApplicationContext(), ViewAllItems.class));
-                    Toast.makeText(getApplicationContext(), "Saved", Toast.LENGTH_LONG).show();
-                }
-            }
-
-            SaveTask st = new SaveTask();
-            st.execute();
-
-        } catch (Exception ex) {
-            Log.d(TAG, "Error: " + ex);
+        if(sName.isEmpty()) {
+            editNameText.setError("Name required");
+            editNameText.requestFocus();
+            return;
         }
+        if(sRoom.isEmpty()) {
+            editRoom.setError("Room required");
+            editRoom.requestFocus();
+            return;
+        }
+        if(sCategory.isEmpty()) {
+            editCategory.setError("Category required");
+            editCategory.requestFocus();
+            return;
+        }
+        if(sPrice.isEmpty()) {
+            editPriceText.setError("Price required");
+            editPriceText.requestFocus();
+            return;
+        }
+        if(sDate.isEmpty()) {
+            editPurchaseDate.setError("Date required");
+            editPurchaseDate.requestFocus();
+            return;
+        }
+        if(sImage.isEmpty()) {
+            return;
+        }
+
+        class SaveTask extends AsyncTask<Void, Void, Void> {
+            @Override
+            protected Void doInBackground(Void... voids) {
+                // creating an Item
+                Item item = new Item();
+                item.setMName(sName);
+                item.setMRoom(sRoom);
+                item.setMCategory(sCategory);
+                item.setMPrice(sPrice);
+                item.setMDate(sDate);
+                item.setMPicture(sImage);
+                item.setMPicturePath(sImagePath);
+
+                // adding to database
+                DatabaseClient.getInstance(getApplicationContext()).getItemRoomDatabase()
+                        .itemDao()
+                        .insert(item);
+                return null;
+            }
+
+            // ToDo: I think this sends user to ViewAllItems page once item is saved. Verify
+            @Override
+            protected void onPostExecute(Void aVoid) {
+                super.onPostExecute(aVoid);
+                finish();
+                startActivity(new Intent(getApplicationContext(), ViewAllItems.class));
+                Toast.makeText(getApplicationContext(), "Saved", Toast.LENGTH_LONG).show();
+            }
+        }
+
+        SaveTask st = new SaveTask();
+        st.execute();
+
     }
 
     @Override // MainMenuButtonFunction

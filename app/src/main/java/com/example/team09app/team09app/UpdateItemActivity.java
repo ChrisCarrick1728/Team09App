@@ -44,6 +44,7 @@ public class UpdateItemActivity extends AppCompatActivity implements MainMenuBut
     private ImageButton itemImage;
     private DatePickerDialog.OnDateSetListener mEditDateSetListener;
     Uri mainURI;
+    File photoFile;
     Bitmap imageBitmap;
     private static final String TAG = "UpdateItemActivity";
 
@@ -108,16 +109,35 @@ public class UpdateItemActivity extends AppCompatActivity implements MainMenuBut
         editTextCategory.setText(item.getMCategory());
         editTextPrice.setText(item.getMPrice());
         editTextDate.setText(item.getMDate());
+        photoFile = new File(item.getMPicturePath());
 
 
 
-        try {
+        /*try {
             StringToBitmap s = new StringToBitmap();
             Decompress d = new Decompress();
             imageBitmap = s.convert(d.decompress(item.getMPicture()));
             itemImage.setImageBitmap(imageBitmap);
         } catch (IOException e) {
             e.printStackTrace();
+        }*/
+
+        ContentResolver cr = this.getContentResolver();
+        try {
+            Uri imageURI = Uri.parse(item.getMPicture());
+
+            Log.d(TAG, "LoadURI: " + item.getMPicture());
+            Bitmap imageBitmap;
+            try {
+                imageBitmap = MediaStore.Images.Media.getBitmap(cr, imageURI);
+                //mImageButton.setVisibility(View.INVISIBLE);
+                itemImage.setImageBitmap(imageBitmap);
+                mainURI = Uri.parse(item.getMPicture());
+            } catch (IOException e) {
+                Log.d(TAG, "ERROR: " + e);
+            }
+        } catch (Exception e) {
+            Log.d(TAG, "Error: Image doesn't exist " + e);
         }
 
     }
@@ -126,17 +146,14 @@ public class UpdateItemActivity extends AppCompatActivity implements MainMenuBut
         final String sName = editTextName.getText().toString().trim();
         final String sRoom = editTextRoom.getText().toString().trim();
         final String sCategory = editTextCategory.getText().toString().trim();
-
-        // ToDo: Adds an extra dollar sign each time page loads
         final String sPrice =  editTextPrice.getText().toString().trim();
         final String sDate = editTextDate.getText().toString().trim();
+        final String sImage = mainURI.toString().trim();
 
 
         try {
-            Compress c = new Compress();
-            BitmapToString b = new BitmapToString();
 
-            final byte[] sImage = (c.compress(b.convert(imageBitmap)));
+            //final String sImage = imageBitmap;
 
             if (sName.isEmpty()) {
                 editTextName.setError("Name required");
@@ -226,12 +243,6 @@ public class UpdateItemActivity extends AppCompatActivity implements MainMenuBut
         Intent takePictureIntent = new Intent(MediaStore.ACTION_IMAGE_CAPTURE);
         if (takePictureIntent.resolveActivity(getPackageManager()) != null) {
             File storageDir = getExternalFilesDir(Environment.DIRECTORY_PICTURES);
-            File photoFile = null;
-            try {
-                photoFile = File.createTempFile("tempPhoto", ".jpg", storageDir);
-            } catch (IOException ex) {
-                Log.d(TAG, "Error: " + ex);
-            }
 
             Uri photoURI;
             if (photoFile != null) {
